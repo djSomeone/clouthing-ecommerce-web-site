@@ -1,124 +1,126 @@
 /* Navbar.css */
-*{
+* {
     font-family: sans-serif;
-}
-.navbar-container {
-    background-color: #FAF9F6; /* Example background color */
-    padding: 0.5rem 4.75rem; /* Example padding */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow */
-    position: sticky; /* For sticky navbar */
+  }
+  
+  .navbar-container {
+    background-color: #FAF9F6;
+    padding: 0.5rem 4.75rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
     top: 0;
+    z-index: 100;
+  }
   
-    z-index: 100; /* Ensure it's above other content */
-}
-  
-.navbar-content {
+  .navbar-content {
     display: flex;
-    justify-content: space-between; /* Distribute items evenly */
+    justify-content: space-between;
     align-items: center;
-    /* max-width: 1200px; /* Set a maximum width for larger screens */
     margin: 0 auto;
-}
+  }
   
-.navbar-logo {
-    /* Style your logo container */
-}
+  .navbar-logo-img {
+    height: 40px;
+  }
   
-.navbar-logo-img {
-    height: 40px; /* Adjust as needed */
-}
-  
-.navbar-nav {
+  .navbar-nav {
     list-style: none;
-  
     display: flex;
     gap: 20px;
-}
+  }
   
-.navbar-nav-item {
-    margin-left: 20px; /* Spacing between nav items */
-}
+  .navbar-nav-item {
+    margin-left: 20px;
+  }
   
-.navbar-nav-link {
+  .navbar-nav-link {
     text-decoration: none;
-    color: #333; /* Example text color */
-    font-weight: 300;
-    transition: color 0.3s; /* Smooth color transition on hover */
-}
-  
-.navbar-nav-link.active {
-    color: #DA231D; /* Example active link color */
-    text-decoration: underline; /* Underline active link */
-    text-underline-offset: 4px; /* Space between underline and text */
-}
-  
-.navbar-nav-link:hover {
-    color: #007bff; /* Example hover color */
-}
-  
-.navbar-icons {
-    display: flex; /* Arrange icons horizontally */
-    align-items: center;
-    gap: 15px; /* Vertically align icons */
-    font-size: 1em; /* Adjust icon size */
-}
-  
-.navbar-icon {
-    margin-left: 15px; /* Spacing between icons */
     color: #333;
-    font-size: 1.2em; /* Adjust icon size as needed */
+    font-weight: 300;
+    transition: color 0.3s;
+  }
+  
+  .navbar-nav-link.active {
+    color: #DA231D;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  
+  .navbar-nav-link:hover {
+    color: #007bff;
+  }
+  
+  .navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1em;
+  }
+  
+  .navbar-icon {
+    color: #333;
+    font-size: 1.2em;
     text-decoration: none;
     transition: color 0.3s;
-}
-  
-.navbar-icon:hover {
-    color: #007bff;
-}
-  
-/* Responsive design (example) */
-@media (max-width: 768px) {
-    .navbar-nav {
-        display: none; /* Hide nav on smaller screens */
-        flex-direction: column;
-        position: absolute;
-        top: 60px; /* Adjust as needed */
-        left: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-  
-    .navbar-nav-item {
-        margin: 10px 0;
-        text-align: center;
-        width: 100%;
-    }
-  
-    .navbar-toggle {
-        display: block; /* Show toggle button */
-        cursor: pointer;
-        font-size: 1.5em;
-        color: #333;
-    }
-}
-  
-/* Hide toggle button on larger screens */
-.navbar-toggle {
-    display: none;
-}
-
-/* Navbar.css */
-.navbar-icon {
-    /* ... existing styles */
-    font-size: 1.2em; /* Adjust size */
-    color: #333; /* Change color */
   }
   
   .navbar-icon:hover {
-      color: #DA231D;
+    color: #007bff;
   }
   
-  .navbar-icon svg { /* Target the SVG element directly */
-      width: 1.2em; /* Control icon width */
-      height: 1.2em; /* Control icon height */
+  .navbar-icon svg {
+    width: 1.2em;
+    height: 1.2em;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 768px) {
+    .navbar-container {
+      padding: 0.5rem 1rem;
+    }
+  
+    .navbar-content {
+      /* flex-direction: column; */
+      align-items: flex-start; /* Align items to the left */
+    }
+  
+    .navbar-nav {
+      display: none; /* Hide the menu by default */
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 10px; /* Add some padding to the menu */
+    }
+  
+    .navbar-nav.show {
+      display: flex; /* Show the menu when the toggle is clicked */
+    }
+  
+    .navbar-nav-item {
+      margin: 10px 0;
+      text-align: left; /* Align text to the left in the menu */
+      width: 100%;
+    }
+  
+    .navbar-toggle {
+      display: block;
+      cursor: pointer;
+      font-size: 1.5em;
+      color: #333;
+      align-self: flex-end; /* Position toggle to the right */
+    }
+  
+    .navbar-icons {
+      margin-top: 10px;
+      align-self: flex-end;
+    }
+  }
+  
+  /* Hide toggle button on larger screens */
+  .navbar-toggle {
+    display: none;
   }
