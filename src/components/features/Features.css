@@ -1,0 +1,49 @@
+/* Features.css */
+.features-container {
+    background-color: transparent; /* Light gray background */
+    padding: 40px 20px; /* Adjust padding as needed */
+  }
+  
+  .features-content {
+    display: flex;
+    justify-content: space-around; /* Distribute features evenly */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+      gap: 20px;
+  }
+  
+  .feature {
+    text-align: center;
+    padding: 20px;
+    flex: 1 1 300px; /* Distribute features evenly and set a minimum width */
+  }
+  
+  .feature-icon {
+    font-size: 3em; /* Adjust icon size */
+    margin-bottom: 10px;
+      color: #333;
+  }
+  
+  .feature-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .feature-description {
+    font-size: 0.9em;
+    color: #666; /* Slightly darker text for description */
+  }
+  
+  /* Responsive adjustments for mobile */
+  @media (max-width: 768px) { /* Adjust breakpoint as needed */
+    .features-content {
+      flex-direction: column; /* Stack features vertically */
+        align-items: center;
+        gap: 30px;
+    }
+      .feature{
+          flex: 1 1 100%;
+      }
+  }
