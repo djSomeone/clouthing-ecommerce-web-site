@@ -32,13 +32,17 @@ const Home = () => {
 
         {/* banner */}
         <div className='secBannerContainer'>
-       <div className='secBanner' style={{height:"400px",backgroundSize:"contain",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}>
+       <div className='secBanner' style={{backgroundSize:"contain",backgroundPosition:"center",backgroundRepeat:"no-repeat"}}>
 
        </div>
        </div>
-       <InstagramFollow />
+       
 
        <TestimonialSlider />
+       <InstagramFollow />
+       <div style={{border:"1px solid rgb(186, 186, 186)",borderRadius:"20px" ,margin:"0px 80px"}}>
+
+       </div>
       <Footer />
     </div>
   );

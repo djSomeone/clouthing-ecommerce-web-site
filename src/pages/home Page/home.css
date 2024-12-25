@@ -2,7 +2,20 @@ body {
     background-color: #FAF9F6;
 }
 .secBanner{
-    background-image: url("/src/asset/secBanner.png")
+    height: 25rem;
+    background-image: url("/src/asset/secBanner.png");
+    background-size: cover;
+    background-position: center;
+}
+
+@media (max-width: 768px) {
+    .secBanner {
+        height: 8rem;
+        background-image: url("/src/asset/secBanner.png");
+        background-size: cover;
+        background-position: center;
+
+    }
 }
 .secBannerContainer{
     /* border: 1px solid red; */
