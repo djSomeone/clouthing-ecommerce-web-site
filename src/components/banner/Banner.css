@@ -1,7 +1,7 @@
 /* Banner.css */
 .banner-container {
     width: 100%;
-    height: 50vh; /* Adjust height to 50% of the viewport height */
+    height: 60vh; /* Adjust height to 50% of the viewport height */
     background-size: cover;
     background-position: center;
     background-image: url('/src/asset/homebanner.png');
