@@ -1,12 +1,13 @@
 // pages/Home.js
 import React from 'react';
-import Navbar from '../../components/navigationBar/Navbar';
-import Footer from '../../components/footer/Footer';
+import Navbar from './components/navigationBar/Navbar';
+import Footer from './components/footer/Footer';
 import './home.css';
-import Features from '../../components/features/Features';
-import Banner from '../../components/banner/Banner';
-import ProductGrid from '../../components/productsGrid/ProductGrid';
-import TestimonialSlider from '../../components/feedback/TestimonialSliderfeedback';
+import Features from './components/features/Features';
+import Banner from './components/banner/Banner';
+import ProductGrid from './components/productsGrid/ProductGrid';
+import TestimonialSlider from './components/feedback/TestimonialSliderfeedback';
+import InstagramFollow from './components/socialMedia/InstagramFollow';
 
 const Home = () => {
   return (
@@ -35,6 +36,7 @@ const Home = () => {
 
        </div>
        </div>
+       <InstagramFollow />
 
        <TestimonialSlider />
       <Footer />

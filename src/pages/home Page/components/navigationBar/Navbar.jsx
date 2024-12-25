@@ -1,7 +1,7 @@
 // Navbar.jsx
 import React from 'react';
 import './Navbar.css';
-import logo from './../../asset/logo.png'; // Import your logo image
+import logo from '../../../../asset/logo.png'; // Import your logo image
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'; // Import solid icons
 // import { faUser } from '@fortawesome/free-regular-svg-icons'; // Import regular icon

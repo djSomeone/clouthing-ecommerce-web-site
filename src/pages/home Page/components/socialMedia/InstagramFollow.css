@@ -1,0 +1,100 @@
+/* InstagramFollow.css */
+.instagram-follow-container {
+    padding: 40px 20px;
+    text-align: center;
+}
+.instagram-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.instagram-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Increased gap */
+}
+
+.instagram-text {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+}
+
+.instagram-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 15px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.2s;
+}
+
+.instagram-link:hover {
+    transform: scale(1.05);
+}
+
+.instagram-link-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instagram-icon {
+    font-size: 1.5em;
+    color: #E1306C;
+}
+
+.instagram-link-text {
+    font-weight: 500;
+}
+
+.instagram-images {
+    padding: 0px 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Four images in one row */
+    gap: 3.5vw;
+}
+
+.instagram-image {
+    width: 100%;
+    aspect-ratio: 1/1.2; /* Maintain square aspect ratio */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    object-position: top center;
+    transition: transform 0.3s, object-position 0.3s;
+}
+
+.instagram-image:hover {
+    transform: scale(1.1);
+    object-position: top center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .instagram-text {
+        font-size: 1.2em;
+    }
+    .instagram-images {
+        grid-template-columns: repeat(2, 1fr); /* Two images in one row */
+        padding: 0px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .instagram-text {
+        font-size: 1em;
+    }
+    .instagram-link {
+        padding: 10px 20px;
+    }
+    .instagram-images {
+        grid-template-columns: 1fr; /* One image in one row */
+        padding: 0px 10px;
+    }
+    .instagram-image {
+        aspect-ratio: 1/1; /* Maintain square aspect ratio */
+    }
+}

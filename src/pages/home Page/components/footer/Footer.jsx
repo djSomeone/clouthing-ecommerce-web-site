@@ -2,7 +2,7 @@
 import React from 'react';
 import './Footer.css';
 import { Icon } from '@iconify/react';
-import logo from './../../asset/logo.png';
+import logo from '../../../../asset/logo.png';
 
 const Footer = () => {
   return (
