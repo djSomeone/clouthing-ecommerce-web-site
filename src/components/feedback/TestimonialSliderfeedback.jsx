@@ -60,15 +60,18 @@ const TestimonialSlider = () => {
                         <img src={testimonials[currentTestimonial].image} alt={testimonials[currentTestimonial].author} />
                     </div>
                     <div className="testimonial-content">
+                        <div>
                         <div className="quote-icon">“</div>
-                        <br/>
+                        <br/><br/><br/><br/>
                         <p className="testimonial-text">{testimonials[currentTestimonial].text}</p>
+                        <br/> 
+                       
                         <div className="testimonial-author">
                             <p className="author-name">{testimonials[currentTestimonial].author}</p>
                             <p className="author-title">{testimonials[currentTestimonial].title}</p>
                         </div>
-                    </div>
-                    <div className="testimonial-controls">
+                        </div>
+                        <div className="testimonial-controls">
                   <button onClick={prevTestimonial} className="control-button prev-button">
                     <Icon icon="ic:round-chevron-left" />
                   </button>
@@ -76,6 +79,8 @@ const TestimonialSlider = () => {
                     <Icon icon="ic:round-chevron-right" />
                   </button>
                 </div>
+                    </div>
+                    
                 </div>
                 
             </div>

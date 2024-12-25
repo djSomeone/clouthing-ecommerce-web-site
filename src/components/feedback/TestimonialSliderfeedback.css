@@ -36,6 +36,7 @@
     display: flex;
     background-color: white;
     padding: 30px;
+    gap: 30px;
     background-color: transparent;
     
     /*border-radius: 10px;
@@ -61,10 +62,13 @@
 .testimonial-content {
     flex: 1;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .quote-icon {
-    font-size: 4em;
+    font-size: 10em;
     color: #ccc;
     position: absolute;
     top: -10px;
@@ -94,33 +98,37 @@
 }
 
 .testimonial-controls {
-    border: 1px solid red;
+    
     margin-top: 30px;
     display: flex;
-    justify-content: center; /* Center the buttons */
+    justify-content: flex-end;
     gap: 20px; /* Increased gap */
-    
-    transform: translateX(-50%); /* Center horizontally */
+     /* Center horizontally */
 }
 
 .control-button {
     width: 50px; /* Increased button size */
     height: 50px;
-    border-radius: 50%;
-    border: none;
-    background-color: white;
+    border-radius: 20%;
+    border: 2px solid #7777777b ;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5em; /* Increased icon size */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added shadow */
-    transition: background-color 0.3s, transform 0.2s; /* Added transform for hover */
+    background-color: transparent;
+    transition: background-color 0.3s, transform 0.2s, border-color 0.3s, color 0.3s; /* Added transform for hover */
     color: #777;
 }
 
 .control-button:hover {
-    background-color: #f0f0f0;
+    border: 2px solid red; /* Added border on click */
+    color: red; /* Change icon color on click */
+}
+
+.control-button:active {
+    /* border: 2px solid red; */
+    /* background-color: #f0f0f0; */
     transform: scale(1.1); /* Scale up on hover */
 }
 
