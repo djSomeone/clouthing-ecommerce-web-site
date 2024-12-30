@@ -1,7 +1,7 @@
 // pages/Home.js
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/navigationBar/Navbar';
-import Footer from './components/footer/Footer';
+import Navbar from '../../component/navigationBar/Navbar';
+import Footer from '../../component/footer/Footer';
 import './home.css';
 import Features from './components/features/Features';
 import Banner from './components/banner/Banner';
@@ -10,34 +10,11 @@ import TestimonialSlider from './components/feedback/TestimonialSliderfeedback';
 import InstagramFollow from './components/socialMedia/InstagramFollow';
 
 const Home = () => {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time (e.g., fetching data)
-    setTimeout(() => {
-      setLoading(false);
-    }, 3500); // 3 seconds
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="loading-screen">
-        <div className="loading-content">
-          <span className="loading-word" style={{animationDelay: "0s"}}>Welcome to Iris</span>
-          <span className="loading-word" style={{animationDelay: "0.5s"}}>.</span>
-          <span className="loading-word" style={{animationDelay: "1.5s"}}>.</span>
-          {/* {/* <span className="loading-word" style={{animationDelay: "2s"}}>the</span> */}
-          <span className="loading-word" style={{animationDelay: "2s"}}>.</span>
-          
-          {/* Add more words as needed */}
-        </div>
-      </div>
-    );
-  }
+ 
 
   return (
     <div className="home-container"> {/* Added a container for smooth transition */}
-        <Navbar />
+        
         <Banner/>
       <Features />
       <div>

@@ -1,0 +1,99 @@
+/* ContactUs.css */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+.contact-us-container {
+    /* background-color: #f2f2f2; */
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+   
+}
+
+
+ .contact-content {
+    /* background-color: white; */
+    padding: 40px;
+    
+    width: 100%;
+    max-width: 900px;
+} 
+
+.contact-content h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.contact-content p {
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    flex: 1; /* Equal width for form groups in a row */
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+}
+
+.message-group textarea {
+    height: 150px; /* Adjust height as needed */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.submit-button {
+    background-color: #1a1a1a; /* Dark background */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 40px;
+    display: block;
+}
+
+.submit-button:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column; /* Stack form groups vertically */
+        gap: 10px;
+    }
+    .contact-content{
+        padding: 20px;
+    }
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: transparent; /* Make text box background color transparent */
+}
+
