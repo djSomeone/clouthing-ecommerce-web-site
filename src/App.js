@@ -10,7 +10,8 @@ import Home from './pages/home Page/home.jsx';
 // import AboutUs from './pages/AboutUs';
 import AboutUs from './pages/aboutUs/AboutUs.jsx';
 import ContactUs from './pages/contactUs/contactUs.jsx';
-import LoadingScreen from './component/loadingScreen/LoadingScreen.jsx'
+import LoginForm from './pages/login/LoginForm.jsx';
+import CodeVerificationForm from './pages/verifyCode/CodeVerificationForm.jsx';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 
@@ -26,25 +27,16 @@ function App() {
 
   
 
-    // useEffect(() => {
-    //     // Simulate loading time (e.g., fetching data)
-    //     setTimeout(() => {
-    //       setIsLoading(false);
-    //     }, 3500); // 3 seconds
-    //   }, []);
-    
-    //   if (isLoading) {
-    //     return <LoadingScreen/>
-    //   }
-
     return (
         <div className='App'>
             <Router>
             <Navbar activeIndex={activeIndex} onNavItemClick={handleNavItemClick} />
             <Routes>
-                <Route path='/home' element={<Home/>}/>
+                <Route path='/' element={<Home/>}/>
                 <Route path='/contact-us' element={<ContactUs/>}/>
                 <Route path='/about-us' element={<AboutUs/>}/>
+                <Route path='/login' element={<LoginForm/>}/>
+                <Route path='/verify' element={<CodeVerificationForm/>}/>
             </Routes>
             <Footer />
             </Router>

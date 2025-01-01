@@ -1,0 +1,72 @@
+/* components/LoginForm.css */
+.login-container {
+    /* background-color: #f0f0f0; Light gray background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Ensure it takes up full viewport height */
+    padding: 20px;
+}
+
+.login-content {
+   
+    padding: 40px;
+    border-radius: 8px;
+   
+    width: 100%;
+    max-width: 400px; /* Set a maximum width */
+    text-align: center; /* Center text within the content */
+}
+
+.login-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.login-content p {
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left; /* Align label to the left */
+}
+
+.input-group label {
+    display: block; /* Make label a block element */
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    outline: none;
+}
+
+.login-button {
+    background-color: #111111; /* Dark background color */
+    color: white;
+    padding: 16px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #0d0d0d; /* Slightly darker on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 500px) {
+    .login-content {
+        padding: 30px;
+    }
+}

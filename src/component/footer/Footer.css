@@ -2,7 +2,9 @@
 .footer-container {
      padding: 20px;
     color: #333; /* Example text color */
-    padding: 3rem 4.75rem;
+    padding: 3rem 4.25rem;
+    margin: 0 30px;
+    border-top: 1px solid #636262;
   }
   
   .footer-content {
