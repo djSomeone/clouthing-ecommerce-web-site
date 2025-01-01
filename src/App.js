@@ -38,7 +38,7 @@ function App() {
                 <Route path='/login' element={<LoginForm/>}/>
                 <Route path='/verify' element={<CodeVerificationForm/>}/>
             </Routes>
-            <Footer />
+            <Footer/>
             </Router>
         </div>
     );

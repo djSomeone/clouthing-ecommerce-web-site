@@ -41,10 +41,8 @@ const Home = () => {
 
        <TestimonialSlider />
        <InstagramFollow />
-       <div style={{border:"1px solid rgb(186, 186, 186)",borderRadius:"20px" ,margin:"0px 80px"}}>
-
-       </div>
-      <Footer />
+      
+      {/* <Footer /> */}
     </div>
   );
 };
