@@ -123,16 +123,23 @@
   flex-direction: column;
   align-items: start;
   gap: 20px;
+ 
+  border-right: 1px solid #ddd; /* Add border */
+  border-radius: 4px; /* Add rounded corners */
+  padding: 20px;
 }
 
 .drawer-inner {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 .drawer-logo {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .drawer-logo img {
@@ -143,33 +150,49 @@
 /* Drawer Navigation Links */
 .navbar-nav-mobile {
   list-style: none;
-  padding: 0;
+  padding: 10px 0; /* Add some padding */
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.navbar-nav-item-mobile {
-  list-style: none;
+  text-align: justify;
 }
 
 .navbar-nav-link-mobile {
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
+  color: #484848a9;
+  
   font-size: 1.2rem;
-  display: block;
-  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 8px 5px; /* Adjust padding for spacing */
+  display: block; /* Make links full width */
+  transition: background-color 0.2s ease-in-out;
 }
 
 .navbar-nav-link-mobile:hover {
-  color: #DA231D;
-  transform: translateX(5px);
+  background-color: #f2f2f2; /* Add hover effect */
 }
+
+.navbar-nav-item-mobile {
+  list-style: none;
+  padding: 5px 5px;
+  font-weight:500;
+  color: #1d1c1c;
+}
+.drawer-close-btn{
+  font-size: 1.7rem;
+}
+
+
+
 
 .navbar-nav-link-mobile.active {
   color: #DA231D;
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+  z-index: 99; /* Ensure overlay is behind drawer content */
 }

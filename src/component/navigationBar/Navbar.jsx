@@ -160,13 +160,19 @@ const Navbar = () => {
                 onClose={toggleDrawer}
                 direction="left"
                 className="drawer-content"
+                overlayClassName="drawer-overlay"
             >
+                
                 <div className="drawer-inner">
                     <div className="drawer-logo">
                         <Link to="/" onClick={toggleDrawer}>
                             <img src={logo} alt="Iris Fashion Logo" className="navbar-logo-img" />
                         </Link>
+                        <div className="drawer-close-btn" onClick={toggleDrawer}>
+    <Icon icon="ic:round-close" />
+  </div>
                     </div>
+                    
                     <ul className="navbar-nav-mobile">
                         {navItems.map((item, index) => (
                             <li className="navbar-nav-item-mobile" key={index}>
