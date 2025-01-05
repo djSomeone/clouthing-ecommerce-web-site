@@ -12,6 +12,7 @@ import AboutUs from './pages/aboutUs/AboutUs.jsx';
 import ContactUs from './pages/contactUs/contactUs.jsx';
 import LoginForm from './pages/login/LoginForm.jsx';
 import CodeVerificationForm from './pages/verifyCode/CodeVerificationForm.jsx';
+import ProductDetails from './pages/productDetail/ProductDetails.jsx';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 
@@ -37,6 +38,7 @@ function App() {
                 <Route path='/about-us' element={<AboutUs/>}/>
                 <Route path='/login' element={<LoginForm/>}/>
                 <Route path='/verify' element={<CodeVerificationForm/>}/>
+                <Route path='/product-details' element={<ProductDetails/>}/>
             </Routes>
             <Footer/>
             </Router>
