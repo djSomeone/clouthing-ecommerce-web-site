@@ -13,6 +13,7 @@ import ContactUs from './pages/contactUs/contactUs.jsx';
 import LoginForm from './pages/login/LoginForm.jsx';
 import CodeVerificationForm from './pages/verifyCode/CodeVerificationForm.jsx';
 import ProductDetails from './pages/productDetail/ProductDetails.jsx';
+import LocationPage from './pages/nearbyStor/nearbyStore.js';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 
@@ -39,6 +40,7 @@ function App() {
                 <Route path='/login' element={<LoginForm/>}/>
                 <Route path='/verify' element={<CodeVerificationForm/>}/>
                 <Route path='/product-details' element={<ProductDetails/>}/>
+                <Route path='/nearby-store' element={<LocationPage/>}/>
             </Routes>
             <Footer/>
             </Router>

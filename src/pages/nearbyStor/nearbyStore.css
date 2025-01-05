@@ -1,0 +1,153 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+
+}
+
+/* Main Container */
+.location-page-container {
+    display: flex;
+    gap: 20px;
+    padding: 60px 0px;
+    max-width: 1400px;
+    margin: 0 auto;
+   
+    border-radius: 12px;
+    
+    height: calc(100vh - 40px); /* Full height minus padding */
+}
+
+/* Store List Section */
+.store-list {
+    flex: 2;
+    /* max-width: 350px; */
+    /* background-color: #fff; */
+    padding: 0px 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.store-list h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+}
+
+/* Search Bar */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: calc(100% - 50px); /* Adjust width to account for padding */
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.08rem;
+    outline: none;
+    height: 35px;
+    transition: border-color 0.3s ease;
+    margin: 0; /* Remove margin to align with parent */
+}
+
+.search-bar input:focus {
+    border-color: #DA231D;
+}
+
+/* Store List Items */
+.store-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto; /* Enable scrolling for store items only */
+    flex: 1; /* Allow the list to take up remaining space */
+}
+
+.store-list li {
+    padding: 15px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    background-color: #ffffff;
+}
+
+.store-list li:hover {
+    background-color: #e9e9e9;
+    transform: translateY(-2px);
+}
+
+
+
+.store-list li .store-info {
+    flex: 1;
+    align-items: flex-start;
+
+}
+.store-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.store-list li strong {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.store-list li p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.store-list li .store-status {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 10px;
+
+}
+
+.store-list li .store-status.open {
+   color: #28a745;
+    /* color: white; */
+}
+
+.store-list li .store-status.closed {
+    color: #dc3545;
+    /* color: white; */
+}
+
+/* Map Container */
+.map-container {
+    flex: 3;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 100%; /* Ensure it takes full height */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .location-page-container {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .store-list {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .map-container {
+        height: 400px; /* Fixed height for smaller screens */
+    }
+}
