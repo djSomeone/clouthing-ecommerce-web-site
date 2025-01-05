@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
@@ -10,9 +9,10 @@ import logo from '../../asset/logo.png';
 const Navbar = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false); // State for cart drawer
 
     const navItems = [
-               { label: 'Home', path: '/' },
+        { label: 'Home', path: '/' },
         { label: 'Wardrobe', path: '/wardrobe' },
         { label: 'Occasion Wear', path: '/occasion-wear' },
         { label: 'Casual Wear', path: '/casual-wear' },
@@ -21,8 +21,18 @@ const Navbar = () => {
         { label: 'Contact Us', path: '/contact-us' },
     ];
 
+    const cartItems = [
+        { id: 1, name: 'Product Name', price: '2145$', size: 'XS', quantity: 1 },
+        { id: 2, name: 'Product Name', price: '2145$', size: 'XS', quantity: 2 },
+        { id: 3, name: 'Product Name', price: '2145$', size: 'XS', quantity: 1 },
+    ];
+
     const toggleDrawer = () => {
         setIsDrawerOpen((prev) => !prev);
+    };
+
+    const toggleCartDrawer = () => {
+        setIsCartDrawerOpen((prev) => !prev);
     };
 
     React.useEffect(() => {
@@ -64,19 +74,18 @@ const Navbar = () => {
                     </ul>
                 )}
 
-<div className="navbar-icons">
-    <a href="#" className="navbar-icon">
-        <Icon icon="tabler:search" /> {/* Search */}
-    </a>
-    <a href="#" className="navbar-icon">
-        <Icon icon="iconamoon:profile-light" /> {/* Profile */}
-    </a>
-    <a href="#" className="navbar-icon">
-        <Icon icon="solar:bag-3-outline" /> {/* Cart */}
-    </a>
-</div>
+                <div className="navbar-icons">
+                    <a href="#" className="navbar-icon">
+                        <Icon icon="tabler:search" /> {/* Search */}
+                    </a>
+                    <a href="#" className="navbar-icon">
+                        <Icon icon="iconamoon:profile-light" /> {/* Profile */}
+                    </a>
+                    <a href="#" className="navbar-icon" onClick={toggleCartDrawer}>
+                        <Icon icon="solar:bag-3-outline" /> {/* Cart */}
+                    </a>
+                </div>
             </div>
-        
 
             {/* Drawer for Mobile */}
             <Drawer
@@ -86,15 +95,14 @@ const Navbar = () => {
                 className="drawer-content"
                 overlayClassName="drawer-overlay"
             >
-                
                 <div className="drawer-inner">
                     <div className="drawer-logo">
                         <Link to="/" onClick={toggleDrawer}>
                             <img src={logo} alt="Iris Fashion Logo" className="navbar-logo-img" />
                         </Link>
                         <div className="drawer-close-btn" onClick={toggleDrawer}>
-    <Icon icon="ic:round-close" />
-  </div>
+                            <Icon icon="ic:round-close" />
+                        </div>
                     </div>
 
                     <ul className="navbar-nav-mobile">
@@ -112,6 +120,55 @@ const Navbar = () => {
                     </ul>
                 </div>
             </Drawer>
+
+            {/* Cart Drawer */}
+            <Drawer
+    open={isCartDrawerOpen}
+    onClose={toggleCartDrawer}
+    direction="right"
+    className="cart-drawer-content"
+    overlayClassName="drawer-overlay"
+    size={400}
+>
+    <div className="cart-drawer-parent">
+        {/* Top Row: Cart Title and Close Button */}
+        <div className="cart-drawer-header">
+            <h2>Cart</h2>
+            <button className="cart-close-btn" onClick={toggleCartDrawer}>
+                <Icon icon="ic:round-close" />
+            </button>
+        </div>
+
+        {/* Cart Items */}
+        <div className="cart-drawer-inner">
+            {cartItems.map((item) => (
+                <div key={item.id} className="cart-item">
+                    <div className="cart-item-info">
+                        <strong>{item.name}</strong>
+                        <p>{item.price}</p>
+                        <p>Size - {item.size}</p>
+                    </div>
+                    <div className="cart-item-actions">
+                        <button className="quantity-btn">-</button>
+                        <span>{item.quantity}</span>
+                        <button className="quantity-btn">+</button>
+                        <button className="remove-btn">Remove</button>
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        {/* Footer: Note and Proceed Button */}
+        <div className="cart-drawer-footer">
+            <div className="cart-note">
+                <p style={{ textAlign: "justify" }}>
+                    <strong>Note</strong> - We offer a 7-day easy exchange policy with all tags intact; but returns are not accepted.
+                </p>
+            </div>
+            <button className="proceed-btn">Proceed</button>
+        </div>
+    </div>
+</Drawer>
         </nav>
     );
 };
