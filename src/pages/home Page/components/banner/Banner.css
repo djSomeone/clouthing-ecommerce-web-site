@@ -50,7 +50,8 @@
   /* Responsive adjustments */
   @media (max-width: 768px) {
       .banner-container{
-          height: 300px; /* Adjust height for smaller screens */
+          height: 13rem; /* Adjust height for smaller screens */
+          background-repeat: no-repeat;
       }
     .banner-title {
       font-size: 2em;
