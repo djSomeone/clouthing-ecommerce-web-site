@@ -69,6 +69,11 @@
   /* Mobile responsiveness */
   @media (max-width: 768px) {
     .product-grid {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust minmax for smaller screens */
+      grid-template-columns: repeat(2, 1fr); /* Two elements in a row */
+      overflow-x: auto; /* Horizontal scroll */
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    }
+    .product-image{
+      height: 200px;
     }
   }
