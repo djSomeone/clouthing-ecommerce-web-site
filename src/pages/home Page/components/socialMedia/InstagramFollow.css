@@ -79,23 +79,9 @@
         font-size: 1.2em;
     }
     .instagram-images {
-        grid-template-columns: repeat(2, 1fr); /* Two images in one row */
+         /* Two images in one row */
+         grid-template-columns: repeat(2, 1fr); 
         padding: 0px 20px;
     }
 }
 
-@media (max-width: 480px) {
-    .instagram-text {
-        font-size: 1em;
-    }
-    .instagram-link {
-        padding: 10px 20px;
-    }
-    .instagram-images {
-        grid-template-columns: 1fr; /* One image in one row */
-        padding: 0px 10px;
-    }
-    .instagram-image {
-        aspect-ratio: 1/1; /* Maintain square aspect ratio */
-    }
-}
