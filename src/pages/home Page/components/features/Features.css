@@ -39,11 +39,25 @@
   /* Responsive adjustments for mobile */
   @media (max-width: 768px) { /* Adjust breakpoint as needed */
     .features-content {
-      flex-direction: column; /* Stack features vertically */
-        align-items: center;
-        gap: 30px;
+      flex-direction: row; /* Stack features vertically */
+        align-items: unset;
+        gap: 10px;
+    }
+    .feature-icon {
+      font-size: 2em; /* Adjust icon size */
+      margin-bottom: 0px;
+        color: #333;
+    }
+    .feature-title {
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 10px;
     }
       .feature{
-          flex: 1 1 100%;
+          flex: 1;
+          padding: 0px;
       }
+
+      .feature-description {
+        font-size: 0.7em;}
   }
