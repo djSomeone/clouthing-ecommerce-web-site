@@ -128,7 +128,7 @@ const Navbar = () => {
     direction="right"
     className="cart-drawer-content"
     overlayClassName="drawer-overlay"
-    size={400}
+   size={300}
 >
     <div className="cart-drawer-parent">
         {/* Top Row: Cart Title and Close Button */}

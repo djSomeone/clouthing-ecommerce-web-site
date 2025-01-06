@@ -137,7 +137,8 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .location-page-container {
-        flex-direction: column;
+        flex-direction: column-reverse;
+
         height: auto;
         padding: 10px;
     }
@@ -148,6 +149,8 @@ body {
     }
 
     .map-container {
+        flex: none;
+        margin: 10px 20px;
         height: 400px; /* Fixed height for smaller screens */
     }
 }
