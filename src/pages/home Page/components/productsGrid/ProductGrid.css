@@ -76,4 +76,7 @@
     .product-image{
       height: 200px;
     }
+    .product-grid-container {
+      padding: 30px 20px;
+    }
   }
