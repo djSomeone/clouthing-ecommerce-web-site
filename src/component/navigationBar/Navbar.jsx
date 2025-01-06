@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link,useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
@@ -7,9 +7,19 @@ import './Navbar.css';
 import logo from '../../asset/logo.png';
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false); // Drawer for profile
     const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false); // State for cart drawer
+
+    const profileItems = [
+        { label: 'My orders', icon: 'ic:round-menu', path: '/my-orders' },
+        { label: 'Wishlist', icon: 'mdi:heart-outline', path: '/wishlist' },
+        { label: 'Saved Address', icon: 'iconamoon:profile-light', path: '/saved-address' },
+        { label: 'Privacy Policy', icon: 'material-symbols:privacy-tip-outline', path: '/privacy-policy' },
+        { label: 'Log out', icon: 'material-symbols:logout', path: '/logout' },
+    ];
 
     const navItems = [
         { label: 'Home', path: '/' },
@@ -33,6 +43,17 @@ const Navbar = () => {
 
     const toggleCartDrawer = () => {
         setIsCartDrawerOpen((prev) => !prev);
+    };
+    const toggleProfileDrawer = () => {
+        setIsProfileDrawerOpen((prev) => !prev);
+    };
+
+    const handleProfileClick = () => {
+        if (isMobile) {
+            toggleProfileDrawer(); // Open profile drawer on mobile
+        } else {
+            navigate('/profile'); // Navigate to profile page on desktop
+        }
     };
 
     React.useEffect(() => {
@@ -78,7 +99,7 @@ const Navbar = () => {
                     <a href="#" className="navbar-icon">
                         <Icon icon="tabler:search" /> {/* Search */}
                     </a>
-                    <a href="#" className="navbar-icon">
+                    <a href="#" className="navbar-icon" onClick={handleProfileClick}>
                         <Icon icon="iconamoon:profile-light" /> {/* Profile */}
                     </a>
                     <a href="#" className="navbar-icon" onClick={toggleCartDrawer}>
@@ -169,6 +190,41 @@ const Navbar = () => {
         </div>
     </div>
 </Drawer>
+
+{/* this is profile drawer */}
+
+<Drawer
+                open={isProfileDrawerOpen}
+                onClose={toggleProfileDrawer}
+                direction="right" // Open from the right
+                className="profile-drawer-content"
+                overlayClassName="drawer-overlay"
+            >
+                <div className='profile-drawer-parent'>
+                <div className="profile-drawer-header">
+                <h2>Profie</h2>
+                    <button className="profile-close-btn" onClick={toggleProfileDrawer}>
+                        <Icon icon="ic:round-close" />
+                    </button>
+                </div>
+                <div className="profile-drawer-inner">
+                    <ul className="profile-nav-mobile">
+                        {profileItems.map((item, index) => (
+                            <li className="profile-nav-item-mobile" key={index}>
+                                <NavLink
+                                    to={item.path}
+                                    className="profile-nav-link-mobile"
+                                    onClick={toggleProfileDrawer} // Close on navigation
+                                >
+                                    <Icon icon={item.icon} className='profile-icon'/>
+                                    {item.label}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                </div>
+            </Drawer>
         </nav>
     );
 };
