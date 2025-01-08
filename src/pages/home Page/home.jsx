@@ -10,7 +10,7 @@ import TestimonialSlider from './components/feedback/TestimonialSliderfeedback';
 import InstagramFollow from './components/socialMedia/InstagramFollow';
 
 const Home = () => {
- 
+
 
   return (
     <div className="home-container"> {/* Added a container for smooth transition */}

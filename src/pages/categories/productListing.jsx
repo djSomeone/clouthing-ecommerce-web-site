@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './ProductListing.css';
+import { Icon } from '@iconify/react';
+import arrowUp from '@iconify/icons-mdi/chevron-up';
+import arrowDown from '@iconify/icons-mdi/chevron-down';
+import closeCircle from '@iconify/icons-mdi/close-circle';
 const productImages = [
     'https://images.meesho.com/images/products/402439361/dqg7t_1200.jpg',
     'https://i.pinimg.com/236x/4f/f0/31/4ff031439117c510107b7fd608cf67e4.jpg',
@@ -74,41 +78,75 @@ const ProductListing = () => {
 
     return (
         <div className="ProductListing-container">
-            <div className="ProductListing-filter-section">
-                <h2>Filters</h2>
-                <div className="ProductListing-filter-group">
-                    <h3>Categories</h3>
-                    {availableCategories.map(category => (
-                        <div key={category}>
-                            <label onClick={() => handleCategoryClick(category)}>
-                                {category}
-                            </label>
-                            {selectedCategory === category && (
-                                <div className="ProductListing-sub-categories">
-                                    {availableSubCategories.map(subCategory => (
-                                        <label key={subCategory}>
-                                            <input
-                                                type="checkbox"
-                                                value={subCategory}
-                                                checked={filters.subCategories.includes(subCategory)}
-                                                onChange={(e) => handleFilterChange('subCategories', e.target.value)}
-                                            />
-                                            {subCategory}
-                                        </label>
-                                    ))}
-                                </div>
-                            )}
+            
+          <div className="ProductListing-filter-section">
+        <div className="ProductListing-filter-group">
+            <div className='ProductListing-filter-title'>Categories</div>
+            {availableCategories.map((category) => (
+                <div key={category} >
+                    <label className="ProductListing-category-item" onClick={() => handleCategoryClick(category)}>
+                        <div className='ProductListing-category-name'>{category}</div>
+                        <span className="ProductListing-category-arrow">
+                            <Icon
+                                icon={selectedCategory === category ? arrowUp : arrowDown}
+                                width="20"
+                                height="20"
+                            />
+                        </span>
+                    </label>
+                    {selectedCategory === category && (
+                        <div className="ProductListing-sub-categories">
+                            {availableSubCategories.map((subCategory) => (
+                                <label key={subCategory}>
+                                    <input
+                                        type="checkbox"
+                                        value={subCategory}
+                                        
+                                        checked={filters.subCategories.includes(subCategory)}
+                                        onChange={(e) =>
+                                            handleFilterChange("subCategories", e.target.value)
+                                        }
+                                    />
+                                    {subCategory}
+                                </label>
+                            ))}
                         </div>
-                    ))}
+                    )}
                 </div>
-                <FilterGroup title="Colour" options={availableColors} selected={filters.colors} onChange={(val) => handleFilterChange('colors', val)} isColorFilter />
-                <FilterGroup title="Sizes" options={availableSizes} selected={filters.sizes} onChange={(val) => handleFilterChange('sizes', val)} />
-                <div className="ProductListing-filter-group">
-                    <h3>Price Range</h3>
-                    <input type="range" min="900" max="4600" value={filters.priceRange[1]} onChange={handlePriceRangeChange} />
-                    <span>900 - {filters.priceRange[1]}</span>
-                </div>
-            </div>
+            ))}
+        </div>
+        <hr color='#D9D9D9'/>
+        <FilterGroup title="Colour"
+            options={availableColors}
+            selected={filters.colors}
+            onChange={(val) => handleFilterChange("colors", val)}
+            isColorFilter
+        />
+        <hr color='#D9D9D9'/>
+        <FilterGroup
+            title="Sizes"
+            options={availableSizes}
+            selected={filters.sizes}
+            onChange={(val) => handleFilterChange("sizes", val)}
+        />
+        <hr color='#D9D9D9'/>
+        <div className="ProductListing-filter-group">
+      <div style={{textAlign:"justify",padding:"10px 0px", fontWeight:"600"}}>Price Range</div> 
+      <input 
+        type="range" 
+        min="900" 
+        max="4600" 
+        value={filters.priceRange[1]} 
+        onChange={handlePriceRangeChange} 
+        id="price-range"
+        style={{ accentColor: '#DA231D' }} 
+      />
+      <br/>
+      <label style={{textAlign:"justify",marginTop:"10px"}}>
+      900₹ - {filters.priceRange[1]}₹
+      </label>
+    </div>
+    </div>
             <div className="ProductListing-product-list">
                 <div className="ProductListing-sort-by">
                     <label htmlFor="sort">Sort by:</label>
@@ -118,35 +156,84 @@ const ProductListing = () => {
                     </select>
                 </div>
                 <div className="ProductListing-products">
-                    {sortedProducts.map(product => (
-                        <div key={product.id} className="ProductListing-product">
-                            <img src={product.image} alt={product.name} />
-                            <h3>{product.name.length > 20 ? `${product.name.substring(0, 20)}...` : product.name}</h3>
-                            <p className="ProductListing-price">₹{product.price} <span className="ProductListing-multiplier">24.45x</span></p>
-                        </div>
-                    ))}
-                </div>
+      {sortedProducts.map((product) => (
+        <div key={product.id} className="ProductListing-product">
+          <img
+            src={product.image}
+            alt={product.name}
+            style={{ borderRadius: '4px', marginBottom: '10px', maxWidth: '100%',maxHeight:"250px" ,transition: 'transform 0.2s ease' }}
+          />
+          <div style={{ textAlign:"justify" ,fontWeight:"400",fontSize:"18"}}>
+            {product.name.length > 20
+              ? `${product.name.substring(0, 20)}...`
+              : product.name}
+          </div>
+          <div style={{ textAlign:"justify" ,fontSize:"20"}} className="ProductListing-price">
+            {product.price}₹
+            
+          </div>
+        </div>
+      ))}
+    </div>
             </div>
         </div>
     );
 };
 
-const FilterGroup = ({ title, options, selected, onChange, isColorFilter }) => (
-    <div className="ProductListing-filter-group">
-        <h3>{title}</h3>
-        {options.map(option => (
-            <label key={option} className={isColorFilter ? 'ProductListing-color-filter-label' : ''}>
-                <input
-                    type="checkbox"
-                    value={option}
-                    checked={selected.includes(option)}
-                    onChange={(e) => onChange(e.target.value)}
-                />
-                {isColorFilter ? <span className="ProductListing-color-box" style={{ backgroundColor: option }}></span> : null}
-                {option}
-            </label>
-        ))}
-    </div>
-);
+const FilterGroup = ({ title, options, selected, onChange, isColorFilter }) => {
+    const [isOpen, setIsOpen] = useState(true);
+    const [showAll, setShowAll] = useState(false);
+    const itemsToShow = showAll ? options : options.slice(0, 5); // Show limited items initially
+
+    const toggleOpen = () => setIsOpen(!isOpen);
+    const toggleShowAll = () => setShowAll(!showAll);
+
+    return (
+        <div className="ProductListing-filter-group">
+            <h3
+                style={{ display: "flex", justifyContent: "space-between", alignItems: "center", cursor: "pointer" }}
+                onClick={toggleOpen}
+            >
+                {title}
+                <Icon icon={isOpen ? arrowUp : arrowDown} width={20} height={20} />
+            </h3>
+            {isOpen && (
+                <>
+                    {itemsToShow.map(option => (
+                        <label key={option} className={isColorFilter ? 'ProductListing-color-filter-label' : ''}>
+                            <input
+                                type="checkbox"
+                                value={option}
+                                checked={selected.includes(option)}
+                                onChange={(e) => onChange(e.target.value)}
+                            />
+                            {isColorFilter ? (
+                                <span className="ProductListing-color-box" style={{ backgroundColor: option }}></span>
+                            ) : null}
+                            {option}
+                        </label>
+                    ))}
+                    {options.length > 5 && (
+                        <button
+                            onClick={toggleShowAll}
+                            style={{
+                                marginTop: "10px",
+                                cursor: "pointer",
+                                color: "#007BFF",
+                                background: "none",
+                                border: "none",
+                                fontSize: "14px",
+                                color:"#DA231D"
+                                // textDecoration: "underline",
+                            }}
+                        >
+                            {showAll ? "Show Less" : "Show More"}
+                        </button>
+                    )}
+                </>
+            )}
+        </div>
+    );
+};
 
 export default ProductListing;

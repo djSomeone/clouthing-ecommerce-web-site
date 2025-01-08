@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import './Banner.css';
 
-
 const Banner = ({}) => {
   const [imageUrl, setImageUrl] = useState('');
 
@@ -34,7 +33,7 @@ const Banner = ({}) => {
         backgroundPosition: 'center',
       }}
     >
- 
+
     </div>
   );
 };
