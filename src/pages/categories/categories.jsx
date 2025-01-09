@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import './categories.css';
+import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import arrowUp from '@iconify/icons-mdi/chevron-up';
 import arrowDown from '@iconify/icons-mdi/chevron-down';
 import closeCircle from '@iconify/icons-mdi/close';
 import Product from '../../component/product/product';
 const productImages = [
-    'https://images.meesho.com/images/products/402439361/dqg7t_1200.jpg',
-    'https://i.pinimg.com/236x/4f/f0/31/4ff031439117c510107b7fd608cf67e4.jpg',
+    'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png',
+    'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p3_xtzfsf.png',
 ];
 const Categories = () => {
     const [products, setProducts] = useState(() => {
@@ -112,6 +113,10 @@ const Categories = () => {
 
     return (
         <div className='ProductListing-root'>
+            <div className="breadcrumb">
+      <Link to="/">Home</Link> 
+      <span style={{ color: 'red' }}>  Categories</span> 
+    </div>
             <div style={{textAlign:"justify",padding:"4px 20px",fontWeight:"600",paddingTop:"40px"}}>All Items - {products.length}</div>
             <div className='ProductListing-filter-bar-root'>
                 <div style={{minWidth:"270px",textAlign:"justify",fontWeight:"600"}}> Filters</div>

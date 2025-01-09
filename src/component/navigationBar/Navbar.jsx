@@ -23,9 +23,9 @@ const Navbar = () => {
 
     const navItems = [
         { label: 'Home', path: '/' },
-        { label: 'Wardrobe', path: '/categories' },
-        { label: 'Occasion Wear', path: '/occasion-wear' },
-        { label: 'Casual Wear', path: '/casual-wear' },
+        { label: 'Categories', path: '/categories' },
+        // { label: 'Occasion Wear', path: '/occasion-wear' },
+        // { label: 'Casual Wear', path: '/casual-wear' },
         { label: 'Nearby Stores', path: '/nearby-store' },
         { label: 'About Us', path: '/about-us' },
         { label: 'Contact Us', path: '/contact-us' },
