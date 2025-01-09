@@ -147,6 +147,7 @@ const ProductListing = () => {
       </label>
     </div>
     </div>
+    
             <div className="ProductListing-product-list">
                 <div className="ProductListing-sort-by">
                     <label htmlFor="sort">Sort by:</label>

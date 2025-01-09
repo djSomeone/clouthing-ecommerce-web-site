@@ -1,87 +1,67 @@
-// ProductGrid.jsx
 import React from 'react';
-import './ProductGrid.css';
+import './ProductGrid.css'; // Import the ProductGrid.css file
+import Product from '../../../../component/product/product.jsx'; // Import the Product component
 import { useNavigate } from 'react-router-dom';
+
 const dummyProducts = [
   {
-    image: '/src/asset/test/product1.png', // Replace with actual image URLs
+    id: 1, // Add unique IDs for products (recommended)
+    image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png',
     name: 'Brown Floral Printed Ku...',
     price: 2145,
     originalPrice: 4200,
   },
   {
-    image: '/src/asset/test/product2.png',
+    id: 2,
+    image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p3_xtzfsf.png',
     name: 'Brown Floral Printed Ku...',
     price: 2145,
     originalPrice: 4200,
   },
   {
-    image: '/src/asset/test/product3.png',
-    name: 'Brown Floral Printed Ku...',
-    price: 2145,
-    originalPrice: 4200,
-  },
-    {
-    image: '/src/asset/test/product1.png', // Replace with actual image URLs
+    id: 3,
+    image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p2_yvzi4c.png',
     name: 'Brown Floral Printed Ku...',
     price: 2145,
     originalPrice: 4200,
   },
   {
-    image: '/src/asset/test/product2.png',
+    id: 4,
+    image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p3_xtzfsf.png',
     name: 'Brown Floral Printed Ku...',
     price: 2145,
     originalPrice: 4200,
   },
-//   {
-//     image: './../../asset/test/product1.png',
-//     name: 'Brown Floral Printed Ku...',
-//     price: 2145,
-//     originalPrice: 4200,
-//   },
+  {
+    id: 5,
+    image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png',
+    name: 'Brown Floral Printed Ku...',
+    price: 2145,
+    originalPrice: 4200,
+  },
 ];
 
-
-
-
-const ProductGrid = ({ title, description, products=dummyProducts }) => {
+const ProductGrid = ({ title, description, products = dummyProducts }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/product-details');
+    navigate('/product-details'); // Replace with actual product details URL
   };
 
   return (
-    <div className="product-grid-container" >
+    <div className="product-grid-container">
       <div className="product-grid-header">
         <h2>{title}</h2>
         <p>{description}</p>
       </div>
-      <br/>
+      <br />
       <div className="product-grid">
-        {products.map((product, index) => (
-          <div className="product" key={index} onClick={handleClick}>
-            <div
-              className="product-image" 
-              // style={{ backgroundImage: `url(${product.image})` }}
-            ></div>
-            <div className="product-details">
-              <h3 className="product-name">{product.name}</h3>
-              <div className="product-price">
-                <span className="current-price">{product.price}₹</span>
-                {product.originalPrice && (
-                  <span className="original-price">{product.originalPrice}₹</span>
-                )}
-              </div>
-            </div>
-          </div>
+        {products.map((product) => (
+          <Product key={product.id} product={product} onClick={handleClick} />
         ))}
       </div>
     </div>
   );
 };
-
-
-
 
 export default ProductGrid;
