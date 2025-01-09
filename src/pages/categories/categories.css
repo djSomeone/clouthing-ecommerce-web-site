@@ -237,3 +237,12 @@ input[type="range"] {
     color: #141718;
 }
   
+.breadcrumb {
+    margin-bottom: 20px;
+    font-size: 14px;
+    padding: 0px 20px;
+    padding-top:40px;
+    
+    display: flex; /* Use flexbox for better alignment */
+    align-items: center;
+  }

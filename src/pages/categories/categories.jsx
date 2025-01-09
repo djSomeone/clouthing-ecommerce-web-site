@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './categories.css';
 import { Link } from 'react-router-dom';
+import chevronRight from '@iconify/icons-mdi/chevron-right';
 import { Icon } from '@iconify/react';
 import arrowUp from '@iconify/icons-mdi/chevron-up';
 import arrowDown from '@iconify/icons-mdi/chevron-down';
@@ -113,11 +114,12 @@ const Categories = () => {
 
     return (
         <div className='ProductListing-root'>
-            <div className="breadcrumb">
-      <Link to="/">Home</Link> 
-      <span style={{ color: 'red' }}>  Categories</span> 
-    </div>
-            <div style={{textAlign:"justify",padding:"4px 20px",fontWeight:"600",paddingTop:"40px"}}>All Items - {products.length}</div>
+           <div className="breadcrumb">
+        <Link to="/">Home</Link> 
+        <Icon icon={chevronRight} /> 
+        <span style={{ color: 'red' }}>Categories</span> 
+      </div>
+            <div style={{textAlign:"justify",padding:"4px 20px",fontWeight:"600",}}>All Items - {products.length}</div>
             <div className='ProductListing-filter-bar-root'>
                 <div style={{minWidth:"270px",textAlign:"justify",fontWeight:"600"}}> Filters</div>
                 <div className="ProductListing-filter-bar" style={{ maxWidth: 'fit-content', overflowX: 'auto' }}>
