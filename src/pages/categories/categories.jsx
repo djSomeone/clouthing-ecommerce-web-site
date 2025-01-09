@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
-import './ProductListing.css';
+import './categories.css';
 import { Icon } from '@iconify/react';
 import arrowUp from '@iconify/icons-mdi/chevron-up';
 import arrowDown from '@iconify/icons-mdi/chevron-down';
-import closeCircle from '@iconify/icons-mdi/close-circle';
+import closeCircle from '@iconify/icons-mdi/close';
+import Product from '../../component/product/product';
 const productImages = [
     'https://images.meesho.com/images/products/402439361/dqg7t_1200.jpg',
     'https://i.pinimg.com/236x/4f/f0/31/4ff031439117c510107b7fd608cf67e4.jpg',
 ];
-const ProductListing = () => {
+const Categories = () => {
     const [products, setProducts] = useState(() => {
         return [
             { id: 1, name: 'Floral Print Kurti', category: 'Wardrobe', subCategory: 'Kurtis', color: 'Red', price: 1200, image: productImages[0], sizes: ['S', 'M', 'L'] },
@@ -76,7 +77,69 @@ const ProductListing = () => {
     const availableColors = [...new Set(products.map(p => p.color))];
     const availableSizes = [...new Set(products.map(p => p.sizes).flat())];
 
+    // const handleFilterChange = (filterType, value) => {
+    //     setFilters(prevFilters => ({
+    //         ...prevFilters,
+    //         [filterType]: filterType === 'sortBy' ? value : value.includes(prevFilters[filterType])
+    //             ? prevFilters[filterType].filter(item => item !== value)
+    //             : [...prevFilters[filterType], value],
+    //     }));
+    // };
+
+    const getFilterElements = () => {
+        const elements = [];
+
+        // "All Items" filter (optional)
+        // elements.push({
+        //     name: 'All Items',
+        //     isSelected: Object.values(filters).every(filter => filter.length === 0), // Check if all filter values are empty
+        // });
+
+        // Filtered elements based on filter state
+        for (const filterType in filters) {
+            if (filters[filterType].length > 0) {
+                filters[filterType].forEach(filterValue => {
+                    elements.push({
+                        name: filterValue,
+                        filterType, // Store the filter type for handling removal
+                    });
+                });
+            }
+        }
+
+        return elements;
+    };
+
     return (
+        <div className='ProductListing-root'>
+            <div style={{textAlign:"justify",padding:"4px 20px",fontWeight:"600",paddingTop:"40px"}}>All Items - {products.length}</div>
+            <div className='ProductListing-filter-bar-root'>
+                <div style={{minWidth:"270px",textAlign:"justify",fontWeight:"600"}}> Filters</div>
+                <div className="ProductListing-filter-bar" style={{ maxWidth: 'fit-content', overflowX: 'auto' }}>
+                    {getFilterElements().map((filterItem, index) => (
+                        <div
+                            key={index}
+                            className={`ProductListing-filter-item ${filterItem.isSelected ? 'active' : ''}`}
+                            onClick={() => handleFilterChange(filterItem.filterType, filterItem.name)}
+                        >
+                            <div className="ProductListing-filter-item-text">
+                                
+                                {filterItem.name}
+                                <Icon icon={closeCircle} width="20" height="20" color='grey' />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+               
+                <div className="ProductListing-sort-by" style={{flex:"3"}}>
+                    <label>Sort by:</label>
+                    <select className='ProductListing-sort-by-box' id="sort" value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>
+                        <option value="lowToHigh">Low to High</option>
+                        <option value="highToLow">High to Low</option>
+                    </select>
+                </div>
+                </div>
+                <hr color='#ccc' width="100%"/>
         <div className="ProductListing-container">
             
           <div className="ProductListing-filter-section">
@@ -149,34 +212,15 @@ const ProductListing = () => {
     </div>
     
             <div className="ProductListing-product-list">
-                <div className="ProductListing-sort-by">
-                    <label htmlFor="sort">Sort by:</label>
-                    <select id="sort" value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>
-                        <option value="lowToHigh">Low to High</option>
-                        <option value="highToLow">High to Low</option>
-                    </select>
-                </div>
+                
                 <div className="ProductListing-products">
       {sortedProducts.map((product) => (
-        <div key={product.id} className="ProductListing-product">
-          <img
-            src={product.image}
-            alt={product.name}
-            style={{ borderRadius: '4px', marginBottom: '10px', maxWidth: '100%',maxHeight:"250px" ,transition: 'transform 0.2s ease' }}
-          />
-          <div style={{ textAlign:"justify" ,fontWeight:"400",fontSize:"18"}}>
-            {product.name.length > 20
-              ? `${product.name.substring(0, 20)}...`
-              : product.name}
-          </div>
-          <div style={{ textAlign:"justify" ,fontSize:"20"}} className="ProductListing-price">
-            {product.price}₹
-            
-          </div>
-        </div>
+        <Product product={product}/>
+        
       ))}
     </div>
             </div>
+        </div>
         </div>
     );
 };
@@ -237,4 +281,4 @@ const FilterGroup = ({ title, options, selected, onChange, isColorFilter }) => {
     );
 };
 
-export default ProductListing;
+export default Categories;
