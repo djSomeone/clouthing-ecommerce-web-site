@@ -1,0 +1,103 @@
+/* WishlistProductCard.css */
+
+.wishlistProductCard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.wishlistProductCard-content {
+  display: flex;
+  gap: 20px; /* Gap between image and details */
+  flex: 2; /* Ensures this container takes proportional space */
+}
+
+.wishlistProductCard-image {
+  width: 120px;
+  height: 160px;
+  background-size: cover;
+  background-position: top;
+  border-radius: 5px;
+}
+
+.wishlistProductCard-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: start;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+.wishlistProductCard-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.wishlistProductCard-info {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.wishlistProductCard-remove {
+  color: #007BFF;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.wishlistProductCard-actions {
+  display: flex;
+  align-items: center;
+ justify-content: center;
+  gap: 10px;
+  flex: 2;
+}
+
+.wishlistProductCard-quantity-selector {
+  display: flex;
+  padding: 5px 10px;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #ccc;
+  border-radius: 14px;
+}
+
+.wishlistProductCard-quantity-selector button {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.wishlistProductCard-quantity-selector span {
+  min-width: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.wishlistProductCard-price {
+  font-size: 16px;
+  font-weight: bold;
+  flex: 2;
+}
+
+.wishlistProductCard-add-to-cart {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 3px;
+  cursor: pointer;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.wishlistProductCard-add-to-cart:hover {
+  background-color: #555;
+}

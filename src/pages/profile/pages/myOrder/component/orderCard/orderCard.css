@@ -86,3 +86,6 @@
     justify-content: end;
     align-items: end;
   }
+  .orderCardHeader-status.completed {
+    color: rgb(31, 196, 31); /* Green color for "Completed" status */
+  }

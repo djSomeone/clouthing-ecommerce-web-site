@@ -18,7 +18,8 @@ const OrderCard = ({ order }) => {
         </div>
       </div>
       <div className='orderCard-staus'>
-        <div>Order Status: <span className="orderCardHeader-status">{order.orderStatus}</span></div>
+        <div>Order Status: <span className={`orderCardHeader-status ${order.orderStatus === 'Completed' ? 'completed' : ''}`} >{order.orderStatus}</span>
+        </div>
         
         <div>Payment Method: {order.paymentMethod}</div>
       </div>
