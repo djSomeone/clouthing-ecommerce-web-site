@@ -1,0 +1,61 @@
+.profileNavBar {
+    background-color: transparent; /* Dark background color */
+     /* Light text color */
+     height: 100%;
+     display: flex;
+     justify-content: center;
+    padding: 20px;
+    width: 250px; /* Set a fixed width for the navbar */
+  }
+  
+  .profileNavBar-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; /* Align items from the top */
+  }
+  
+  .profileNavBar-heading {
+    font-size: 1.8rem;
+    color: #3C4242;
+    margin-bottom: 5px;
+  }
+  
+  .profileNavBar-welcome {
+    font-size: 1.03rem;
+    opacity: 0.8;
+    padding-top: 10px;
+    color: #807D7E;
+    margin-bottom: 20px; /* Add spacing below welcome text */
+  }
+  
+  .profileNavBar-list {
+    list-style: none;
+    margin-top: 30px;
+    padding: 0; /* Remove default list padding */
+  }
+  
+  .profileNavBar-item {
+    margin-bottom: 15px;
+    padding: 5px 10px;
+
+     /* Add spacing between items */
+  }
+  
+  .profileNavBar-link {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+   
+    align-items: center;
+  }
+  
+  .profileNavBar-link .iconify {
+    margin-right: 20px; 
+    font-size: 20px;/* Space between icon and text */
+  }
+  
+  .profileNavBar-item.active {
+    border-left: 2px solid #DA231D;
+    color: #DA231D; /* Change background color for active item */
+  }

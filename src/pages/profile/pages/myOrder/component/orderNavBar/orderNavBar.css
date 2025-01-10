@@ -1,0 +1,29 @@
+.horizontalNavBar {
+   /* Light gray background */
+    padding: 10px 0; /* Top and bottom padding */
+    /* border: 1px solid black; */
+  }
+  
+  .horizontalNavBar-list {
+    list-style: none;
+    display: flex;
+    justify-content: start; /* Center items horizontally */
+  }
+  
+  .horizontalNavBar-item {
+    font-size: 1.3rem;
+    padding: 10px 0px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .horizontalNavBar-item.active {
+    color: #DA231D;
+    border-bottom: 2px solid #DA231D;
+  }
+  ul
+  {
+    margin: 0px;
+    padding: 0px;
+  }

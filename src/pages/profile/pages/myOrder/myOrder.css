@@ -1,0 +1,13 @@
+.myOrder-root-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* border: 1px solid red; */
+    height: 100%;
+    
+    /* padding: 20px; */
+}
+.myOrder-products{
+    overflow-y: scroll;
+}

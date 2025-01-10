@@ -1,0 +1,88 @@
+.orderCard {
+    
+   /* border: 1px solid rgb(0, 0, 0); */
+    /* padding: 20px; */
+    margin-bottom: 20px;
+  }
+  
+  .orderCardHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 20px;
+    /* border: 1px solid #ccc; */
+    text-align: justify;
+    border-radius: 10px;
+    background-color: #f0f0f0; /* Light gray background */
+  }
+  
+  .orderCardHeader-title {
+    font-weight: bold;
+  }
+  
+  .orderCardHeader-status {
+    color: #ff9900; /* Orange color for "Ongoing" status */
+  }
+  
+  .orderCard-body {
+    display: flex;
+    min-height: 220px;
+    max-height: 220px;
+  }
+  
+  .orderCard-image {
+    /* width: 100px;
+    height: 100px; */
+    width: auto;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: top;
+    flex: 1;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+  
+  .orderCard-details {
+    flex: 5;
+    display: flex;
+    
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+  }
+  
+  .orderCard-productName {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .orderCard-button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    height: 40px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  ul{
+    margin: 0px;
+  }
+  .orderCard-staus
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    text-align: end;
+  }
+  .orderCardHeader-date{
+    padding-top: 20px;
+    color: #807f7f;
+  }
+  .orderCardButton-root
+  {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+  }
