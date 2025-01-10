@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-
-import './SavedAddress.css';
+import AddressList from './component/AddressList/AddressList';
+import './savedAddress.css';
 
 const SavedAddressPage = () => {
   const [addresses, setAddresses] = useState([
-    '123 Main Street, City, Country',
+    '123 Main Street, City, Country 123 Main Street, City, Country',
     '456 Another Road, City, Country',
     '',
     '',
@@ -32,7 +32,9 @@ const SavedAddressPage = () => {
     <div className="saved-address-page">
       <div className="header">
         <h2>Saved Address</h2>
-        <AddAddressButton onAdd={handleAdd} />
+        <button className="add-address-button" onClick={handleAdd}>
+      Add Address +
+    </button>
       </div>
       <AddressList addresses={addresses} onEdit={handleEdit} />
     </div>

@@ -1,15 +1,11 @@
 /* General styles */
-body {
-    font-family:  sans-serif;
-    background-color: #f8f8f8;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
+
   
   /* Saved Address Page */
   .saved-address-page {
-    padding: 20px;
+    /* padding: 20px; */
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .header {
@@ -82,5 +78,37 @@ body {
   
   .edit-icon {
     margin-right: 5px;
+  }
+  
+  .add-address-button {
+    background-color: #ff3b3b; /* Red background */
+    color: #ffffff;          /* White text */
+    border: none;            /* Remove default border */
+    border-radius: 5px;      /* Rounded corners */
+    padding: 10px 20px;      /* Padding for size */
+    font-size: 16px;         /* Font size */
+    font-weight: bold;       /* Bold text */
+    cursor: pointer;         /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition effect */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Hover Effect */
+  .add-address-button:hover {
+    background-color: #e62e2e; /* Darker red on hover */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    transform: scale(1.05); /* Slightly enlarges the button */
+  }
+  
+  /* Focus Effect */
+  .add-address-button:focus {
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 0 3px rgba(255, 59, 59, 0.5); /* Focus ring */
+  }
+  
+  /* Active Effect */
+  .add-address-button:active {
+    background-color: #cc2525; /* Even darker red when clicked */
+    transform: scale(0.98); /* Slightly shrinks the button */
   }
   

@@ -1,0 +1,63 @@
+/* AddressCard.css */
+
+/* Card container styling */
+.address-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+  }
+  
+  .address-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Slightly elevate the card on hover */
+  }
+  
+  /* Address details styling */
+  .address-card-details {
+    flex: 1;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #2e2e2e;
+    text-align: justify;
+    
+  }
+  
+  .address-card-empty-address {
+    color: #999;
+    font-style: italic;
+  }
+  
+  /* Edit button styling */
+  .address-card-edit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #333;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
+  
+  .address-card-edit-button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* Edit icon styling */
+  .address-card-edit-icon {
+    margin-right: 5px;
+    font-size: 16px;
+    color: inherit; /* Match the button text color */
+  }
+  

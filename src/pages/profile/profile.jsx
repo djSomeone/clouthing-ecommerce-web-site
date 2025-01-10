@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import NavBar from "./component/navBar/navBar";
 import MyOrders from "./pages/myOrder/myOrder";
 import Wishlist from "./pages/wishlist/wishlist";
+import PrivacyPolicy from "./pages/privacyPolicy/privacyPolicy";
+import SavedAddressPage from "./pages/savdAddress/savedAddress";
 const Profile=()=>{
     const [activeItem, setActiveItem] = useState('myOrders');
 
@@ -11,7 +13,11 @@ const Profile=()=>{
           case 'myOrders':
             return <MyOrders />;
           case "wishlist":
-            return <Wishlist/>
+            return <Wishlist/>;
+        case "savedAddress":
+            return <SavedAddressPage/>;
+        case "privacyPolicy":
+            return <PrivacyPolicy/>
           default:
             return null; 
         }
@@ -21,6 +27,7 @@ const Profile=()=>{
     <div className="Profile-Nav">
         <NavBar activeItem={activeItem} setActiveItem={setActiveItem}/>
     </div>
+    
     <div className="Profile-Pages">
     {renderPageContent()}
 

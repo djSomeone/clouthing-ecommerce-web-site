@@ -37,7 +37,7 @@ const ProfileNavBar = ({setActiveItem,activeItem}) => {
             </a>
           </li>
           <li className={`profileNavBar-item ${activeItem === 'logOut' ? 'active' : ''}`}>
-            <a href="#" className="profileNavBar-link" onClick={() => handleItemClick('logOut')}>
+            <a href="#" className="profileNavBar-link" >
               <Icon icon="mdi:logout" /> Log Out
             </a>
           </li>
