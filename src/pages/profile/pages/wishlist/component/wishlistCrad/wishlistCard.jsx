@@ -27,9 +27,12 @@ const WishlistProductCard = ({ product }) => {
           <button style={{border:"none"}}>+</button>
         </div>
          </div>
+
+         <div className='wishlistProductCard-price-button'>
          <div className="wishlistProductCard-price">₹{product.price}</div>
      
-      <button className="wishlistProductCard-add-to-cart">Add to Cart</button>
+     <button className="wishlistProductCard-add-to-cart">Add to Cart</button>
+         </div>
     </div>
   );
 };

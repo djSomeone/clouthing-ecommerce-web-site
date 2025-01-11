@@ -95,6 +95,7 @@
   border-radius: 3px;
   cursor: pointer;
   height: 40px;
+  width: 100px;
   flex-shrink: 0;
 }
 
@@ -106,4 +107,17 @@
   .wishlistProductCard-quantity-selector{
     display: none;
   }
+  .wishlistProductCard-price-button{
+flex-direction: column;
+height: 100%;
+  }
+  .wishlistProductCard-add-to-cart{
+    margin-top: 10px;
+  }
 }
+.wishlistProductCard-price-button{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
