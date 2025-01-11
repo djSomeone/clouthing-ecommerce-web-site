@@ -3,7 +3,6 @@ import './navBar.css';
 import { Icon } from '@iconify/react';
 
 const ProfileNavBar = ({setActiveItem,activeItem}) => {
-  // Set initial active item
 
   const handleItemClick = (item) => {
     setActiveItem(item);

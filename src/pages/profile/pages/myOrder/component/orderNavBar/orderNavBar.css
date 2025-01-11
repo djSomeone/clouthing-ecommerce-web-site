@@ -1,29 +1,42 @@
 .horizontalNavBar {
-   /* Light gray background */
-    padding: 10px 0; /* Top and bottom padding */
-    /* border: 1px solid black; */
-  }
-  
-  .horizontalNavBar-list {
-    list-style: none;
-    display: flex;
-    justify-content: start; /* Center items horizontally */
-  }
-  
+  /* Light gray background */
+  /* Top and bottom padding */
+
+  display: flex; /* Make the container a flexbox */
+  justify-content: center; /* Center items horizontally */ 
+}
+
+.horizontalNavBar-list {
+
+  list-style: none;
+  display: flex; /* Make the list items a flexbox */
+  flex-direction: row; /* Stack items vertically on smaller screens */
+  align-items: center; /* Center items vertically */
+  width: 100%; /* Make the list take up full width on smaller screens */
+}
+
+.horizontalNavBar-item {
+  font-size: 1.3rem;
+  padding: 10px 20px;
+ /* Add some margin between items */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+  text-align: center; /* Center text within items */
+}
+
+.horizontalNavBar-item.active {
+  color: #DA231D;
+  border-bottom: 2px solid #DA231D;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
   .horizontalNavBar-item {
-    font-size: 1.3rem;
-    padding: 10px 0px;
-    margin-left: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition for background color */
+    font-size: 1.09rem;
   }
-  
-  .horizontalNavBar-item.active {
-    color: #DA231D;
-    border-bottom: 2px solid #DA231D;
-  }
-  ul
-  {
-    margin: 0px;
-    padding: 0px;
-  }
+}

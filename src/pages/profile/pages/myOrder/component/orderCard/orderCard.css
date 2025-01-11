@@ -89,3 +89,30 @@
   .orderCardHeader-status.completed {
     color: rgb(31, 196, 31); /* Green color for "Completed" status */
   }
+
+  /* Media query for smaller screens */
+@media (max-width: 768px) {
+  .orderCard-body {
+    display: flex;
+   min-height: auto;
+   max-width: auto;
+  }
+  .orderCardHeader {
+    flex-direction: column;
+    
+  }
+  .orderCard-staus
+  {
+margin-top: 10px;
+    justify-content: start;
+    text-align: start;
+  }
+  .orderCard-image{
+    width: 100%;
+    height: 120px;
+    flex: 2;
+  }
+  .orderCard{
+    font-size: 0.9rem;
+  }
+}
