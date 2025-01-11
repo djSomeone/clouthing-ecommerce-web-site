@@ -8,6 +8,7 @@ import Home from './pages/home Page/home.jsx';
 // import CasualWear from './pages/CasualWear';
 // import NearbyStores from './pages/NearbyStores';
 // import AboutUs from './pages/AboutUs';
+import Wishlist from './pages/profile/pages/wishlist/wishlist.jsx';
 import MyOrders from './pages/profile/pages/myOrder/myOrder.jsx';
 import Profile from './pages/profile/profile.jsx';
 import AboutUs from './pages/aboutUs/AboutUs.jsx';
@@ -47,6 +48,7 @@ function App() {
                 <Route path='/categories' element={<Categories/>}/>
                 <Route path='/profile' element={<Profile/>}/>
                 <Route path='/my-orders' element={<MyOrders/>}/>
+                <Route path='/wishlist' element={<Wishlist/>}/>
             </Routes>
             <Footer/>
             </Router>

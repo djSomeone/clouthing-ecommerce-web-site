@@ -1,7 +1,8 @@
 /* Style the Wishlist component */
 .wishlist-container {
-    width: 100%; 
+    width: calc(100%-20); 
     height: 100%;
+    padding:20px;
     /* margin: 0 auto; */
     overflow-y: scroll;
   }
@@ -77,3 +78,14 @@
     color: #999;
     cursor: pointer;
   }
+  /* Media query for smaller screens */
+@media (max-width: 768px) {
+  .wishlist-header-name
+  {
+    display: none;
+  }
+  .wishlist-header{
+    width: 100%;
+    text-align: center;
+  }
+}

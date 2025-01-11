@@ -101,3 +101,9 @@
 .wishlistProductCard-add-to-cart:hover {
   background-color: #555;
 }
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .wishlistProductCard-quantity-selector{
+    display: none;
+  }
+}
