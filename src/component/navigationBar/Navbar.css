@@ -438,3 +438,8 @@
 .profile-icon{
   font-size: 1.5rem;
 }
+.profile-nav-link-mobile.active {
+  color: #DA231D;
+  
+  text-underline-offset: 4px;
+}

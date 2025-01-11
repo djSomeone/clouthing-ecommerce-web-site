@@ -213,7 +213,8 @@ const Navbar = () => {
                             <li className="profile-nav-item-mobile" key={index}>
                                 <NavLink
                                     to={item.path}
-                                    className="profile-nav-link-mobile"
+                                    
+                                    className={({ isActive }) => `profile-nav-link-mobile ${isActive ? 'active' : ''}`}
                                     onClick={toggleProfileDrawer} // Close on navigation
                                 >
                                     <Icon icon={item.icon} className='profile-icon'/>

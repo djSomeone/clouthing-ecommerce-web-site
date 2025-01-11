@@ -8,6 +8,7 @@ import Home from './pages/home Page/home.jsx';
 // import CasualWear from './pages/CasualWear';
 // import NearbyStores from './pages/NearbyStores';
 // import AboutUs from './pages/AboutUs';
+import MyOrders from './pages/profile/pages/myOrder/myOrder.jsx';
 import Profile from './pages/profile/profile.jsx';
 import AboutUs from './pages/aboutUs/AboutUs.jsx';
 import ContactUs from './pages/contactUs/contactUs.jsx';
@@ -45,6 +46,7 @@ function App() {
                 <Route path='/nearby-store' element={<LocationPage/>}/>
                 <Route path='/categories' element={<Categories/>}/>
                 <Route path='/profile' element={<Profile/>}/>
+                <Route path='/my-orders' element={<MyOrders/>}/>
             </Routes>
             <Footer/>
             </Router>
