@@ -1,0 +1,64 @@
+/* Add file name prefix to all class names */
+.ProductItem-product-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    align-items: center;
+  }
+  
+  .ProductItem-product-image {
+    width: 80px;
+    height: 100px;
+    margin-right: 15px;
+    
+  }
+  
+  .ProductItem-placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: top;
+  }
+  
+  .ProductItem-product-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    gap: 5px;
+    flex-grow: 1;
+  }
+  
+  .ProductItem-product-name {
+    font-weight: bold;
+  }
+  
+  .ProductItem-product-quantity,
+  .ProductItem-product-price,
+  .ProductItem-product-subtotal {
+    text-align: right;
+    padding-right: 10px;
+    font-weight: 600;
+  }
+  .product-image-detail-root{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+  }
+  .ProductItem-product-q{
+    display: none;
+    font-size: 20;
+  }
+  @media (max-width: 768px) {
+    .ProductItem-product-q{
+      display: inline;
+    }
+    .ProductItem-product-quantity, .ProductItem-product-price{
+      display: none;
+    }
+    .ProductItem-product-item {
+      align-items: end;
+    }
+  }
+  /* Add more CSS for styling as needed */

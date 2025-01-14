@@ -4,6 +4,7 @@
 
   display: flex; /* Make the container a flexbox */
   justify-content: center; /* Center items horizontally */ 
+  margin-bottom: 20px;
 }
 
 .horizontalNavBar-list {

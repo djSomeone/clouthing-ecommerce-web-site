@@ -5,40 +5,25 @@ const weightstyle={
     color:"black",
     paddingTop:"5px"
 }
-const OrderCard = ({ order }) => {
+const OrderCard = ({ order ,handleViewDetail}) => {
   return (
     <div className="orderCard">
-       <div className="orderCardHeader">
-      <div>
-      <div className="orderCardHeader-title">Order no: #{order.orderId}</div>
-        <div className="orderCardHeader-date">
-          <span style={weightstyle}>Order Date:</span> {order.orderDate}
-          <br/>
-          <span style={weightstyle}>Estimated Delivery Date:</span> {order.estimatedDeliveryDate}
-        </div>
-      </div>
-      <div className='orderCard-staus'>
-        <div>Order Status: <span className={`orderCardHeader-status ${order.orderStatus === 'Completed' ? 'completed' : ''}`} >{order.orderStatus}</span>
-        </div>
-        
-        <div>Payment Method: {order.paymentMethod}</div>
-      </div>
-    </div>
+      <OrderCardHeader order={order}/>
       <div className="orderCard-body">
       <div 
           className="orderCard-image" 
-          style={{ backgroundImage: `url(${order.productImage})` }} 
+          style={{ backgroundImage: `url(${order.products[0].productImage})` }} 
         />
      
         <div className="orderCard-details">
           <div className="orderCard-productName">{order.productName}</div>
-          <div>Colour: {order.color}</div>
-          <div>Size: {order.size}</div>
-          <div>Qt: {order.quantity}</div>
-          <div>Total: {order.total}</div>
+          <div>Colour: {order.products[0].color}</div>
+          <div>Size: {order.products[0].size}</div>
+          <div>Qt: {order.products[0].quantity}</div>
+          <div>Total: {order.products[0].total}</div>
         </div>
         <div className='orderCardButton-root'>
-        <button className="orderCard-button">View Details</button>
+        <button className="orderCard-button" onClick={()=>handleViewDetail(order)}>View Details</button>
         </div>
        
       </div>
@@ -46,5 +31,23 @@ const OrderCard = ({ order }) => {
     </div>
   );
 };
+const OrderCardHeader=({order})=>{
+return ( <div className="orderCardHeader">
+  <div>
+  <div className="orderCardHeader-title">Order no: #{order.orderId}</div>
+    <div className="orderCardHeader-date">
+      <span style={weightstyle}>Order Date:</span> {order.orderDate}
+      <br/>
+      <span style={weightstyle}>Estimated Delivery Date:</span> {order.estimatedDeliveryDate}
+    </div>
+  </div>
+  <div className='orderCard-staus'>
+    <div>Order Status: <span className={`orderCardHeader-status ${order.orderStatus === 'Delivered' ? 'completed' : ''}`} >{order.orderStatus}</span>
+    </div>
+    
+    <div>Payment Method: {order.paymentMethod}</div>
+  </div>
+</div>)
+;}
 
-export default OrderCard;
+export {OrderCard,OrderCardHeader};
