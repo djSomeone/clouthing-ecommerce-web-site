@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { NavLink, Link,useNavigate } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 import './Navbar.css';
+import CartProduct from './component/cartProducts/cartPrduct';
 import logo from '../../asset/logo.png';
 
 const Navbar = () => {
@@ -32,9 +33,30 @@ const Navbar = () => {
     ];
 
     const cartItems = [
-        { id: 1, name: 'Product Name', price: '2145$', size: 'XS', quantity: 1 },
-        { id: 2, name: 'Product Name', price: '2145$', size: 'XS', quantity: 2 },
-        { id: 3, name: 'Product Name', price: '2145$', size: 'XS', quantity: 1 },
+        {
+            id: 1,
+            name: 'Product Name',
+            price: 2145,
+            size: 'XS',
+            quantity: 1,
+            image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png', // Added image
+        },
+        {
+            id: 2,
+            name: 'Product Name',
+            price: 2145,
+            size: 'XS',
+            quantity: 2,
+            image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png', // Added image
+        },
+        {
+            id: 3,
+            name: 'Product Name',
+            price: 2145,
+            size: 'XS',
+            quantity: 1,
+            image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p3_xtzfsf.png', // Added image
+        },
     ];
 
     const toggleDrawer = () => {
@@ -144,56 +166,42 @@ const Navbar = () => {
 
             {/* Cart Drawer */}
             <Drawer
-    open={isCartDrawerOpen}
-    onClose={toggleCartDrawer}
-    direction="right"
-    className="cart-drawer-content"
-    overlayClassName="drawer-overlay"
-   size={300}
->
-    <div className="cart-drawer-parent">
-        {/* Top Row: Cart Title and Close Button */}
-        <div className="cart-drawer-header">
-            <h2>Cart</h2>
-            <button className="cart-close-btn" onClick={toggleCartDrawer}>
-                <Icon icon="ic:round-close" />
-            </button>
-        </div>
-
-        {/* Cart Items */}
-        <div className="cart-drawer-inner">
-            {cartItems.map((item) => (
-                <div key={item.id} className="cart-item">
-                    <div className="cart-item-info">
-                        <strong>{item.name}</strong>
-                        <p>{item.price}</p>
-                        <p>Size - {item.size}</p>
+                open={isCartDrawerOpen}
+                onClose={toggleCartDrawer}
+                direction="right"
+                className="cart-drawer-content"
+                overlayClassName="drawer-overlay"
+                size={isMobile?250:300}
+            >
+                <div className="cart-drawer-parent">
+                    {/* Top Row: Cart Title and Close Button */}
+                    <div className="cart-drawer-header">
+                        <h2>Cart</h2>
+                        <button className="cart-close-btn" onClick={toggleCartDrawer}>
+                            <Icon icon="ic:round-close" />
+                        </button>
                     </div>
-                    <div className="cart-item-actions">
-                        <button className="quantity-btn">-</button>
-                        <span>{item.quantity}</span>
-                        <button className="quantity-btn">+</button>
-                        <button className="remove-btn">Remove</button>
+
+                    {/* Cart Items */}
+                    <div className="cart-drawer-inner">
+                        {cartItems.map((item) => <CartProduct item={item} />)}
+                    </div>
+
+                    {/* Footer: Note and Proceed Button */}
+                    <div className="cart-drawer-footer">
+                        <div className="cart-note">
+                            <p style={{ textAlign: "justify" }}>
+                                <strong>Note</strong> - We offer a 7-day easy exchange policy with all tags intact; but returns are not accepted.
+                            </p>
+                        </div>
+                        <button className="proceed-btn">Proceed</button>
                     </div>
                 </div>
-            ))}
-        </div>
+            </Drawer>
 
-        {/* Footer: Note and Proceed Button */}
-        <div className="cart-drawer-footer">
-            <div className="cart-note">
-                <p style={{ textAlign: "justify" }}>
-                    <strong>Note</strong> - We offer a 7-day easy exchange policy with all tags intact; but returns are not accepted.
-                </p>
-            </div>
-            <button className="proceed-btn">Proceed</button>
-        </div>
-    </div>
-</Drawer>
+            {/* this is profile drawer */}
 
-{/* this is profile drawer */}
-
-<Drawer
+            <Drawer
                 open={isProfileDrawerOpen}
                 onClose={toggleProfileDrawer}
                 direction="right" // Open from the right
@@ -201,29 +209,29 @@ const Navbar = () => {
                 overlayClassName="drawer-overlay"
             >
                 <div className='profile-drawer-parent'>
-                <div className="profile-drawer-header">
-                <h2>Profie</h2>
-                    <button className="profile-close-btn" onClick={toggleProfileDrawer}>
-                        <Icon icon="ic:round-close" />
-                    </button>
-                </div>
-                <div className="profile-drawer-inner">
-                    <ul className="profile-nav-mobile">
-                        {profileItems.map((item, index) => (
-                            <li className="profile-nav-item-mobile" key={index}>
-                                <NavLink
-                                    to={item.path}
-                                    
-                                    className={({ isActive }) => `profile-nav-link-mobile ${isActive ? 'active' : ''}`}
-                                    onClick={toggleProfileDrawer} // Close on navigation
-                                >
-                                    <Icon icon={item.icon} className='profile-icon'/>
-                                    {item.label}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                    <div className="profile-drawer-header">
+                        <h2>Profie</h2>
+                        <button className="profile-close-btn" onClick={toggleProfileDrawer}>
+                            <Icon icon="ic:round-close" />
+                        </button>
+                    </div>
+                    <div className="profile-drawer-inner">
+                        <ul className="profile-nav-mobile">
+                            {profileItems.map((item, index) => (
+                                <li className="profile-nav-item-mobile" key={index}>
+                                    <NavLink
+                                        to={item.path}
+
+                                        className={({ isActive }) => `profile-nav-link-mobile ${isActive ? 'active' : ''}`}
+                                        onClick={toggleProfileDrawer} // Close on navigation
+                                    >
+                                        <Icon icon={item.icon} className='profile-icon' />
+                                        {item.label}
+                                    </NavLink>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </Drawer>
         </nav>
