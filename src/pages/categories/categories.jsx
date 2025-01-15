@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './categories.css';
 import { Link } from 'react-router-dom';
+import Drawer from 'react-modern-drawer';
 import chevronRight from '@iconify/icons-mdi/chevron-right';
 import { Icon } from '@iconify/react';
 import arrowUp from '@iconify/icons-mdi/chevron-up';
@@ -30,6 +31,11 @@ const Categories = () => {
             { id: 14, name: 'Anarkali Suit', category: 'Occasion Wear', subCategory: 'Suits', color: 'Maroon', price: 3500, image: productImages[1], sizes: ['M', 'L'] },
         ];
     });
+    const [isDrawerOpen, setIsDrawerOpen]=useState(false);
+
+    const toggleDrawer=()=>{
+        setIsDrawerOpen(!isDrawerOpen);
+    }
 
     const [filters, setFilters] = useState({
         categories: [],
@@ -79,25 +85,11 @@ const Categories = () => {
     const availableColors = [...new Set(products.map(p => p.color))];
     const availableSizes = [...new Set(products.map(p => p.sizes).flat())];
 
-    // const handleFilterChange = (filterType, value) => {
-    //     setFilters(prevFilters => ({
-    //         ...prevFilters,
-    //         [filterType]: filterType === 'sortBy' ? value : value.includes(prevFilters[filterType])
-    //             ? prevFilters[filterType].filter(item => item !== value)
-    //             : [...prevFilters[filterType], value],
-    //     }));
-    // };
+    
 
     const getFilterElements = () => {
         const elements = [];
 
-        // "All Items" filter (optional)
-        // elements.push({
-        //     name: 'All Items',
-        //     isSelected: Object.values(filters).every(filter => filter.length === 0), // Check if all filter values are empty
-        // });
-
-        // Filtered elements based on filter state
         for (const filterType in filters) {
             if (filters[filterType].length > 0) {
                 filters[filterType].forEach(filterValue => {
@@ -111,18 +103,115 @@ const Categories = () => {
 
         return elements;
     };
+    const filterSection=(name)=>{
+        console.log(name)
+        return (<div className={`ProductListing-filter-section ${name || ""}`}>
+            <div className="ProductListing-filter-group">
+                <div className='ProductListing-filter-title'>Categories</div>
+                {availableCategories.map((category) => (
+                    <div key={category} >
+                        <label className="ProductListing-category-item" onClick={() => handleCategoryClick(category)}>
+                            <div className='ProductListing-category-name'>{category}</div>
+                            <span className="ProductListing-category-arrow">
+                                <Icon
+                                    icon={selectedCategory === category ? arrowUp : arrowDown}
+                                    width="20"
+                                    height="20"
+                                />
+                            </span>
+                        </label>
+                        {selectedCategory === category && (
+                            <div className="ProductListing-sub-categories">
+                                {availableSubCategories.map((subCategory) => (
+                                    <label key={subCategory}>
+                                        <input
+                                            type="checkbox"
+                                            value={subCategory}
+                                            
+                                            checked={filters.subCategories.includes(subCategory)}
+                                            onChange={(e) =>
+                                                handleFilterChange("subCategories", e.target.value)
+                                            }
+                                        />
+                                        {subCategory}
+                                    </label>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </div>
+            <hr color='#D9D9D9'/>
+            <FilterGroup title="Colour"
+                options={availableColors}
+                selected={filters.colors}
+                onChange={(val) => handleFilterChange("colors", val)}
+                isColorFilter
+            />
+            <hr color='#D9D9D9'/>
+            <FilterGroup
+                title="Sizes"
+                options={availableSizes}
+                selected={filters.sizes}
+                onChange={(val) => handleFilterChange("sizes", val)}
+            />
+            <hr color='#D9D9D9'/>
+            <div className="ProductListing-filter-group">
+          <div style={{textAlign:"justify",padding:"10px 0px", fontWeight:"600"}}>Price Range</div> 
+          <input 
+            type="range" 
+            min="900" 
+            max="4600" 
+            value={filters.priceRange[1]} 
+            onChange={handlePriceRangeChange} 
+            id="price-range"
+            style={{ accentColor: '#DA231D' }} 
+          />
+          <br/>
+          <label style={{textAlign:"justify",marginTop:"10px"}}>
+          900₹ - {filters.priceRange[1]}₹
+          </label>
+        </div>
+        </div>)
+    }
+    const sortBysection=(name)=>{
+        return (<div className={`${name ||  ""}`} style={{flex:"3"}}>
+            
+            <select className='ProductListing-sort-by ProductListing-sort-by-box' id="sort" value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>
+                <option value="lowToHigh">Low to High</option>
+                <option value="highToLow">High to Low</option>
+            </select>
+        </div>);
+    }
 
     return (
         <div className='ProductListing-root'>
+            <Drawer
+                open={isDrawerOpen}
+                onClose={toggleDrawer}
+                zIndex={10000}
+                direction="left" // Open from the right
+                className="profile-drawer-content"
+                overlayClassName="drawer-overlay"
+            >
+                {
+                    filterSection("")
+                }
+            </Drawer>
            <div className="breadcrumb">
-        <Link to="/">Home</Link> 
-        <Icon icon={chevronRight} /> 
-        <span style={{ color: 'red' }}>Categories</span> 
+        <Link to="/" style={{textDecoration:"none",color:"black"}}>Home</Link> 
+        <Icon icon={chevronRight} style={{fontSize:"20px"}}/> 
+        <span style={{ color: '#DA231D' }}>Categories</span> 
       </div>
-            <div style={{textAlign:"justify",padding:"4px 20px",fontWeight:"600",}}>All Items - {products.length}</div>
+
+            <div className="ProductListing-all-product-count">All Items - {products.length}</div>
+            <div className='ProductListing-filter-button-sortby'>
+            <div className="ProductListing-filter-button" onClick={toggleDrawer}>Filter</div>
+            {sortBysection()}
+            </div>
             <div className='ProductListing-filter-bar-root'>
-                <div style={{minWidth:"270px",textAlign:"justify",fontWeight:"600"}}> Filters</div>
-                <div className="ProductListing-filter-bar" style={{ maxWidth: 'fit-content', overflowX: 'auto' }}>
+                <div className="ProductListing-filter-text" style={{minWidth:"270px",textAlign:"justify"}}> Filters</div>
+                <div className="ProductListing-filter-bar" style={{ width:"100%", overflowX: 'auto' }}>
                     {getFilterElements().map((filterItem, index) => (
                         <div
                             key={index}
@@ -132,91 +221,18 @@ const Categories = () => {
                             <div className="ProductListing-filter-item-text">
                                 
                                 {filterItem.name}
-                                <Icon icon={closeCircle} width="20" height="20" color='grey' />
+                                <Icon icon={closeCircle} width="20" height="20" />
                             </div>
                         </div>
                     ))}
                 </div>
                
-                <div className="ProductListing-sort-by" style={{flex:"3"}}>
-                    <label>Sort by:</label>
-                    <select className='ProductListing-sort-by-box' id="sort" value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>
-                        <option value="lowToHigh">Low to High</option>
-                        <option value="highToLow">High to Low</option>
-                    </select>
-                </div>
+                {sortBysection("inMobile")}
                 </div>
                 <hr color='#ccc' width="100%"/>
         <div className="ProductListing-container">
             
-          <div className="ProductListing-filter-section">
-        <div className="ProductListing-filter-group">
-            <div className='ProductListing-filter-title'>Categories</div>
-            {availableCategories.map((category) => (
-                <div key={category} >
-                    <label className="ProductListing-category-item" onClick={() => handleCategoryClick(category)}>
-                        <div className='ProductListing-category-name'>{category}</div>
-                        <span className="ProductListing-category-arrow">
-                            <Icon
-                                icon={selectedCategory === category ? arrowUp : arrowDown}
-                                width="20"
-                                height="20"
-                            />
-                        </span>
-                    </label>
-                    {selectedCategory === category && (
-                        <div className="ProductListing-sub-categories">
-                            {availableSubCategories.map((subCategory) => (
-                                <label key={subCategory}>
-                                    <input
-                                        type="checkbox"
-                                        value={subCategory}
-                                        
-                                        checked={filters.subCategories.includes(subCategory)}
-                                        onChange={(e) =>
-                                            handleFilterChange("subCategories", e.target.value)
-                                        }
-                                    />
-                                    {subCategory}
-                                </label>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            ))}
-        </div>
-        <hr color='#D9D9D9'/>
-        <FilterGroup title="Colour"
-            options={availableColors}
-            selected={filters.colors}
-            onChange={(val) => handleFilterChange("colors", val)}
-            isColorFilter
-        />
-        <hr color='#D9D9D9'/>
-        <FilterGroup
-            title="Sizes"
-            options={availableSizes}
-            selected={filters.sizes}
-            onChange={(val) => handleFilterChange("sizes", val)}
-        />
-        <hr color='#D9D9D9'/>
-        <div className="ProductListing-filter-group">
-      <div style={{textAlign:"justify",padding:"10px 0px", fontWeight:"600"}}>Price Range</div> 
-      <input 
-        type="range" 
-        min="900" 
-        max="4600" 
-        value={filters.priceRange[1]} 
-        onChange={handlePriceRangeChange} 
-        id="price-range"
-        style={{ accentColor: '#DA231D' }} 
-      />
-      <br/>
-      <label style={{textAlign:"justify",marginTop:"10px"}}>
-      900₹ - {filters.priceRange[1]}₹
-      </label>
-    </div>
-    </div>
+        {filterSection("inMobile")}
     
             <div className="ProductListing-product-list">
                 
