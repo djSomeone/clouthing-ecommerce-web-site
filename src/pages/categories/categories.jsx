@@ -175,7 +175,7 @@ const Categories = () => {
         </div>)
     }
     const sortBysection=(name)=>{
-        return (<div className={`${name ||  ""}`} style={{flex:"3"}}>
+        return (<div className={`${name ||  ""}`}>
             
             <select className='ProductListing-sort-by ProductListing-sort-by-box' id="sort" value={sortBy} onChange={(e) => handleSortByChange(e.target.value)}>
                 <option value="lowToHigh">Low to High</option>
