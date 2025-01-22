@@ -34,7 +34,7 @@ const orderData = [
         id: "p2", // Unique ID for the product
         productName: "White Sneakers",
         color: "White",
-        size: "10",
+        size: "XL",
         quantity: 4,
         price: "4999",
         productImage: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png',
@@ -52,7 +52,7 @@ const orderData = [
         id: "p3", // Unique ID for the product
         productName: "Green Backpack",
         color: "Green",
-        size: "One Size",
+        size: "M",
         quantity: 1,
         price: "2999",
         productImage: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p3_xtzfsf.png',
@@ -115,7 +115,7 @@ const orderData = [
         id: "p7", // Unique ID for the product
         productName: "Brown Leather Shoes",
         color: "Brown",
-        size: "9",
+        size: "XXL",
         quantity: 1,
         price: "6999",
         productImage: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png',

@@ -1,0 +1,367 @@
+.cartform-cart-form {
+    padding: 20px;
+    font-family: 'Prompt', sans-serif;
+    color: #333;
+    background-color: #FFFFFF;
+    height: 100vh;
+  }
+  
+  .cartform-cart-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cartform-steps {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .cartform-step {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #999;
+  }
+  
+  .cartform-step.cartform-active {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .cartform-form-container {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .cartform-contact-form, .cartform-shipping-form {
+    width: 75%;
+  }
+  
+  .cartform-cart-summary {
+    width: 25%;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 50%;
+  }
+  
+  .cartform-form-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .cartform-input-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .cartform-cart-summary ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .cartform-cart-summary li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .cartform-total-amount {
+    font-weight: bold;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  
+  .cartform-checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .cartform-coupon {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .cartform-coupon-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .cartform-apply-btn {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .cartform-form-flex {
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+    align-items: flex-end;
+  }
+  
+  .cartform-form-group label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  
+  .cartform-steps {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .cartform-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    color: #999;
+  }
+  
+  .cartform-step.cartform-active {
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .cartform-step-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ddd; /* Default background for inactive steps */
+    color: #999; /* Default text color for inactive steps */
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .cartform-step-circle.active-circle {
+    background-color: #38cb4e; /* Background color for active step */
+    color: #fff; /* Text color for active step */
+  }
+  .cartform-phone-email-input {
+    width: 95.5%;
+  }
+  .current-circle{
+    background-color: #000000; /* Background color for active step */
+    color: #fff;
+  }
+  
+  .cartform-state-input {
+    width: 95.5%;
+  }
+  
+  
+  @media (max-width: 768px) {
+  
+    .cartform-state-input {
+      width: 100%;  /* Ensures full width on mobile */
+    }
+  
+    .cartform-phone-email-input {
+      width: 100%;  /* Ensures full width on mobile */
+    }
+  
+    .cartform-form-container {
+      display: flex;
+      justify-content: center;  /* Centers the form horizontally */
+      padding: 0 15px;  /* Add padding on left and right */
+      box-sizing: border-box;
+      width: 100%;
+      flex-direction: column;
+    }
+  
+    /* Form fields will now take up the full width but not exceed a max width */
+    .cartform-contact-form, .cartform-shipping-form {
+      width: 100%;
+      max-width: 500px;  /* Restrict the form to a maximum width */
+      margin: 0 auto;  /* Center form elements */
+    }
+  
+    /* Cart summary */
+    .cartform-cart-summary {
+      width: 95%;
+      height: auto;
+      margin-top: 20px;
+    }
+  
+    /* Checkout button margin */
+    .cartform-checkout-btn {
+      margin-top: 20px;
+    }
+  
+    /* Coupon section */
+    .cartform-coupon {
+      flex-direction: column;
+    }
+  
+    .cartform-coupon-input {
+      width: 100%;
+    }
+  
+    .cartform-apply-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  
+    /* Stepper section */
+    .cartform-steps {
+      display: flex; /* Ensures the steps are laid out in a row */
+      flex-direction: row;
+      white-space: nowrap
+      ;
+    }
+    
+    .cartform-step {
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: flex; /* Ensures correct alignment of the circle */
+      align-items: center; /* Vertically center the text */
+      justify-content: center; /* Horizontally center the text */
+    }
+    
+    .cartform-step-circle {
+      width: 25px;
+      height: 25px;
+      font-size: 12px;
+      border-radius: 50%; /* Makes sure the shape is round */
+      display: flex; /* Flexbox allows better centering of the text */
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 25px; /* Centers the number vertically */
+      background-color: #ddd; /* Add a background color for visibility */
+      color: #fff; /* Text color */
+      box-sizing: border-box; /* Ensure the width and height include padding/border */
+    }
+    
+  
+    .cartform-cart-title {
+      font-size: 20px;
+    }
+  
+    /* Ensures form content is fully contained */
+    .cartform-form-flex {
+      width: 100%;
+    }
+  
+    /* Box-sizing adjustment to avoid overflow issues */
+    .cartform-form-group {
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+    }
+  
+    .cartform-input-field {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+  
+    /* Coupon input and button */
+    .cartform-coupon-input {
+      width: 100%;
+    }
+  
+    .cartform-apply-btn {
+      width: 100%;
+      margin-top: 10px;
+    }
+  }
+  
+  /* For screens 480px and smaller */
+  @media (max-width: 480px) {
+    /* Padding adjustment for mobile screens */
+    .cartform-cart-form {
+      padding: 15px;
+      margin: 0;
+    }
+  
+    /* Adjust cart title size */
+    .cartform-cart-title {
+      font-size: 18px;
+    }
+  
+    /* Form groups should stack vertically */
+    .cartform-form-group {
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  
+    /* Input fields padding */
+    .cartform-input-field {
+      padding: 8px;
+    }
+  
+    /* Cart summary padding */
+    .cartform-cart-summary {
+      padding: 15px;
+    }
+  
+    /* Checkout button padding */
+    .cartform-checkout-btn {
+      padding: 12px;
+    }
+  
+    /* Coupon input and apply button padding */
+    .cartform-coupon-input, .cartform-apply-btn {
+      padding: 8px;
+    }
+  
+    /* Ensure form container is centered */
+    .cartform-form-container {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  
+    /* Form takes up the full width on smaller screens */
+    .cartform-contact-form, .cartform-shipping-form {
+      width: 97%;
+      max-width: 100%;  /* Ensures the form takes up the full width of the container */
+    }
+  
+    /* Remove any unnecessary margins and adjust input field widths */
+    .cartform-form-group, .cartform-input-field {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+    /* Adjust stepper font size for smaller screens */
+   .cartform-step-circle {
+      width: 22px; /* Adjust circle size for smaller screens */
+      height: 22px;
+      font-size: 14px; /* Adjust font size */
+      line-height: 22px; /* Vertically centers the text */
+    }
+  
+    .cartform-step {
+      font-size: 10px; /* Adjust step text font size */
+    }
+  }

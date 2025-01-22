@@ -1,10 +1,10 @@
 import React from 'react';
 import './productItem.css'; // Import your CSS for styling
 
-function ProductItem({ product }) {
+function ProductItem({ product,orderdDetail }) {
   // Calculate subtotal dynamically
   const subtotal = (product.price * product.quantity);
-
+console.log(orderdDetail.orderStatus)
   return (
     <div className="ProductItem-product-item">
       <div className='product-image-detail-root'>
@@ -24,7 +24,9 @@ function ProductItem({ product }) {
       </div>
       <div className="ProductItem-product-quantity">{product.quantity}</div>
       <div className="ProductItem-product-price">{product.price}₹</div>
+      
       <div className="ProductItem-product-subtotal">{subtotal}₹</div>
+      {(orderdDetail.orderStatus)==="Delivered" && <div className="ProductItem-product-exchange">exchange</div>}
     </div>
   );
 }

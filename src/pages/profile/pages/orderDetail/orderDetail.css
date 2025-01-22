@@ -1,6 +1,7 @@
 .orderDetail-root{
     /* border:1px solid red; */
     height: auto;
+    overflow-y: scroll;
     width: 100%;
 }
 .orderDetail-back-button {

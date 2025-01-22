@@ -1,0 +1,320 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+  }
+  
+  .cart-details {
+    padding: 20px;
+    background-color: #faf9f6;
+  }
+  
+  h1 {
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .cart-progress {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .step {
+    padding: 10px 20px;
+    color: #aaa;
+  }
+  
+  .step.active {
+    color: black;
+    font-weight: bold;
+  }
+  
+  .cart-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+    padding: 0px 50px;
+  }
+  
+  .cart-items {
+    flex: 5;
+  }
+  
+  .cart-header {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 15px;
+    justify-items: center;
+  }
+  
+  .cart-item {
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr 0.5fr 1fr;
+    align-items: center;
+    background-color: #faf9f6;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .product-details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* padding-left: 40px; */
+  }
+  
+  .product-image {
+    width: 100px;
+    height: 140px;
+    margin-right: 10px;
+  }
+  
+  .product-name {
+    font-weight: bolder;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .product-info {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .remove-button {
+    color: #0A0A0A;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+    padding: 5px;
+    border-radius: 10px;
+    justify-content: space-between;
+  }
+  
+  .quantity-button {
+    padding: 5px;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  
+  .cart-summary {
+    background-color: #faf9f6;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 22%;
+    margin-top: 18px;
+    height: 22%;
+    flex: 3;
+    font-family: 'Prompt', sans-serif;
+  }
+  
+  .cartsummaryhead {
+    margin-bottom: 20px;
+    color: #0A0A0A;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  .cart-summary p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .total-amount {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .checkout-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #211716;
+    font-weight: 700;
+    font-size: 17px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .coupon-section {
+    margin-top: 20px;
+  }
+  
+  .coupon-input {
+    width: 70%;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .apply-button {
+    padding: 5px 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* General style for the circle */
+  .circleforone {
+    color: #FFFFFF; /* Text color inside the circle (white for active step) */
+    background: #000000; /* Black background for active step */
+    border-radius: 50%; /* Make it circular */
+    width: 30px; /* Size of the circle */
+    height: 30px; /* Same height as width for a perfect circle */
+    display: flex; /* Use flexbox to center the number */
+    justify-content: center; /* Horizontally center the number */
+    align-items: center; /* Vertically center the number */
+    font-size: 14px; /* Adjust font size */
+    font-weight: bold; /* Make the number bold */
+    margin-right: 10px; /* Space between the circle and the text */
+  }
+  
+  /* Active step with a black circle and white text */
+  .step-active .circleforone {
+    background: #000000; /* Black circle */
+    color: #FFFFFF; /* White text */
+  }
+  
+  /* Inactive steps with a light gray circle and dark text */
+  .step-inactive .circleforone {
+    background: #B1B5C3; /* Light gray circle */
+    color: #FCFCFD; /* Dark text color */
+  }
+  
+  /* Style for steps */
+  .cart-progress {
+    display: flex;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  /* Optional: Style for the step text */
+  .step {
+    font-size: 14px;
+    color: #333; /* Default text color */
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .cart-container {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .cart-items {
+      flex: none;
+      width: 100%;
+    }
+  
+    .cart-summary {
+      width: 90%;
+      height: auto;
+      margin-top: 0;
+      font-family: 'Prompt', sans-serif;
+    }
+  
+    .cart-item {
+      text-align: center;
+      gap: 30px;
+    }
+  
+    .product-details {
+      flex-direction: row;
+      align-items: center; /* Align items vertically with the image */
+      text-align: left; /* Align text properly */
+      padding-left: 0;
+    }
+  
+    .product-image {
+      width: 80px;
+      height: 110px;
+      margin-right: 10px; /* Add spacing between the image and text */
+    }
+  
+    .product-name {
+      font-size: 14px; /* Adjust font size for smaller screens */
+      font-weight: bold; /* Maintain emphasis */
+      line-height: 1.2; /* Adjust line height for better readability */
+      word-break: break-word; 
+      white-space: nowrap;/* Prevent overflow */
+    }
+  
+    .product-info {
+      font-size: 12px; /* Adjust additional product details size */
+      color: #555; 
+      white-space: nowrap;/* Slightly darker for readability */
+    }
+  
+    .cart-header {
+      display: none; /* Hide the header */
+    }
+  
+    .quantity-controls {
+      justify-content: center;
+      width: 100%;
+      border: 1px solid #848484;
+      margin: 10px 0;
+    }
+  
+    .checkout-button {
+      width: 100%;
+      font-size: 16px;
+    }
+  
+    .cart-summary p {
+      font-size: 14px;
+    }
+  
+    .cart-summary .subtotal {
+      display: none; /* Hide subtotal in mobile view */
+    }
+  
+    .total-amount {
+      font-size: 16px;
+    }
+  
+    .cart-progress {
+      flex-direction: row;
+      gap: 10px;
+    }
+  
+    .step {
+      flex-direction: column;
+      align-items: center;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+  
+    .circleforone {
+      margin-right: 0;
+      margin-bottom: 5px;
+    }
+    .product-subtotal {
+      display: none; /* Hide the subtotal content in mobile view */
+    }
+  }
+  

@@ -14,7 +14,7 @@ const statusImages = {
 const x="Products (";
 const y=")";
 const OrderDetail = ({ orderDetails, handleCloseDetails }) => {
-    console.log("orderDetails==>", orderDetails);
+    // console.log("orderDetails==>", orderDetails);
     return (
         <div className='orderDetail-root' >
             <div className='orderDetail-back-root'>
@@ -37,7 +37,7 @@ const OrderDetail = ({ orderDetails, handleCloseDetails }) => {
                 fontWeight:"500",
                 textAlign:"justify"
             }}>{`Products (${orderDetails.products.length})`}</div>
-            <ProductList products={orderDetails.products}/>
+            <ProductList orderDetail={orderDetails} />
             <CartSummary order={orderDetails}/>
           
         </div>

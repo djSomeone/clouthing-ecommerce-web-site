@@ -8,6 +8,9 @@ import Home from './pages/home Page/home.jsx';
 // import CasualWear from './pages/CasualWear';
 // import NearbyStores from './pages/NearbyStores';
 // import AboutUs from './pages/AboutUs';
+import OrderComplete from './pages/cartCheckout/pages/successOrder/orderComplete.jsx';
+import CartForm from './pages/cartCheckout/pages/cartCheckoutForm/cartForm.jsx';
+import CartDetails from './pages/cartCheckout/pages/cartDetails/cartDetails.jsx';
 import PrivacyPolicy from './pages/profile/pages/privacyPolicy/privacyPolicy.jsx';
 import SavedAddressPage from './pages/profile/pages/savdAddress/savedAddress.jsx';
 import Wishlist from './pages/profile/pages/wishlist/wishlist.jsx';
@@ -53,6 +56,10 @@ function App() {
                 <Route path='/wishlist' element={<Wishlist/>}/>
                 <Route path='/saved-address' element={<SavedAddressPage/>}/>
                 <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+                <Route path='/cart-details' element={<CartDetails/>}/>
+                <Route path='/cart-checkout-form' element={<CartForm/>}/>
+                <Route path='/sucess-order' element={<OrderComplete/>}/>
+                
             </Routes>
             <Footer/>
             </Router>

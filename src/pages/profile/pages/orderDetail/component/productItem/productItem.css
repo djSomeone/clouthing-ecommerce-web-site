@@ -50,6 +50,17 @@
     display: none;
     font-size: 20;
   }
+  .ProductItem-product-exchange{
+    color: red;
+    font-family: sans-serif;
+    padding:10px;
+    }
+    .ProductItem-product-exchange:hover{
+      color: white;
+      background-color: rgba(223, 25, 25, 0.903);
+      transition: all 0.2s ease-in-out;
+      border-radius: 10px;
+    }
   @media (max-width: 768px) {
     .ProductItem-product-q{
       display: inline;

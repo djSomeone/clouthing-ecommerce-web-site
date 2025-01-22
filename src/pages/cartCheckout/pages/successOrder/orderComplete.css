@@ -1,0 +1,141 @@
+.ordercomplete-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 30px;
+    font-family: 'Prompt', sans-serif;
+    text-align: center;
+    background-color: #FFFFFF;
+    /* min-height: 100vh; */
+  }
+
+  
+  
+  /* Header Styling */
+  .ordercomplete-header {
+    margin-bottom: 20px;
+  }
+  
+  .ordercomplete-steps {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .step {
+    padding: 5px 10px;
+    border-radius: 20px;
+    /* background-color: #ccc; */
+    color: #fff;
+    font-size: 14px;
+  }
+  
+  .step.active {
+    background-color: #FFFFFF;
+    color:#498729
+  }
+  
+  /* Main Content Styling */
+  .ordercomplete-content {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 10px;
+   
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .ordercomplete-checkmark .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    color: #fff;
+    font-size: 36px;
+  }
+  
+  .ordercomplete-button {
+    background-color: #FFFFFF;
+    color: #DA231D;
+    padding: 10px 20px;
+    border: 1px solid #DA231D;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 20px;
+     font-family: 'Open Sans', sans-serif;  
+  }
+
+  .ordercomplete-steps {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #fff;
+    /* background-color: #ccc; */
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+  
+  .step.active {
+    background-color: #FFFFFF;
+    /* color: red; */
+  }
+  
+  .step-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #3CAF40;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .ordercomplete-button:hover {
+  
+  }
+  
+  /* Responsive Styling */
+  @media (max-width: 480px) {
+    .ordercomplete-container {
+      padding: 10px;
+    }
+  
+    .ordercomplete-content {
+      padding: 20px;
+    }
+  
+    .ordercomplete-checkmark .circle {
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+    }
+  
+    .ordercomplete-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    .formobile{
+        white-space: normal;
+    }
+  }
+  

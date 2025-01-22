@@ -38,6 +38,7 @@ const Navbar = () => {
             name: 'Product Name',
             price: 2145,
             size: 'XS',
+            color:"Red",
             quantity: 1,
             image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png', // Added image
         },
@@ -46,6 +47,7 @@ const Navbar = () => {
             name: 'Product Name',
             price: 2145,
             size: 'XS',
+            color:"Yellow",
             quantity: 2,
             image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png', // Added image
         },
@@ -54,6 +56,7 @@ const Navbar = () => {
             name: 'Product Name',
             price: 2145,
             size: 'XS',
+            color:"Black",
             quantity: 1,
             image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p3_xtzfsf.png', // Added image
         },
@@ -194,7 +197,7 @@ const Navbar = () => {
                                 <strong>Note</strong> - We offer a 7-day easy exchange policy with all tags intact; but returns are not accepted.
                             </p>
                         </div>
-                        <button className="proceed-btn">Proceed</button>
+                        <button className="proceed-btn" onClick={()=>{navigate("/cart-details",{state:{cartItems}});toggleCartDrawer()}}>Proceed</button>
                     </div>
                 </div>
             </Drawer>
