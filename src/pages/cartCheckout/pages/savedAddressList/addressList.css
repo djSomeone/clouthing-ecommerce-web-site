@@ -1,0 +1,34 @@
+.address-list-cart {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  
+  .add-address-btn {
+    background-color:transparent;
+    color: #F35031;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .address-item {
+    margin-bottom: 15px;
+    padding: 10px;
+    text-align: justify;
+    /* border: 1px solid #ddd; */
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .address-item.selected {
+    border: 2px solid #F35031;
+  }
+  
+  .address-item input[type="radio"] {
+    margin-right: 10px;
+  }

@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./cartProduct.css";
 import { domain } from "../../../../api.service";
-exports.deleteCartItem = async (cartItemId,fetchCart) => {
-  const token = sessionStorage.getItem("authToken"); // Get token from sessionStorage
+
+export const deleteCartItem = async (cartItemId, fetchCart) => {
+  const token = sessionStorage.getItem("authToken");
   const userData = JSON.parse(sessionStorage.getItem("userData"));
-  const userId = userData ? userData.id : ""; // Extract userId from sessionStorage
+  const userId = userData ? userData.id : "";
 
   if (!userId) {
     console.error("User ID not found");
@@ -12,9 +13,9 @@ exports.deleteCartItem = async (cartItemId,fetchCart) => {
   }
 
   const response = await fetch(`${domain}/user/deleteCartProduct`, {
-    method: "DELETE", // Use DELETE method
+    method: "DELETE",
     headers: {
-      Authorization: `Bearer ${token}`, // Pass token for authentication
+      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
@@ -33,23 +34,34 @@ exports.deleteCartItem = async (cartItemId,fetchCart) => {
   }
 };
 
-const CartProduct = ({ item, fetchCart }) => {
-  const [quantity, setQuantity] = useState(item.quantity); // Local state to manage quantity
+export const CartProduct = ({ item, fetchCart }) => {
+  // console.log(item);
+  const [quantity, setQuantity] = useState(item.quantity);
+  // console.log(quantity);
+  useEffect(() => {
+    setQuantity(item.quantity);
+  }, [item.quantity]);
+  console.log(item.quantity);
+  const debounceTimer = useRef(null); // Reference to store debounce timer
 
-  const updateQuantity = async (newQuantity) => 
-    {
+  const updateQuantity = (newQuantity) => {
     if (newQuantity < 1) {
       alert("Quantity cannot be less than 1");
       return;
     }
 
-    setQuantity(newQuantity); // Update quantity locally first
+    setQuantity(newQuantity); // Update quantity locally
 
-    // Set a delay before calling the API to sync with DB
-    setTimeout(async () => {
-      const token = sessionStorage.getItem("authToken"); // Get token from sessionStorage
+    // Cancel previous API call if any
+    if (debounceTimer.current) {
+      clearTimeout(debounceTimer.current);
+    }
+
+    // Set a new delayed API call
+    debounceTimer.current = setTimeout(async () => {
+      const token = sessionStorage.getItem("authToken");
       const userData = JSON.parse(sessionStorage.getItem("userData"));
-      const userId = userData ? userData.id : ""; // Extract userId from sessionStorage
+      const userId = userData ? userData.id : "";
 
       if (!userId) {
         console.error("User ID not found");
@@ -57,17 +69,17 @@ const CartProduct = ({ item, fetchCart }) => {
       }
 
       const response = await fetch(`${domain}/user/addToCart`, {
-        method: "POST", // Use POST method to update cart
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${token}`, // Pass token for authentication
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           userId: userId,
-          productId: item.productId, // The current item ID
-          quantity: newQuantity, // New quantity after the update
-          color: item.color, // Assuming the color stays the same
-          size: item.size, // Assuming the size stays the same
+          productId: item.productId,
+          quantity: newQuantity,
+          color: item.color,
+          size: item.size,
         }),
       });
 
@@ -75,43 +87,11 @@ const CartProduct = ({ item, fetchCart }) => {
 
       if (data.message) {
         console.log("Cart item updated successfully.");
-        fetchCart(); // Refresh cart items after updating
+        fetchCart();
       } else {
         console.error("Failed to update cart item");
       }
-    }, 500); // Set a delay of 500ms before calling the API
-  };
-
-  const deleteCartItem = async (cartItemId) => {
-    const token = sessionStorage.getItem("authToken"); // Get token from sessionStorage
-    const userData = JSON.parse(sessionStorage.getItem("userData"));
-    const userId = userData ? userData.id : ""; // Extract userId from sessionStorage
-
-    if (!userId) {
-      console.error("User ID not found");
-      return;
-    }
-
-    const response = await fetch(`${domain}/user/deleteCartProduct`, {
-      method: "DELETE", // Use DELETE method
-      headers: {
-        Authorization: `Bearer ${token}`, // Pass token for authentication
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        userId: userId,
-        cartItemId: cartItemId,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      fetchCart();
-      alert("Cart item deleted successfully.");
-    } else {
-      console.error("Failed to delete cart item");
-    }
+    }, 500); // Debounce delay of 500ms
   };
 
   return (
@@ -138,12 +118,10 @@ const CartProduct = ({ item, fetchCart }) => {
 
       {/* Quantity and Actions */}
       <div className="cart-item-actions">
-        <button className="remove-btn" onClick={() => deleteCartItem(item.id,fetchCart)}>
+        <button className="remove-btn" onClick={() => deleteCartItem(item.id, fetchCart)}>
           Remove
         </button>
       </div>
     </div>
   );
 };
-
-export default CartProduct;

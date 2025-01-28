@@ -5,7 +5,7 @@ import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 import './Navbar.css';
 import { domain } from '../../api.service';
-import CartProduct from './component/cartProducts/cartPrduct';
+import {CartProduct,deleteCartItem} from './component/cartProducts/cartPrduct';
 import logo from '../../asset/logo.png';
 
 const Navbar = () => {
@@ -68,6 +68,7 @@ const Navbar = () => {
                     }));
 
                     setCartItems(processedItems); // Set the processed wishlist items to state
+                    console.log("------",cartItems);
                 }
             } catch (error) {
                 console.error(error);
@@ -75,12 +76,12 @@ const Navbar = () => {
             }
         } else {
             console.error('User ID not found in session storage');
-            navigate('/login'); // Redirect to login page if userId is not found
+           
         }
     };
     useEffect(() => {
         fetchCart(); // Fetch wishlist items on component mount
-    }, [navigate]);
+    }, []);
 
   
     const toggleDrawer = () => {
@@ -88,7 +89,7 @@ const Navbar = () => {
     };
 
     const toggleCartDrawer = () => {
-        if (isCartDrawerOpen) {
+        if (!isCartDrawerOpen) {
             fetchCart();
         }
         setIsCartDrawerOpen((prev) => !prev);
@@ -227,7 +228,7 @@ const Navbar = () => {
                                 <strong>Note</strong> - We offer a 7-day easy exchange policy with all tags intact; but returns are not accepted.
                             </p>
                         </div>
-                        <button className="proceed-btn" onClick={() => { navigate("/cart-details", { state: { cartItems } }); toggleCartDrawer() }}>Proceed</button>
+                        <button className="proceed-btn" onClick={() => { if(cartItems.length>0){navigate("/cart-details",)}; toggleCartDrawer() }}>Proceed</button>
                     </div>
                 </div>
             </Drawer>
