@@ -50,7 +50,7 @@ function App() {
                 <Route path='/login' element={<LoginForm/>}/>
                 <Route path='/register' element={<RegisterForm/>}/>
                 <Route path='/verify' element={<CodeVerificationForm/>}/>
-                <Route path='/product-details' element={<ProductDetails/>}/>
+                <Route path='/product-details/:productId' element={<ProductDetails/>}/>
                 <Route path='/nearby-store' element={<LocationPage/>}/>
                 <Route path='/categories' element={<Categories/>}/>
                 <Route path='/profile' element={<Profile/>}/>

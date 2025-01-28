@@ -20,12 +20,14 @@ const Home = () => {
       <div>
       <ProductGrid
             title="Latest Arrivals"
+            path="/home/latestArrivals"
             description="Stay ahead of the fashion curve with our exclusive collection of fresh and stylish new arrivals"
             // products={dummyProducts}
         />
         <br/>
       <ProductGrid
             title="Top Collections"
+            path="/home/topCollection"
             description="Discover the perfect blend of style, comfort, and elegance in our collection."
             // products={dummyProducts}
         /></div>

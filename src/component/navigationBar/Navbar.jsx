@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css';
 import './Navbar.css';
+import { domain } from '../../api.service';
 import CartProduct from './component/cartProducts/cartPrduct';
 import logo from '../../asset/logo.png';
 
@@ -13,6 +14,8 @@ const Navbar = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false); // Drawer for profile
     const [isCartDrawerOpen, setIsCartDrawerOpen] = useState(false); // State for cart drawer
+    const [cartItems, setCartItems] = useState([]);
+
 
     const profileItems = [
         { label: 'My orders', icon: 'ic:round-menu', path: '/my-orders' },
@@ -31,42 +34,63 @@ const Navbar = () => {
         { label: 'About Us', path: '/about-us' },
         { label: 'Contact Us', path: '/contact-us' },
     ];
+    const fetchCart = async () => {
+        const token = sessionStorage.getItem('authToken'); // Get token from sessionStorage
+        const userData = JSON.parse(sessionStorage.getItem('userData')); // Parse user data
+        const userId = userData ? userData.id : ''; // Extract userId from sessionStorage
 
-    const cartItems = [
-        {
-            id: 1,
-            name: 'Product Name',
-            price: 2145,
-            size: 'XS',
-            color:"Red",
-            quantity: 1,
-            image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png', // Added image
-        },
-        {
-            id: 2,
-            name: 'Product Name',
-            price: 2145,
-            size: 'XS',
-            color:"Yellow",
-            quantity: 2,
-            image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411888/p1_rwh9am.png', // Added image
-        },
-        {
-            id: 3,
-            name: 'Product Name',
-            price: 2145,
-            size: 'XS',
-            color:"Black",
-            quantity: 1,
-            image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736411889/p3_xtzfsf.png', // Added image
-        },
-    ];
+        if (userId) {
+            try {
+                const response = await fetch(`${domain}/user/getCartProduct/${userId}`, {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // Pass token in header for authentication
+                    },
+                });
 
+                if (!response.ok) {
+                    throw new Error('Failed to fetch wishlist'); // Throw error if response is not ok
+                }
+
+                const data = await response.json();
+                console.log(data);
+
+                if (data && data.cart) {
+                    // Process wishlist items
+                    const processedItems = data.cart.map(item => ({
+                        id: item._id,
+                        productId: item.productId._id,
+                        name: item.productId.name,
+                        price: item.productId.price,
+                        size: item.size,
+                        color: item.color,
+                        quantity: item.quantity,
+                        image: item.productId.images[0], // Assuming the first image is the main one
+                    }));
+
+                    setCartItems(processedItems); // Set the processed wishlist items to state
+                }
+            } catch (error) {
+                console.error(error);
+                navigate('/login'); // Redirect to login page on error
+            }
+        } else {
+            console.error('User ID not found in session storage');
+            navigate('/login'); // Redirect to login page if userId is not found
+        }
+    };
+    useEffect(() => {
+        fetchCart(); // Fetch wishlist items on component mount
+    }, [navigate]);
+
+  
     const toggleDrawer = () => {
         setIsDrawerOpen((prev) => !prev);
     };
 
     const toggleCartDrawer = () => {
+        if (isCartDrawerOpen) {
+            fetchCart();
+        }
         setIsCartDrawerOpen((prev) => !prev);
     };
     const toggleProfileDrawer = () => {
@@ -89,6 +113,8 @@ const Navbar = () => {
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
+
+
 
     return (
         <nav className="navbar-container">
@@ -174,7 +200,7 @@ const Navbar = () => {
                 direction="right"
                 className="cart-drawer-content"
                 overlayClassName="drawer-overlay"
-                size={isMobile?250:300}
+                size={isMobile ? 250 : 300}
             >
                 <div className="cart-drawer-parent">
                     {/* Top Row: Cart Title and Close Button */}
@@ -187,7 +213,11 @@ const Navbar = () => {
 
                     {/* Cart Items */}
                     <div className="cart-drawer-inner">
-                        {cartItems.map((item) => <CartProduct item={item} />)}
+                        {cartItems.length === 0 ? (
+                            <p>No items in the cart</p> // Show this text if the cart is empty
+                        ) : (
+                            cartItems.map((item) => <CartProduct item={item} fetchCart={fetchCart} key={item.id} />)
+                        )}
                     </div>
 
                     {/* Footer: Note and Proceed Button */}
@@ -197,7 +227,7 @@ const Navbar = () => {
                                 <strong>Note</strong> - We offer a 7-day easy exchange policy with all tags intact; but returns are not accepted.
                             </p>
                         </div>
-                        <button className="proceed-btn" onClick={()=>{navigate("/cart-details",{state:{cartItems}});toggleCartDrawer()}}>Proceed</button>
+                        <button className="proceed-btn" onClick={() => { navigate("/cart-details", { state: { cartItems } }); toggleCartDrawer() }}>Proceed</button>
                     </div>
                 </div>
             </Drawer>

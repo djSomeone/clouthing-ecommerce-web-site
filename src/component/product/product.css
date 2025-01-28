@@ -20,7 +20,7 @@
     /* border-radius: 5px; */
   }
   
-  .product-details {
+  .product-details-home {
     display: flex;
     flex-direction: column;
     text-align: justify;

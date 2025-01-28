@@ -75,6 +75,9 @@ body {
     width: 100px;
     height: 140px;
     margin-right: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
   }
   
   .product-name {
