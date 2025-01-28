@@ -13,7 +13,7 @@ const Product = ({ product }) => {
     <div className="product" onClick={handleClick}>
       <div className="product-image-container">
         <div 
-          className="product-image" 
+          className="product-image-home" 
           style={{ backgroundImage: `url(${product.image})` }} 
         />
       </div>

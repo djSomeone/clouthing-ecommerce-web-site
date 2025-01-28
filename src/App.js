@@ -8,6 +8,7 @@ import Home from './pages/home Page/home.jsx';
 // import CasualWear from './pages/CasualWear';
 // import NearbyStores from './pages/NearbyStores';
 // import AboutUs from './pages/AboutUs';
+import RegisterForm from './pages/registerUser/register.jsx';
 import OrderComplete from './pages/cartCheckout/pages/successOrder/orderComplete.jsx';
 import CartForm from './pages/cartCheckout/pages/cartCheckoutForm/cartForm.jsx';
 import CartDetails from './pages/cartCheckout/pages/cartDetails/cartDetails.jsx';
@@ -47,6 +48,7 @@ function App() {
                 <Route path='/contact-us' element={<ContactUs/>}/>
                 <Route path='/about-us' element={<AboutUs/>}/>
                 <Route path='/login' element={<LoginForm/>}/>
+                <Route path='/register' element={<RegisterForm/>}/>
                 <Route path='/verify' element={<CodeVerificationForm/>}/>
                 <Route path='/product-details' element={<ProductDetails/>}/>
                 <Route path='/nearby-store' element={<LocationPage/>}/>

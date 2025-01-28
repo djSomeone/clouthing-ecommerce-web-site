@@ -70,3 +70,20 @@
         padding: 30px;
     }
 }
+.register-link {
+    margin-top: 20px;
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  .register-text {
+    color: #111111;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  
+  .register-text:hover {
+    color: #0d0d0d;
+  }
+  

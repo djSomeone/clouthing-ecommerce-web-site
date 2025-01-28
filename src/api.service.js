@@ -1,0 +1,1 @@
+exports.domain = 'https://clouthing-ecommerce-backend.onrender.com';
