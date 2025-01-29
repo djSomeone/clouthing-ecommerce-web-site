@@ -122,7 +122,7 @@ const ProductGrid = ({ title, description,path }) => {
               id: product._id,
               name: product.name,
               price: product.price,
-              image: product.images[0], // Display the first image
+              images: product.images, // Display the first image
             }} 
             onClick={() => handleClick(product._id)} 
           />

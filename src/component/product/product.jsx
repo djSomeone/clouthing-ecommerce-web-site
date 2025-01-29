@@ -11,7 +11,7 @@ const Product = ({ product ,onClick}) => {
       <div className="product-image-container">
         <div 
           className="product-image-home" 
-          style={{ backgroundImage: `url(${product.image})` }} 
+          style={{ backgroundImage: `url(${product.images[0]})` }} 
         />
       </div>
       <div className="product-details-home">
