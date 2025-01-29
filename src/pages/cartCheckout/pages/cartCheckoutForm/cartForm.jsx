@@ -7,6 +7,7 @@ import AddressList from "../savedAddressList/addressList";
 import handlePayment from "../../../../component/razorpay/razorpayCom";
 
 const CartForm = () => {
+  
   const navigator = useNavigate();
   const location = useLocation();
   const summary = rootSummary;
@@ -27,7 +28,25 @@ const CartForm = () => {
   const [userAddresses, setUserAddresses] = useState([]);
   const [selectedAddressId, setSelectedAddressId] = useState(null); // Track only the selected address ID
   const [isAddressFormVisible, setAddressFormVisibility] = useState(false);
-
+  const PreventReload = () => {
+    useEffect(() => {
+      const handleBeforeUnload = (e) => {
+        // Display a confirmation prompt before the page is unloaded
+        const message = "Are you sure you want to leave this page? You may lose unsaved changes.";
+        e.returnValue = message; // Standard for most browsers
+        return message; // Some browsers use this return value
+      };
+  
+      // Add event listener
+      window.addEventListener("beforeunload", handleBeforeUnload);
+  
+      // Cleanup the event listener when the component unmounts
+      return () => {
+        window.removeEventListener("beforeunload", handleBeforeUnload);
+      };
+    }, []);
+  };
+  PreventReload();
   useEffect(() => {
     fetchUserAddresses();
   
