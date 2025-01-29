@@ -6,7 +6,7 @@ const AddressList = ({ addresses, onAddressSelect, onAddAddress }) => {
 
   const handleAddressSelect = (address) => {
     setSelectedAddress(address);
-    onAddressSelect(address);
+    onAddressSelect(address._id);
   };
   useEffect(() => {
     const defaultAddress = addresses.find((address) => address.isDefault);

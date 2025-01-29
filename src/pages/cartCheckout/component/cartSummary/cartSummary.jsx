@@ -2,12 +2,14 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../pages/cartDetails/cartDetails.css';
 export var rootSummary={}
-export const CartSummary = ({ summary }) => {
+export var cartProducts={}
+export const CartSummary = ({ summary,cartItems, }) => {
   rootSummary=summary;
+  cartProducts=cartItems;
   const navigate = useNavigate();
 
   const handleCheckout = () => {
-    navigate('/cart-checkout-form',);
+    navigate('/cart-checkout-form' ,{replace: true},);
   };
 
   return (

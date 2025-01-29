@@ -104,7 +104,7 @@ const CartDetails = () => {
             <CartItem key={index} product={product} fetchCart={fetchCart} />
           ))}
         </div>
-        <CartSummary summary={summary} />
+        <CartSummary summary={summary} cartItems={products} />
       </div>
     </div>
   );

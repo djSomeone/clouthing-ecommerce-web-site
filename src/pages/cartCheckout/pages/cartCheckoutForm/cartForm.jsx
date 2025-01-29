@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./cartForm.css";
 import { domain } from "../../../../api.service";
-import { rootSummary } from "../../component/cartSummary/cartSummary";
+import { rootSummary ,cartProducts} from "../../component/cartSummary/cartSummary";
 import AddressList from "../savedAddressList/addressList";
+import handlePayment from "../../../../component/razorpay/razorpayCom";
 
 const CartForm = () => {
   const navigator = useNavigate();
@@ -24,11 +25,12 @@ const CartForm = () => {
   });
 
   const [userAddresses, setUserAddresses] = useState([]);
-  const [selectedAddress, setSelectedAddress] = useState(null); // Track selected address
+  const [selectedAddressId, setSelectedAddressId] = useState(null); // Track only the selected address ID
   const [isAddressFormVisible, setAddressFormVisibility] = useState(false);
 
   useEffect(() => {
     fetchUserAddresses();
+  
   }, []);
 
   const fetchUserAddresses = async () => {
@@ -51,13 +53,18 @@ const CartForm = () => {
       });
 
       const data = await response.json();
+  
+ 
       if(data.addresses.length > 0){
         console.log("Address found");
         setAddressFormVisibility(true);
       }
-console.log(data);
+      console.log(data);
       if (data.success && data.addresses.length > 0) {
         setUserAddresses(data.addresses);
+        const defaultAddress = data.addresses.find((address) => address.isDefault);
+            //  console.log("selectedAddressId",defaultAddress);
+      setSelectedAddressId(defaultAddress._id );
       } else {
         setUserAddresses([]);
       }
@@ -113,8 +120,8 @@ console.log(data);
     }
   };
 
-  const handleSelectAddress = (address) => {
-    setSelectedAddress(address); // Set the selected address
+  const handleSelectAddress = (addressId) => {
+    setSelectedAddressId(addressId); // Set only the address ID
   };
 
   return (
@@ -136,34 +143,14 @@ console.log(data);
       </div>
 
       <div className="cartform-form-container">
-        {isAddressFormVisible? (
+        {isAddressFormVisible ? (
           <div className="cartform-saved-addresses">
             <h2>Saved Addresses</h2>
-            <AddressList addresses={userAddresses} onAddressSelect={handleSelectAddress} onAddAddress={() => setAddressFormVisibility(false)} />
-            {/* <ul>
-              {userAddresses.map((address, index) => (
-                <li key={index} onClick={() => handleSelectAddress(address)}>
-                  <div
-                    style={{
-                      border: selectedAddress === address ? "2px solid blue" : "1px solid #ddd",
-                      padding: "10px",
-                      borderRadius: "5px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <p>
-                      {address.firstName} {address.lastName}
-                    </p>
-                    <p>{address.streetAddress}</p>
-                    <p>
-                      {address.townCity}, {address.state}, {address.country} - {address.zipCode}
-                    </p>
-                    <p>{address.phoneNumber}</p>
-                    <p>{address.email}</p>
-                  </div>
-                </li>
-              ))}
-            </ul> */}
+            <AddressList
+              addresses={userAddresses}
+              onAddressSelect={handleSelectAddress}
+              onAddAddress={() => setAddressFormVisibility(false)}
+            />
           </div>
         ) : (
           <div className="cartform-form-flex">
@@ -229,15 +216,19 @@ console.log(data);
               <span>₹{summary.orderTotal + 40 + parseFloat(summary.tax)}</span>
             </li>
           </ul>
-          <button className="cartform-checkout-btn"  onClick={() => {
-                if (selectedAddress) {
-                  // Proceed with the selected address
-                  alert(`Selected Address: ${selectedAddress.streetAddress}`);
-                  navigator("/sucess-order");
-                } else {
-                  alert("Please select an address.");
-                }
-              }}>
+          <button
+            className="cartform-checkout-btn"
+            onClick={async() => {
+              if (selectedAddressId) {
+                await handlePayment({ amounts: summary.totalAmount, cartItems: cartProducts, addressId: selectedAddressId,navigate: navigator });
+                // Proceed with the selected address ID
+                // alert(`Selected Address ID: ${selectedAddressId}`);
+                // navigator("/sucess-order");
+              } else {
+                alert("Please select an address.");
+              }
+            }}
+          >
             Checkout
           </button>
         </div>
