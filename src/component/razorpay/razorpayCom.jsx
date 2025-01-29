@@ -43,7 +43,7 @@ console.log(orderResponse.data)
       currency: 'INR',
       name: 'Iris Women Clothing',
       description: 'Test Transaction',
-      image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736672652/products/product_image_1736672648073_0.png',
+      image: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1738147419/lgo_ys4t0z.png',
       order_id: razorpayOrderId,
       handler: async (response) => {
         const paymentData = {
@@ -79,7 +79,7 @@ console.log(orderResponse.data)
       },
       prefill: {
         name: 'John Doe',
-        email: 'johndoe@example.com',
+        email: 'iriswomenonline@gmail.com',
         contact: '9999999999',
       },
       theme: {
