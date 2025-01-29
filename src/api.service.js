@@ -1,1 +1,1 @@
-exports.domain = 'https://clouthing-ecommerce-backend.onrender.com';
+exports.domain = 'https://clouthing-ecommerce-backend.vercel.app';

@@ -6,10 +6,10 @@ import ProductList from './component/prooductList/productList';
 import CartSummary from './component/cartSummary/cartSummary';
 
 const statusImages = {
-    Placed: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/placed_onpma9.png',
-    Packaging: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/packaging_v3qn3q.png',
-    OnTheWay: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/ontheway_yq9a2v.png',
-    Delivered: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853904/delivered_jlxmmi.png',
+    ordered: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/placed_onpma9.png',
+    packaging: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/packaging_v3qn3q.png',
+    ontheway: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/ontheway_yq9a2v.png',
+    delivered: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853904/delivered_jlxmmi.png',
 };
 const x="Products (";
 const y=")";
@@ -26,7 +26,7 @@ const OrderDetail = ({ orderDetails, handleCloseDetails }) => {
                 </button>
             </div>
             <OrderCardHeader order={orderDetails} />
-            <p style={{textAlign:"justify"}}><strong>Order expected arrival </strong>{orderDetails.estimatedDeliveryDate}</p>
+            <p style={{textAlign:"justify"}}><strong>Order expected arrival </strong>{orderDetails.estimatedDate}</p>
             <div
                 style={{backgroundImage: `url(${statusImages[orderDetails.orderStatus]})`, // Set the background image
                 }}
@@ -36,7 +36,7 @@ const OrderDetail = ({ orderDetails, handleCloseDetails }) => {
                 fontSize:"1.1rem",
                 fontWeight:"500",
                 textAlign:"justify"
-            }}>{`Products (${orderDetails.products.length})`}</div>
+            }}>{`Products (${orderDetails.productDetails.length})`}</div>
             <ProductList orderDetail={orderDetails} />
             <CartSummary order={orderDetails}/>
           

@@ -8,9 +8,9 @@ const CartSummary = ({order}) => {
     let total = 0;
   
     // Iterate through each product in the order
-    order.products.forEach((product) => {
+    order.productDetails.forEach((product) => {
       // Convert price to a number (if it's a string) and multiply by quantity
-      const productTotal = parseFloat(product.price) * product.quantity;
+      const productTotal = parseFloat(product.productId.price) * product.quantity;
       // Add to the total
       total += productTotal;
     });
@@ -33,14 +33,14 @@ const total=calculateOrderTotal(order);
         </li>
         <li>
           <span>GST and service Tax</span>
-          <span>₹8</span>
+          <span>₹{(total*0.05).toFixed(2)}</span>
         </li>
        
       </ul>
       <hr color='#ccc'/>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
         <h3>Total Amount</h3>
-        <span style={{fontWeight:"600"}}>₹{total+40+8}</span>
+        <span style={{fontWeight:"600"}}>₹{order.totalPrice}</span>
       </div>
     </div>
   );

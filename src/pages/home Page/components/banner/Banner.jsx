@@ -1,6 +1,7 @@
 // Banner.jsx
 import React, { useEffect, useState } from 'react';
 import './Banner.css';
+import { domain } from '../../../../api.service';
 
 const Banner = ({}) => {
   const [imageUrl, setImageUrl] = useState('');
@@ -9,7 +10,7 @@ const Banner = ({}) => {
     // Fetch the image URL from the API
     const fetchBannerImage = async () => {
       try {
-        const response = await fetch('https://clouthing-ecommerce-backend.onrender.com/user/banner');
+        const response = await fetch(`${domain}/user/banner`);
         const data = await response.json();
         if (data.url) {
           setImageUrl(data.url);

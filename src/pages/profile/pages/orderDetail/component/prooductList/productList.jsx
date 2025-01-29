@@ -3,7 +3,7 @@ import ProductItem from '../productItem/productItem';
 import "./productList.css"
 
 function ProductList({ orderDetail }) {
-  console.log(orderDetail.orderStatus);
+  // console.log(orderDetail.orderStatus);
   return (
     <div className="product-list">
       <div className="product-list-header">
@@ -13,8 +13,8 @@ function ProductList({ orderDetail }) {
         <div className="subtotal-header">Subtotal</div>
       </div>
       <hr color='#ccc'/>
-      {orderDetail.products.map((product) => (
-        <ProductItem key={product.id} product={product} orderdDetail={orderDetail}/>
+      {orderDetail.productDetails.map((product) => (
+        <ProductItem key={product._id} product={product} orderdDetail={orderDetail}/>
       ))}
     </div>
   );

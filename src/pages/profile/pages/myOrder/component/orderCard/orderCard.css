@@ -36,7 +36,7 @@
     width: auto;
     height: auto;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: top;
     flex: 1;
     overflow: hidden;
