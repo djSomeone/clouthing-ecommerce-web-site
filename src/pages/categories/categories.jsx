@@ -407,7 +407,7 @@ const Categories = () => {
     };
 
     const handlePriceRangeChange = (e) => {
-        setFilters(prev => ({ ...prev, priceRange: [900, parseInt(e.target.value)] }));
+        setFilters(prev => ({ ...prev, priceRange: [0, parseInt(e.target.value)] }));
     };
 
     const handleSortByChange = (value) => setSortBy(value);
@@ -417,12 +417,12 @@ const Categories = () => {
     };
 
 
-    const availableCategories = [...new Set(products.map(p => p.categories))];
+    const availableCategories = ['Wardrobe', 'Casual Wear', 'Occasion Wear'];
     const availableSubCategories = selectedCategory
         ? [...new Set(products.filter(p => p.categories === selectedCategory).map(p => p.subcategory))]
         : [];
-    const availableColors = [...new Set(products.map(p => p.colors).flat())];
-    const availableSizes = [...new Set(products.map(p => p.sizes).flat().map(size => size.size))];
+    const availableColors = ["Red", "Blue", "Green", "Pink", "White", "Black", "Grey", "Maroon", "Gold", "Yellow", "Orange", "Purple"];
+    const availableSizes = ["S", "M", "L", "XL", "XXL", "XXXL"];
 
 
     const getFilterElements = () => {
@@ -431,10 +431,11 @@ const Categories = () => {
         for (const filterType in filters) {
             if (filters[filterType].length > 0) {
                 filters[filterType].forEach(filterValue => {
-                    elements.push({
+                    if(filterType!=="priceRange")
+                        {elements.push({
                         name: filterValue,
                         filterType,
-                    });
+                    });}
                 });
             }
         }
@@ -590,7 +591,7 @@ const Categories = () => {
 
                 <div className="ProductListing-products">
                     {products.map((product) => (
-                        <Product product={product} key={product._id} onClick={handleClick(product._id)}/> // Important: Add a unique key
+                        <Product product={product} key={product._id} onClick={()=>handleClick(product._id)}/> // Important: Add a unique key
                     ))}
                 </div>
             </div>
