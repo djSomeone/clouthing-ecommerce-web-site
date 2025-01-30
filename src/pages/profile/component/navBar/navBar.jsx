@@ -7,11 +7,12 @@ const ProfileNavBar = ({setActiveItem,activeItem}) => {
   const handleItemClick = (item) => {
     setActiveItem(item);
   };
+  const userData = JSON.parse(sessionStorage.getItem("userData"));
 
   return (
     <nav className="profileNavBar">
       <div className="profileNavBar-container">
-        <h1 className="profileNavBar-heading">Hello Gaurav</h1>
+        <h1 className="profileNavBar-heading">Hello {userData.name}</h1>
         <p className="profileNavBar-welcome" style={{margin:"0px",}}>Welcome to your Account</p>
 
         <ul className="profileNavBar-list">

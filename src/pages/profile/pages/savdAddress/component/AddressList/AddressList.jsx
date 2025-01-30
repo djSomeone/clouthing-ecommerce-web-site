@@ -3,6 +3,7 @@ import AddressCard from '../AddressCard/AddressCard';
 import './AddressList.css';
 
 const AddressList = ({ addresses, onEdit }) => {
+  console.log(" in AddressList addresses:",addresses);
   return (
     <div className="address-list">
       {addresses.map((address, index) => (

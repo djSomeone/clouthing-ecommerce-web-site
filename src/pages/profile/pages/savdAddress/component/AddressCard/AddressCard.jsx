@@ -2,6 +2,7 @@ import React from 'react';
 import './AddressCard.css';
 
 const AddressCard = ({ address, onEdit }) => {
+  console.log(" in AddressCard address:",address);
   return (
     <div className="address-card">
       <div className="address-details">
