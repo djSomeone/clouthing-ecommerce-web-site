@@ -3,6 +3,7 @@
     border-radius: 10px;
     padding: 20px;
     width: 40%;
+    height: auto;
   }
   
   .cart-summary ul {

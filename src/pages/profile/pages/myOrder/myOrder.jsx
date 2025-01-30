@@ -184,7 +184,7 @@ const MyOrders = () => {
       const userData = JSON.parse(sessionStorage.getItem("userData"));
       const token = sessionStorage.getItem("authToken");
 console.log("token",token);
-      console.log("userData",userData.id);
+      console.log("userData",userData);
       if (!token || !userData) {
         alert("Session expired. Please log in again.");
         navigate("/login");
