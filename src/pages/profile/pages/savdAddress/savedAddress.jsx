@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AddressList from '../../../cartCheckout/pages/savedAddressList/addressList';
+import AddressList from '../savdAddress/component/AddressList/AddressList';
 import './savedAddress.css';
 import { domain } from '../../../../api.service';
 
@@ -97,7 +97,7 @@ console.log("user data:",userData);
           };
 
       const response = await fetch(apiUrl, {
-        method: editingAddressId ? "PUT" : "POST",
+        method:  "POST",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -125,6 +125,7 @@ console.log("user data:",userData);
     setEditingAddressId(address._id);
     setAddressFormVisibility(true);
   };
+  
 
   const handleAdd = () => {
     setAddressData({
@@ -229,14 +230,20 @@ console.log("user data:",userData);
         />
   
         <div className="button-group">
-          <button type="submit">{editingAddressId ? "Update Address" : "Add Address"}</button>
+          <button type="submit">{editingAddressId ? "Update" : "Add"}</button>
           <button type="button" onClick={() => setAddressFormVisibility(false)}>
             Cancel
           </button>
         </div>
       </form>
       ) : (
-        <AddressList addresses={addresses} onAddAddress={handleAdd} onAddressSelect={handleEdit}/>
+        // <AddressList addresses={addresses} onAddAddress={handleAdd} onAddressSelect={handleEdit}/>
+        <AddressList 
+  addresses={addresses} 
+  onAddAddress={handleAdd} 
+  onAddressSelect={handleEdit} 
+  onSetDefault={handleAddOrUpdateAddress}
+/>
       )}
     </div>
   );

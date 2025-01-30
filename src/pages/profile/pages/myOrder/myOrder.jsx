@@ -186,7 +186,7 @@ const MyOrders = () => {
 console.log("token",token);
       console.log("userData",userData);
       if (!token || !userData) {
-        alert("Session expired. Please log in again.");
+        // alert("Session expired. Please log in again.");
         navigate("/login");
         return;
       }

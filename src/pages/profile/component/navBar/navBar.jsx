@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './navBar.css';
 import { Icon } from '@iconify/react';
+import { useNavigate } from 'react-router-dom';
 
 const ProfileNavBar = ({setActiveItem,activeItem}) => {
-
+const navigate = useNavigate();
   const handleItemClick = (item) => {
     setActiveItem(item);
   };
@@ -22,7 +23,10 @@ const ProfileNavBar = ({setActiveItem,activeItem}) => {
     }
   };
 
-
+if (!userData) {
+    navigate("/login");
+    return null;
+  }
   return (
     <nav className="profileNavBar">
       <div className="profileNavBar-container">

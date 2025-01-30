@@ -9,7 +9,7 @@
   
   .add-address-btn {
     background-color:transparent;
-    color: #F35031;
+    color: #da231d;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -26,9 +26,35 @@
   }
   
   .address-item.selected {
-    border: 2px solid #F35031;
+    border: 2px solid #da231d;
   }
   
   .address-item input[type="radio"] {
     margin-right: 10px;
+  }
+
+  .edit-btn {
+    background-color: #da231d; /* Primary blue color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .edit-btn:hover {
+    background-color: transparent;
+    color: #da231d;
+    border: 2px solid #da231d;
+    transform: translateY(-2px);
+  }
+  
+  .edit-btn:active {
+    transform: translateY(0);
+    background-color: #004494;
   }
