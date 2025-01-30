@@ -2,7 +2,7 @@ import React from 'react';
 import ProductItem from '../productItem/productItem';
 import "./productList.css"
 
-function ProductList({ orderDetail }) {
+function ProductList({ orderDetail,handleExchange }) {
   // console.log(orderDetail.orderStatus);
   return (
     <div className="product-list">
@@ -14,7 +14,7 @@ function ProductList({ orderDetail }) {
       </div>
       <hr color='#ccc'/>
       {orderDetail.productDetails.map((product) => (
-        <ProductItem key={product._id} product={product} orderdDetail={orderDetail}/>
+        <ProductItem key={product._id} product={product} orderdDetail={orderDetail} showExchange={true} handleExchange={handleExchange}/>
       ))}
     </div>
   );

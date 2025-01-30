@@ -1,0 +1,46 @@
+/* ExchangeForm.css */
+.exchange-form {
+    width: 400px; /* Adjust as needed */
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: sans-serif;
+  }
+  
+  .exchange-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  .continue-button {
+    background-color: #4CAF50; /* Example color */
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%; /* Or adjust as needed */
+  }
+  
+  .continue-button:hover {
+    background-color: #45a049; /* Darker shade on hover */
+  }

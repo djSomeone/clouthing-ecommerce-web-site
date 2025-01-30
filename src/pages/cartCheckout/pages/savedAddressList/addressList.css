@@ -58,3 +58,17 @@
     transform: translateY(0);
     background-color: #004494;
   }
+  .address-list-root{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+    
+
+  }
+
+  /* mobile view */
+  @media (max-width: 768px) {
+    .address-list-root{
+      display:inline;
+    }
+  }

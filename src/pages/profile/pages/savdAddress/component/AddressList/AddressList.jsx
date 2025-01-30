@@ -66,9 +66,9 @@ const AddressList = ({ addresses, onAddressSelect, onAddAddress, onSetDefault })
         Add Address +
       </button>
 
-      <ul>
+      <ul className={"address-list-root"} >
         {addresses.map((address, index) => (
-          <li key={address._id} className={`address-item ${selectedAddress === address ? 'selected' : ''}`}>
+          <li key={address._id} className={`address-item ${selectedAddress === address ? 'selected' : ''}`} style={{backgroundColor:"#80808017"}}>
             <input
               type="radio"
               name="address"
