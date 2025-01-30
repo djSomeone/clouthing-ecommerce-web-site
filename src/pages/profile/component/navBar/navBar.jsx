@@ -8,6 +8,20 @@ const ProfileNavBar = ({setActiveItem,activeItem}) => {
     setActiveItem(item);
   };
   const userData = JSON.parse(sessionStorage.getItem("userData"));
+  const handleLogout = () => {
+    // Show confirmation alert
+    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    
+    if (confirmLogout) {
+      // Remove user data from session storage
+      sessionStorage.removeItem("authToken");
+      sessionStorage.removeItem("userData");
+
+      // Redirect or refresh page as needed
+      window.location.href = "/login"; // Adjust this to your login page route
+    }
+  };
+
 
   return (
     <nav className="profileNavBar">
@@ -37,7 +51,7 @@ const ProfileNavBar = ({setActiveItem,activeItem}) => {
             </a>
           </li>
           <li className={`profileNavBar-item ${activeItem === 'logOut' ? 'active' : ''}`}>
-            <a href="#" className="profileNavBar-link" >
+            <a href="#" className="profileNavBar-link" onClick={handleLogout}>
               <Icon icon="mdi:logout" /> Log Out
             </a>
           </li>
