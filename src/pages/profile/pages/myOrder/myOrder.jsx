@@ -178,49 +178,50 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      const userData = JSON.parse(sessionStorage.getItem("userData"));
-      const token = sessionStorage.getItem("authToken");
+  const fetchOrders = async () => {
+    const userData = JSON.parse(sessionStorage.getItem("userData"));
+    const token = sessionStorage.getItem("authToken");
 console.log("token",token);
-      console.log("userData",userData);
-      if (!token || !userData) {
-        // alert("Session expired. Please log in again.");
-        navigate("/login");
-        return;
-      }
+    console.log("userData",userData);
+    if (!token || !userData) {
+      // alert("Session expired. Please log in again.");
+      navigate("/login");
+      return;
+    }
 
-      const userId = userData.id;
-      const API_URL = `${domain}/user/user-orders/${userId}`;
+    const userId = userData.id;
+    const API_URL = `${domain}/user/user-orders/${userId}`;
 console.log("API_URL",API_URL);
-      try {
-        const response = await fetch(API_URL, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        console.log("response",response);
-        if (response.ok) {
-          const data = await response.json();
-          setOrders(data.orders);
-        } else {
-          
-            // alert("Session expired. Please log in again.");
-            navigate("/login");
-            console.log("Error fetching orders:", response.statusText);
-        
-        }
-      } catch (error) {
-        console.error("Error fetching orders:", error);
-        alert("An error occurred while fetching orders.");
-      } finally {
-        setLoading(false);
-      }
-    };
+    try {
+      const response = await fetch(API_URL, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+     
+      if (response.ok) {
+        const data = await response.json();
+        console.log("response",data.orders);
+        setOrders(data.orders);
+      } else {
+        if (response.status !== 404) {
 
+
+          // alert("Session expired. Please log in again.");
+          navigate("/login");
+          console.log("Error fetching orders:", response.statusText);
+        }
+      }
+    } catch (error) {
+      console.error("Error fetching orders:", error);
+      alert("An error occurred while fetching orders.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
     fetchOrders();
   }, []);
 
@@ -258,6 +259,7 @@ console.log("API_URL",API_URL);
       ) : (
         <OrderDetail
           orderDetails={selectedOrderDetail}
+          fetchOrders={fetchOrders}
           handleCloseDetails={handleCloseDetails}
         />
       )}

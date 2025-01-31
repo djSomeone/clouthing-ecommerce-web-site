@@ -8,6 +8,7 @@ import Home from './pages/home Page/home.jsx';
 // import CasualWear from './pages/CasualWear';
 // import NearbyStores from './pages/NearbyStores';
 // import AboutUs from './pages/AboutUs';
+import SucessReturn from './pages/profile/pages/orderDetail/component/sucessReturn/successReturn.jsx';
 import RegisterForm from './pages/registerUser/register.jsx';
 import OrderComplete from './pages/cartCheckout/pages/successOrder/orderComplete.jsx';
 import CartForm from './pages/cartCheckout/pages/cartCheckoutForm/cartForm.jsx';
@@ -61,6 +62,7 @@ function App() {
                 <Route path='/cart-details' element={<CartDetails/>}/>
                 <Route path='/cart-checkout-form' element={<CartForm/>}/>
                 <Route path='/sucess-order' element={<OrderComplete/>}/>
+                <Route path='/sucess-return' element={<SucessReturn/>}/>
                 
             </Routes>
             <Footer/>

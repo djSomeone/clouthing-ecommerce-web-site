@@ -7,6 +7,7 @@ import './CodeVerificationForm.css';
 const CodeVerificationForm = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [isLoding, setIsLoading] = useState(false);
   const { email } = location.state || {}; // Access email from state
   const [code, setCode] = useState(['', '', '', '', '', '']);
   const inputRefs = useRef([]);
@@ -47,7 +48,7 @@ const CodeVerificationForm = () => {
       setError('Please enter a 6-digit code.');
       return;
     }
-
+setIsLoading(true);
     try {
       const response = await axios.post(
         'https://clouthing-ecommerce-backend.onrender.com/user/verifyOtp',
@@ -62,10 +63,11 @@ const CodeVerificationForm = () => {
       // Save token and user data in session storage
       sessionStorage.setItem('authToken', response.data.token);
       sessionStorage.setItem('userData', JSON.stringify(response.data.data));
-
+setIsLoading(false);
       // Navigate to a new page or home
       navigate('/'); // Assuming you have a home page route
     } catch (error) {
+setIsLoading(false);
       setError('OTP verification failed. Please try again.');
       console.error('Verification Error:', error);
     }
@@ -94,7 +96,7 @@ const CodeVerificationForm = () => {
             ))}
           </div>
           <button type="submit" className="continue-button">
-            Continue
+            {isLoding ? 'Loading...' : 'Continue'}
           </button>
         </form>
       </div>

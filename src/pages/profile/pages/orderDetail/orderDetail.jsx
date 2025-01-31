@@ -6,6 +6,7 @@ import ProductList from './component/prooductList/productList';
 import CartSummary from './component/cartSummary/cartSummary';
 import ProductItem from './component/productItem/productItem';
 import ExchangeForm from './component/exchangeForm/exchangeForm';
+import ExchangeProductList from './component/exchangeProductList/exchangeProductList';
 
 const statusImages = {
     ordered: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/placed_onpma9.png',
@@ -14,7 +15,7 @@ const statusImages = {
     delivered: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853904/delivered_jlxmmi.png',
 };
 
-const OrderDetail = ({ orderDetails, handleCloseDetails }) => {
+const OrderDetail = ({ orderDetails, handleCloseDetails,fetchOrders }) => {
     // console.log("orderDetails==>", orderDetails);
     const [selectedExchangeProduct, setSelectedExchangeProduct] = useState(null);
     const handleClose=()=>{
@@ -39,21 +40,24 @@ const OrderDetail = ({ orderDetails, handleCloseDetails }) => {
             {selectedExchangeProduct?
             (<div>
                 <ProductItem product={selectedExchangeProduct} orderdDetail={orderDetails} showExchange={false} handleExchange={handleExchange}/>
-                <ExchangeForm/>
+                <ExchangeForm product={selectedExchangeProduct} orderDetail={orderDetails} onClose={handleClose} fetchOrders={fetchOrders}/>
             </div>):
             (<div>
             <p style={{textAlign:"justify"}}><strong>Order expected arrival </strong>{orderDetails.estimatedDate}</p>
-            <div
+            
+            {orderDetails.exchanges.length==0 &&(<div
                 style={{backgroundImage: `url(${statusImages[orderDetails.orderStatus]})`, // Set the background image
                 }}
                 className='orderDetail-status'
-            ></div>
+            ></div>)}
+
             <div style={{
                 fontSize:"1.1rem",
                 fontWeight:"500",
                 textAlign:"justify"
             }}>{`Products (${orderDetails.productDetails.length})`}</div>
-            
+
+            <ExchangeProductList orderDetail={orderDetails} handleExchange={handleExchange} />
             <ProductList orderDetail={orderDetails} handleExchange={handleExchange}  />
             <CartSummary order={orderDetails}/>
             </div>)}
