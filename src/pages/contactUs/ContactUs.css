@@ -88,6 +88,9 @@ body {
         gap: 10px;
     }
     .contact-content{
+        padding: 0px;
+    }
+    .contact-us-container{
         padding: 20px;
     }
 }

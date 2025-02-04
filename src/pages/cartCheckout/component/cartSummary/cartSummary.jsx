@@ -13,7 +13,7 @@ export const CartSummary = ({ summary,cartItems, }) => {
   };
 
   return (
-    <div className="cart-summary">
+    <div className="checkout-cart-summary">
       <div className="cartsummaryhead">Cart Summary</div>
       <p>Order Total: <span style={{ fontWeight: "600" }}>₹{summary.orderTotal}</span></p>
       <p>Delivery Charges: <span style={{ fontWeight: "600" }}>₹{summary.deliveryCharges}</span></p>

@@ -1,5 +1,5 @@
 /* Cart Item Container */
-.cart-item {
+.cart-item-root {
     display: flex;
     justify-content: space-between;
     align-items: start;

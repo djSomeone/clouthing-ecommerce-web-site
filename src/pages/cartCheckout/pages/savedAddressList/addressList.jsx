@@ -19,7 +19,7 @@ const AddressList = ({ addresses, onAddressSelect, onAddAddress }) => {
         Add Address +
       </button>
 
-      <ul>
+      <ul className='address-list-root'>
         {addresses.map((address, index) => (
           <li key={address._id} className={`address-item ${selectedAddress === address ? 'selected' : ''}`}>
             <input

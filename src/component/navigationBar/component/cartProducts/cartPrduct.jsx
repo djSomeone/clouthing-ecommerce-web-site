@@ -95,7 +95,7 @@ export const CartProduct = ({ item, fetchCart }) => {
   };
 
   return (
-    <div key={item.id} className="cart-item">
+    <div key={item.id} className="cart-item-root">
       {/* Product Image */}
       <div
         className="cart-item-image"

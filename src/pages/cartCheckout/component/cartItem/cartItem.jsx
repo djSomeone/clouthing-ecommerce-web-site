@@ -65,7 +65,7 @@ const CartItem = ({ product, fetchCart }) => {
     <div className="cart-item">
       <div className="product-details">
         <div
-          className="product-image"
+          className="cart-product-image"
           style={{ backgroundImage: `url(${product.image})` }}
         ></div>
         <div style={{ textAlign: 'left' }}>

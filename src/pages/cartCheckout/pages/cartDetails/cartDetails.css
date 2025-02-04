@@ -71,7 +71,7 @@ body {
     /* padding-left: 40px; */
   }
   
-  .product-image {
+  .cart-product-image {
     width: 100px;
     height: 140px;
     margin-right: 10px;
@@ -114,7 +114,7 @@ body {
     background: transparent;
   }
   
-  .cart-summary {
+  .checkout-cart-summary {
     background-color: #faf9f6;
     padding: 20px;
     border: 1px solid #ddd;
@@ -133,7 +133,7 @@ body {
     font-weight: 700;
   }
   
-  .cart-summary p {
+  .checkout-cart-summary p {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
@@ -223,9 +223,14 @@ body {
   
   /* Mobile Responsive Styles */
   @media (max-width: 768px) {
+    .cart-details {
+      padding: 10px;
+    }
+  
     .cart-container {
       flex-direction: column;
       gap: 10px;
+      padding: 0px;
     }
   
     .cart-items {
@@ -233,7 +238,7 @@ body {
       width: 100%;
     }
   
-    .cart-summary {
+    .checkout-cart-summary {
       width: 90%;
       height: auto;
       margin-top: 0;
@@ -242,7 +247,7 @@ body {
   
     .cart-item {
       text-align: center;
-      gap: 30px;
+      /* gap: 30px; */
     }
   
     .product-details {
@@ -252,10 +257,10 @@ body {
       padding-left: 0;
     }
   
-    .product-image {
+    .cart-product-image {
       width: 80px;
       height: 110px;
-      margin-right: 10px; /* Add spacing between the image and text */
+     
     }
   
     .product-name {
@@ -278,7 +283,7 @@ body {
   
     .quantity-controls {
       justify-content: center;
-      width: 100%;
+      /* width: 100%; */
       border: 1px solid #848484;
       margin: 10px 0;
     }
@@ -288,11 +293,11 @@ body {
       font-size: 16px;
     }
   
-    .cart-summary p {
+    .checkout-cart-summary p {
       font-size: 14px;
     }
   
-    .cart-summary .subtotal {
+    .checkout-cart-summary .subtotal {
       display: none; /* Hide subtotal in mobile view */
     }
   
@@ -302,7 +307,8 @@ body {
   
     .cart-progress {
       flex-direction: row;
-      gap: 10px;
+      justify-content: space-around;
+      /* gap: 10px; */
     }
   
     .step {
@@ -310,13 +316,14 @@ body {
       align-items: center;
       white-space: nowrap;
       font-size: 13px;
+      padding: 5px;
     }
   
     .circleforone {
       margin-right: 0;
       margin-bottom: 5px;
     }
-    .product-subtotal {
+    .product-price {
       display: none; /* Hide the subtotal content in mobile view */
     }
   }
