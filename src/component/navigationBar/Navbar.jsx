@@ -148,8 +148,8 @@ const Navbar = () => {
                 )}
 
                 <div className="navbar-icons">
-                    <a href="#" className="navbar-icon">
-                        <Icon icon="tabler:search" /> {/* Search */}
+                    <a href="/categories" className="navbar-icon">
+                        <Icon icon="tabler:search" /> 
                     </a>
                     <a href="#" className="navbar-icon" onClick={handleProfileClick}>
                         <Icon icon="iconamoon:profile-light" /> {/* Profile */}

@@ -1,8 +1,10 @@
-// pages/ContactUs.js
 import React, { useState } from 'react';
 import './ContactUs.css';
+import { useNavigate } from 'react-router-dom';
+import { domain } from '../../api.service';
 
 const ContactUs = () => {
+    const navigate = useNavigate();
     console.log("Contact Us Page");
     const [formData, setFormData] = useState({
         firstName: '',
@@ -16,20 +18,48 @@ const ContactUs = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Handle form submission here (e.g., send data to server)
-        console.log("Form Data Submitted", formData);
-        alert("Form Submitted (Check console for data)")
-        setFormData({
-            firstName: '',
-            lastName: '',
-            email: '',
-            phoneNumber: '',
-            message: '',
-        })
+
+        const apiPayload = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phoneNumber,
+            message: formData.message,
+        };
+
+        try {
+            const response = await fetch(`${domain}/user/addContactUs`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(apiPayload),
+            });
+
+            if (!response.ok) {
+                throw new Error(`Request failed with status ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log("Response from server:", result);
+            alert("Form successfully submitted!");
+            navigate('/', { replace: true });
+
+            // Reset form after submission
+            setFormData({
+                firstName: '',
+                lastName: '',
+                email: '',
+                phoneNumber: '',
+                message: '',
+            });
+        } catch (error) {
+            console.error("Error submitting form:", error);
+            alert("Failed to submit the form. Please try again later.");
+        }
     };
-    // don't add label to text fields, add placeholder instead
 
     return (
         <div className="contact-us-container">
@@ -62,4 +92,5 @@ const ContactUs = () => {
         </div>
     );
 };
+
 export default ContactUs;

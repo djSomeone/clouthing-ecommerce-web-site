@@ -186,7 +186,7 @@ const ProductDetails = ({ match }) => {
 
                     <div className="product-details-actions">
                         <button className="product-details-add-to-cart" onClick={()=>handleAddToCart("/user/addToCart")}>Add to Cart</button>
-                        <button className="product-details-buy-now">Buy Now</button>
+                        {/* <button className="product-details-buy-now">Buy Now</button> */}
                         <div className="product-details-add-to-wishlist" onClick={()=>handleAddToCart("/user/addToWishlist")}>
                             <Icon icon="mdi:heart-outline" /> Add to Wishlist
                         </div>
