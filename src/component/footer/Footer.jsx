@@ -52,10 +52,12 @@ const Footer = () => {
           <div className="footer-address-column">
             <h4 className="footer-links-title">Address</h4>
             <address className="footer-address" style={{ color: '#5C5C5C' }}>
-              6R4H+529, Kandivali, Charkop, Charkop Industrial Estate,<br />
-              Kandivali West, Mumbai, Maharashtra 400067<br /><br/>
+            304, rajprabha ind. premises-1 behind toyota showroom bhoida pada vasai (east) palghar-401208
+            <br />
+              {/* Kandivali West, Mumbai, Maharashtra 400067<br /><br/> */}
+              <br/>
               Email-irisfashionbn@gmail.com<br/><br/>
-              Phone - +91 89023280248
+              Phone - +91 9029062216
             </address>
           </div>
         </div>
