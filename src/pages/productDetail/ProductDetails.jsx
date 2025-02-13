@@ -24,7 +24,7 @@ const ProductDetails = ({ match }) => {
             }
 
             try {
-                const response = await fetch(`${domain}/product/getProductDetail/${productId}`, {
+                const response = await fetch(`${domain}/product/getProductDetail/${productId}?viewProduct=true`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,
