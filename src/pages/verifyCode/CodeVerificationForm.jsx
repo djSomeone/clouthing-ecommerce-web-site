@@ -3,6 +3,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CodeVerificationForm.css';
+import { domain } from '../../api.service';
+
 
 const CodeVerificationForm = () => {
   const location = useLocation();
@@ -51,7 +53,7 @@ const CodeVerificationForm = () => {
 setIsLoading(true);
     try {
       const response = await axios.post(
-        'https://clouthing-ecommerce-backend.onrender.com/user/verifyOtp',
+        `${domain}/user/verifyOtp`,
         {
           email,
           otp: parseInt(enteredCode),
