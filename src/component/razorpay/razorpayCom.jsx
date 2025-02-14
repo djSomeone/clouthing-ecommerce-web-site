@@ -98,8 +98,8 @@ console.log(orderResponse.data)
     });
 
   } catch (error) {
-    console.error('Payment error:', error);
-    alert('An error occurred while initiating payment. Please try again later.');
+    console.error('Payment error:', error.response.data.error);
+    alert(error.response.data.error);
   }
 };
 

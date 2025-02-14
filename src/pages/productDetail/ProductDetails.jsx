@@ -3,7 +3,7 @@ import './ProductDetails.css';
 import { Icon } from '@iconify/react';
 import { domain } from '../../api.service';
 import axios from 'axios';
-import { useNavigate,useParams } from 'react-router-dom'; // Assuming you are using React Router
+import { useNavigate, useParams } from 'react-router-dom'; // Assuming you are using React Router
 
 const ProductDetails = ({ match }) => {
     const [selectedSize, setSelectedSize] = useState(null);
@@ -12,7 +12,7 @@ const ProductDetails = ({ match }) => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const {productId} = useParams(); // Get product ID from URL params
+    const { productId } = useParams(); // Get product ID from URL params
 
     useEffect(() => {
         const fetchProductDetails = async () => {
@@ -21,7 +21,7 @@ const ProductDetails = ({ match }) => {
             try {
                 const response = await fetch(`${domain}/product/getProductDetail/${productId}?viewProduct=true`, {
                     method: 'GET',
-                   
+
                 });
 
                 if (!response.ok) {
@@ -38,13 +38,16 @@ const ProductDetails = ({ match }) => {
                     const productData = data.data;
                     console.log(productData);
                     setProduct(data.data);
-                     if (productData.sizes && productData.sizes.length > 0) {
-                    setSelectedSize(productData.sizes[0].size);  // Set the first size as default
-                }
+                    if (productData.sizes && productData.sizes.length > 0) {
+                        const availableSizes = productData.sizes.filter(sizeObj => sizeObj.quantity > 0);
 
-                if (productData.colors && productData.colors.length > 0) {
-                    setSelectedColor(productData.colors[0]);  // Set the first color as default
-                }
+// Set default selected size if available, otherwise set null
+setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Set the first size as default
+                    }
+
+                    if (productData.colors && productData.colors.length > 0) {
+                        setSelectedColor(productData.colors[0]);  // Set the first color as default
+                    }
                 } else {
                     setError(data.message);
                 }
@@ -65,14 +68,14 @@ const ProductDetails = ({ match }) => {
             alert('User not logged in');
             return;
         }
-    
+
         const { id: userId } = JSON.parse(userData);  // Extract userId from stored data
-    
+
         if (!userId || !selectedColor || !selectedSize || !product) {
             alert('Please select a color, size, and ensure the product details are loaded.');
             return;
         }
-    
+
         try {
             const response = await axios.post(
                 `${domain}${path}`,  // Use the API endpoint for adding to cart
@@ -89,9 +92,9 @@ const ProductDetails = ({ match }) => {
                     }
                 }
             );
-    
+
             // Update the cart state based on the API response
-         
+
             alert(response.data.message);  // Show success message
         } catch (error) {
             navigate('/login');  // Redirect to login if unauthorized
@@ -165,22 +168,24 @@ const ProductDetails = ({ match }) => {
                     <div className="product-details-size-selection">
                         <p style={{ textAlign: "justify" }}><strong>Size</strong></p>
                         <div className="product-details-sizes">
-                            {product.sizes.map((sizeObj) => (
-                                <button
-                                    key={sizeObj._id}
-                                    className={`product-details-size-button ${selectedSize === sizeObj.size ? 'product-details-selected' : ''}`}
-                                    onClick={() => handleSizeClick(sizeObj.size)}
-                                >
-                                    {sizeObj.size}
-                                </button>
-                            ))}
+                            {product.sizes
+                                .filter((sizeObj) => sizeObj.quantity > 0) // Only show sizes with quantity > 0
+                                .map((sizeObj) => (
+                                    <button
+                                        key={sizeObj._id}
+                                        className={`product-details-size-button ${selectedSize === sizeObj.size ? 'product-details-selected' : ''}`}
+                                        onClick={() => handleSizeClick(sizeObj.size)}
+                                    >
+                                        {sizeObj.size}
+                                    </button>
+                                ))}
                         </div>
                     </div>
 
                     <div className="product-details-actions">
-                        <button className="product-details-add-to-cart" onClick={()=>handleAddToCart("/user/addToCart")}>Add to Cart</button>
+                        <button className="product-details-add-to-cart" onClick={() => handleAddToCart("/user/addToCart")}>Add to Cart</button>
                         {/* <button className="product-details-buy-now">Buy Now</button> */}
-                        <div className="product-details-add-to-wishlist" onClick={()=>handleAddToCart("/user/addToWishlist")}>
+                        <div className="product-details-add-to-wishlist" onClick={() => handleAddToCart("/user/addToWishlist")}>
                             <Icon icon="mdi:heart-outline" /> Add to Wishlist
                         </div>
                     </div>
