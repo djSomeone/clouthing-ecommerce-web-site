@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './exchangeForm.css'; // Import your CSS file
@@ -11,10 +11,39 @@ const ExchangeForm = ({ onClose, product, orderDetail,fetchOrders }) => {
   const [description, setDescription] = useState('');
   const [color, setColor] = useState('');
   const [size, setSize] = useState('');
+  const [availableColors, setAvailableColors] = useState([]);
+  const [availableSizes, setAvailableSizes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
-  
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      if (!product?.productId?._id) return;
+
+      try {
+        const response = await axios.get(`${domain}/product/getProductDetail/${product.productId._id}`, {
+          headers: {
+            Authorization: `Bearer ${sessionStorage.getItem('authToken')}`,
+          },
+        });
+
+        if (response.data.status === 200) {
+          const productData = response.data.data;
+
+          // Extract available colors and sizes
+          setAvailableColors(productData.colors || []);
+          setAvailableSizes(productData.sizes?.filter(sizeObj => sizeObj.quantity > 0).map(sizeObj => sizeObj.size) || []);
+        } else {
+          setErrorMessage('Failed to fetch product details.');
+        }
+      } catch (error) {
+        console.error('Error fetching product details:', error);
+        setErrorMessage('Error fetching product details.');
+      }
+    };
+
+    fetchProductDetails();
+  }, [product]);
 
   const handleProblemChange = (event) => {
     setProblem(event.target.value);
@@ -25,15 +54,15 @@ const ExchangeForm = ({ onClose, product, orderDetail,fetchOrders }) => {
   };
 
   const getColorOptions = () => {
-    if (problem === 'Color Mismatch' || problem === 'Incorrect Color') {
-      return ['Red', 'Blue', 'Green', 'Black', 'White']; // Example colors
+    if (problem === 'Color Mismatch') {
+      return availableColors; // Example colors
     }
     return [];
   };
 
   const getSizeOptions = () => {
-    if (problem === 'Size Issue' || problem === 'Incorrect Size') {
-      return ['S', 'M', 'L', 'XL', 'XXL']; // Example sizes
+    if (problem === 'Size Issue' ) {
+      return availableSizes; // Example sizes
     }
     return [];
   };
