@@ -18,17 +18,10 @@ const ProductDetails = ({ match }) => {
         const fetchProductDetails = async () => {
             const token = sessionStorage.getItem('authToken');
 
-            if (!token) {
-                navigate('/login');
-                return;
-            }
-
             try {
                 const response = await fetch(`${domain}/product/getProductDetail/${productId}?viewProduct=true`, {
                     method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                    },
+                   
                 });
 
                 if (!response.ok) {
