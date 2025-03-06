@@ -25,9 +25,9 @@ function ProductItem({ product,orderdDetail,showExchange,handleExchange }) {
       </div>
       </div>
       <div className="ProductItem-product-quantity">{product.quantity}</div>
-      <div className="ProductItem-product-price">{product.productId.price}₹</div>
+      <div className="ProductItem-product-price">{product.productId.price}Rs. </div>
       
-      <div className="ProductItem-product-subtotal">{subtotal}₹</div>
+      <div className="ProductItem-product-subtotal">{subtotal}Rs. </div>
       {/* {(orderdDetail.orderStatus)==="delivered" && <div className="ProductItem-product-exchange">exchange</div>} */}
     </div>
   );

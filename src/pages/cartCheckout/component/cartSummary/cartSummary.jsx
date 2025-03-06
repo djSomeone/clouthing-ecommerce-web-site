@@ -15,12 +15,12 @@ export const CartSummary = ({ summary,cartItems, }) => {
   return (
     <div className="checkout-cart-summary">
       <div className="cartsummaryhead">Cart Summary</div>
-      <p>Order Total: <span style={{ fontWeight: "600" }}>₹{summary.orderTotal}</span></p>
-      <p>Delivery Charges: <span style={{ fontWeight: "600" }}>₹{summary.deliveryCharges}</span></p>
+      <p>Order Total: <span style={{ fontWeight: "600" }}>Rs. {summary.orderTotal}</span></p>
+      <p>Delivery Charges: <span style={{ fontWeight: "600" }}>Rs. {summary.deliveryCharges}</span></p>
       <p style={{ borderBottom: "1px solid #D9D9D9", paddingBottom: "15px" }}>
-        GST and Service Tax (5%): <span style={{ fontWeight: "600" }}>₹{summary.tax}</span>
+        GST and Service Tax (5%): <span style={{ fontWeight: "600" }}>Rs. {summary.tax}</span>
       </p>
-      <p className="total-amount">Total Amount: <span>₹{summary.totalAmount}</span></p>
+      <p className="total-amount">Total Amount: <span>Rs. {summary.totalAmount}</span></p>
       <button className="checkout-button" onClick={handleCheckout}>Checkout</button>
     </div>
   );

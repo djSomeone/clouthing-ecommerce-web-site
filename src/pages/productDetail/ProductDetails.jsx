@@ -144,7 +144,7 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
                     <h1 className="product-details-name">{product.name}</h1>
 
                     <div className="product-details-price-parent">
-                        <div className="product-details-price">{product.price}₹</div>
+                        <div className="product-details-price">Rs. {product.price}</div>
                         <div className="product-details-tax">Incl. of all Taxes</div>
                     </div>
 

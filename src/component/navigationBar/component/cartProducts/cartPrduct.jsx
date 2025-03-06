@@ -107,7 +107,7 @@ export const CartProduct = ({ item, fetchCart }) => {
         <strong style={{ overflowX: "hidden", marginBottom: "0px", textAlign: "justify" }}>
           {item.name}
         </strong>
-        <p>₹{item.price.toLocaleString()}</p>
+        <p>Rs. {item.price.toLocaleString()}</p>
         <p>Size - {item.size}</p>
         <div className="cart-product-quantity-control">
           <button className="quantity-btn" onClick={() => updateQuantity(quantity - 1)}>-</button>

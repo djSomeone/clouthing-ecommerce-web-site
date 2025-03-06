@@ -220,19 +220,19 @@ const CartForm = () => {
           <ul>
             <li>
               <span>Order Total</span>
-              <span>₹{summary.orderTotal}</span>
+              <span>Rs. {summary.orderTotal}</span>
             </li>
             <li>
               <span>Delivery Charges</span>
-              <span>₹40</span>
+              <span>Rs. 40</span>
             </li>
             <li>
               <span>GST and Taxes</span>
-              <span>₹{summary.tax}</span>
+              <span>Rs. {summary.tax}</span>
             </li>
             <li className="cartform-total-amount">
               <span>Total Amount</span>
-              <span>₹{summary.orderTotal + 40 + parseFloat(summary.tax)}</span>
+              <span>Rs. {summary.orderTotal + 40 + parseFloat(summary.tax)}</span>
             </li>
           </ul>
           <button

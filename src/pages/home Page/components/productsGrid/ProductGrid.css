@@ -12,6 +12,9 @@
   margin-bottom: 20px;
 }
 
+.product-grid > *:nth-child(n+5) {
+  display: none;
+}
 /* Styles for the product grid itself */
 .product-grid {
   display: grid;

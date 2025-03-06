@@ -169,7 +169,7 @@
 //           />
 //           <br/>
 //           <label style={{textAlign:"justify",marginTop:"10px"}}>
-//           900₹ - {filters.priceRange[1]}₹
+//          
 //           </label>
 //         </div>
 //         </div>)
@@ -509,7 +509,7 @@ const Categories = () => {
           />
           <br/>
           <label style={{textAlign:"justify",marginTop:"10px"}}>
-          900₹ - {filters.priceRange[1]}₹
+          Rs. 900 - Rs. {filters.priceRange[1]}
           </label>
         </div>
         </div>)

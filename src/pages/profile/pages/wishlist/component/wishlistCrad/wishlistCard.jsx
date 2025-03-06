@@ -177,7 +177,7 @@ const WishlistProductCard = ({ product, fetchWishlist }) => {
       </div>
 
       <div className="wishlistProductCard-price-button">
-        <div className="wishlistProductCard-price">₹{product.price}</div>
+        <div className="wishlistProductCard-price">Rs. {product.price}</div>
         <button className="wishlistProductCard-add-to-cart" onClick={()=>handleAddToCart({product})}>Add to Cart</button>
       </div>
     </div>

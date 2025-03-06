@@ -25,22 +25,22 @@ const total=calculateOrderTotal(order);
       <ul >
         <li>
           <span>Order Total</span>
-          <span>₹{total}</span>
+          <span>Rs. {total}</span>
         </li>
         <li>
           <span>Delivery Charges</span>
-          <span>₹40</span>
+          <span>Rs. 40</span>
         </li>
         <li>
           <span>GST and service Tax</span>
-          <span>₹{(total*0.05).toFixed(2)}</span>
+          <span>Rs. {(total*0.05).toFixed(2)}</span>
         </li>
        
       </ul>
       <hr color='#ccc'/>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
         <h3>Total Amount</h3>
-        <span style={{fontWeight:"600"}}>₹{order.totalPrice}</span>
+        <span style={{fontWeight:"600"}}>Rs. {order.totalPrice}</span>
       </div>
     </div>
   );
