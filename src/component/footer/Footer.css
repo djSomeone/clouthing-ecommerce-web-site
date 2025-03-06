@@ -1,10 +1,12 @@
 /* Footer.css */
 .footer-container {
-     padding: 20px;
+     /* padding: 10px; */
     color: #333; /* Example text color */
-    padding: 3rem 4.25rem;
-    margin: 0 30px;
-    border-top: 1px solid #636262;
+    padding: 2rem 5rem;
+    /* margin: 0 30px; */
+    background-color: #e3e1e1;
+    text-align: left;
+    /* border-top: 1px solid #636262; */
   }
   
   .footer-content {
@@ -40,6 +42,7 @@
   .footer-social-icons{
       display: flex;
       gap: 10px;
+      justify-content: center;
       margin-top: 10px;
   }
   
