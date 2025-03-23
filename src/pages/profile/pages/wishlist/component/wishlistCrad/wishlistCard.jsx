@@ -3,8 +3,10 @@ import './wishlistCard.css';
 import { domain } from "../../.././../../../api.service";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useAlert } from "../../../../../../component/alert_popup/AlertContext";
 
-export const deleteWishlistItem = async (wishlistItemId, fetchWishlist) => {
+export const deleteWishlistItem = async (wishlistItemId, fetchWishlist,showAlert) => {
+ 
   const token = sessionStorage.getItem("authToken");
   const userData = JSON.parse(sessionStorage.getItem("userData"));
   const userId = userData ? userData.id : "";
@@ -31,7 +33,7 @@ export const deleteWishlistItem = async (wishlistItemId, fetchWishlist) => {
 
     if (data.success) {
       fetchWishlist();
-      alert("Wishlist item deleted successfully.");
+      showAlert("Wishlist item deleted successfully.");
     } else {
       console.error("Failed to delete wishlist item:", data.message || "Unknown error");
     }
@@ -40,6 +42,7 @@ export const deleteWishlistItem = async (wishlistItemId, fetchWishlist) => {
   }
 };
 const WishlistProductCard = ({ product, fetchWishlist }) => {
+  const showAlert=useAlert().showAlert;
   const [quantity, setQuantity] = useState(product.quantity);
   const debounceTimer = useRef(null);
   const navigate = useNavigate();
@@ -50,7 +53,7 @@ const WishlistProductCard = ({ product, fetchWishlist }) => {
 
   const updateWishlistQuantity = (newQuantity) => {
     if (newQuantity < 1) {
-      alert("Quantity cannot be less than 1");
+      showAlert("Quantity cannot be less than 1");
       return;
     }
 
@@ -105,11 +108,11 @@ const WishlistProductCard = ({ product, fetchWishlist }) => {
 
   async function handleAddToCart({product}) {
     // Retrieve userId from sessionStorage
-    alert("Please wait...")
+    showAlert("Please wait...")
     const userData = sessionStorage.getItem('userData');
     if (!userData) {
         navigate('/login');  // Redirect to login if user data is not found
-        alert('User not logged in');
+        showAlert('User not logged in');
         return;
     }
 
@@ -136,11 +139,11 @@ const WishlistProductCard = ({ product, fetchWishlist }) => {
 
         // Update the cart state based on the API response
      
-        alert(response.data.message);  // Show success message
+        showAlert(response.data.message);  // Show success message
     } catch (error) {
         navigate('/login');  // Redirect to login if unauthorized
         console.error("Error adding to cart:", error);
-        alert('There was an issue adding the item to your cart. Please try again.');
+        showAlert('There was an issue adding the item to your cart. Please try again.');
     }
 };
 
@@ -161,7 +164,7 @@ const WishlistProductCard = ({ product, fetchWishlist }) => {
             <br />
             <div>Size - {product.size}</div>
           </div>
-          <div className="wishlistProductCard-remove" onClick={() => deleteWishlistItem(product.id, fetchWishlist)}>
+          <div className="wishlistProductCard-remove" onClick={() => deleteWishlistItem(product.id, fetchWishlist,showAlert)}>
             Remove
           </div>
         </div>

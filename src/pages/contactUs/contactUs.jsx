@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import './ContactUs.css';
 import { useNavigate } from 'react-router-dom';
 import { domain } from '../../api.service';
+import { useAlert } from '../../component/alert_popup/AlertContext';
 
 const ContactUs = () => {
+    const alertContext=useAlert()
     const navigate = useNavigate();
     console.log("Contact Us Page");
     const [formData, setFormData] = useState({
@@ -44,7 +46,7 @@ const ContactUs = () => {
 
             const result = await response.json();
             console.log("Response from server:", result);
-            alert("Form successfully submitted!");
+            alertContext.showAlert("Form successfully submitted!");
             navigate('/', { replace: true });
 
             // Reset form after submission
@@ -57,7 +59,7 @@ const ContactUs = () => {
             });
         } catch (error) {
             console.error("Error submitting form:", error);
-            alert("Failed to submit the form. Please try again later.");
+            alertContext.showAlert("Failed to submit the form. Please try again later.");
         }
     };
 

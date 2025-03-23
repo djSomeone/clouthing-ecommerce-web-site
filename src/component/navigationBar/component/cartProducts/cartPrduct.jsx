@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./cartProduct.css";
 import { domain } from "../../../../api.service";
+import { useAlert } from "../../../alert_popup/AlertContext";
 
-export const deleteCartItem = async (cartItemId, fetchCart) => {
+
+export const deleteCartItem = async (cartItemId, fetchCart,showAlert) => {
+ 
   const token = sessionStorage.getItem("authToken");
   const userData = JSON.parse(sessionStorage.getItem("userData"));
   const userId = userData ? userData.id : "";
@@ -28,15 +31,18 @@ export const deleteCartItem = async (cartItemId, fetchCart) => {
 
   if (data.success) {
     fetchCart();
-    alert("Cart item deleted successfully.");
+    showAlert("Cart item deleted successfully.");
   } else {
     console.error("Failed to delete cart item");
   }
 };
 
 export const CartProduct = ({ item, fetchCart }) => {
-  // console.log(item);
+  // console.log("in cart products");
+
+  // console.log("----------->"+al);
   const [quantity, setQuantity] = useState(item.quantity);
+  const alertContext=useAlert();
   // console.log(quantity);
   useEffect(() => {
     setQuantity(item.quantity);
@@ -46,7 +52,7 @@ export const CartProduct = ({ item, fetchCart }) => {
 
   const updateQuantity = (newQuantity) => {
     if (newQuantity < 1) {
-      alert("Quantity cannot be less than 1");
+      alertContext.showAlert("Quantity cannot be less than 1");
       return;
     }
 
@@ -118,7 +124,7 @@ export const CartProduct = ({ item, fetchCart }) => {
 
       {/* Quantity and Actions */}
       <div className="cart-item-actions">
-        <button className="remove-btn" onClick={() => deleteCartItem(item.id, fetchCart)}>
+        <button className="remove-btn" onClick={() => deleteCartItem(item.id, fetchCart,alertContext.showAlert)}>
           Remove
         </button>
       </div>

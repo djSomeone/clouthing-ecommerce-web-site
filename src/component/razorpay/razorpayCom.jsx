@@ -3,7 +3,7 @@ import axios from 'axios';
 import { domain } from '../../api.service';
 // import { useNavigate } from 'react-router-dom';
 
-async function handlePayment ({ amounts,cartItems,addressId,navigate })  {
+async function handlePayment ({ amounts,cartItems,addressId,navigate,showAlert })  {
    
   try {
     // Get the token and user data from sessionStorage
@@ -32,7 +32,7 @@ async function handlePayment ({ amounts,cartItems,addressId,navigate })  {
     const { razorpayOrderId,orderId } = orderResponse.data;
 console.log(orderResponse.data)
     if (!razorpayOrderId) {
-      alert("Failed to create an order. Please try again.");
+      showAlert("Failed to create an order. Please try again.");
       return;
     }
 
@@ -68,13 +68,13 @@ console.log(orderResponse.data)
 
           if (result.data.success) {
             navigate('/sucess-order', { replace: true });
-            alert('Payment Successful! Order has been placed.');
+            showAlert('Payment Successful! Order has been placed.');
           } else {
-            alert('Payment Verification Failed. Please contact support.');
+            showAlert('Payment Verification Failed. Please contact support.');
           }
         } catch (verificationError) {
           console.error('Error verifying payment:', verificationError);
-          alert('Payment verification failed. Please try again.');
+          showAlert('Payment verification failed. Please try again.');
         }
       },
       prefill: {
@@ -94,12 +94,12 @@ console.log(orderResponse.data)
     // Handle payment failure explicitly
     razorpayInstance.on('payment.failed', (response) => {
       console.error('Payment Failed:', response.error);
-      alert(`Payment Failed. Reason: ${response.error.description}`);
+      showAlert(`Payment Failed. Reason: ${response.error.description}`);
     });
 
   } catch (error) {
     console.error('Payment error:', error.response.data.error);
-    alert(error.response.data.error);
+    showAlert(error.response.data.error);
   }
 };
 

@@ -5,6 +5,7 @@ import { domain } from "../../../../api.service";
 import { rootSummary ,cartProducts} from "../../component/cartSummary/cartSummary";
 import AddressList from "../savedAddressList/addressList";
 import handlePayment from "../../../../component/razorpay/razorpayCom";
+import { useAlert } from "../../../../component/alert_popup/AlertContext";
 
 const CartForm = () => {
   
@@ -28,6 +29,7 @@ const CartForm = () => {
   const [userAddresses, setUserAddresses] = useState([]);
   const [selectedAddressId, setSelectedAddressId] = useState(null); // Track only the selected address ID
   const [isAddressFormVisible, setAddressFormVisibility] = useState(false);
+  const alertContext=useAlert()
   const PreventReload = () => {
     useEffect(() => {
       const handleBeforeUnload = (e) => {
@@ -239,7 +241,7 @@ const CartForm = () => {
             className="cartform-checkout-btn"
             onClick={async() => {
               if (selectedAddressId) {
-                await handlePayment({ amounts: summary.totalAmount, cartItems: cartProducts, addressId: selectedAddressId,navigate: navigator });
+                await handlePayment({ amounts: summary.totalAmount, cartItems: cartProducts, addressId: selectedAddressId,navigate: navigator,showAlert:alertContext.showAlert });
                 // Proceed with the selected address ID
                 // alert(`Selected Address ID: ${selectedAddressId}`);
                 // navigator("/sucess-order");

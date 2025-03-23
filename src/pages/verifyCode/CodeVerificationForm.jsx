@@ -4,9 +4,10 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './CodeVerificationForm.css';
 import { domain } from '../../api.service';
-
+import { useAlert } from '../../component/alert_popup/AlertContext';
 
 const CodeVerificationForm = () => {
+  const showAlert=useAlert().showAlert;
   const location = useLocation();
   const navigate = useNavigate();
   const [isLoding, setIsLoading] = useState(false);
@@ -60,7 +61,7 @@ setIsLoading(true);
         }
       );
 
-      alert(response.data.message);
+      showAlert(response.data.message);
 
       // Save token and user data in session storage
       sessionStorage.setItem('authToken', response.data.token);

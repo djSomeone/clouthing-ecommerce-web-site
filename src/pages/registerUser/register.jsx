@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './register.css';
 import { domain } from '../../api.service'; // Ensure the domain is defined in api.service.js
-
+import { useAlert } from '../../component/alert_popup/AlertContext';
 const RegisterForm = () => {
+  const showAlert=useAlert().showAlert;
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -20,12 +21,12 @@ const RegisterForm = () => {
         { email, name }
       );
 
-      alert(`OTP sent successfully to ${response.data.data.email}`);
+      showAlert(`OTP sent successfully to ${response.data.data.email}`);
       navigate('/verify', { state: { email: email } });
       console.log('Response:', response.data);
     } catch (error) {
       console.error('Error during registration:', error);
-      alert('Registration failed. Please try again.');
+      showAlert('Registration failed. Please try again.');
     } finally {
       setLoading(false);
       setEmail('');

@@ -4,8 +4,9 @@ import { Icon } from '@iconify/react';
 import { domain } from '../../api.service';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom'; // Assuming you are using React Router
-
+import { useAlert } from '../../component/alert_popup/AlertContext';
 const ProductDetails = ({ match }) => {
+    const showAlert=useAlert().showAlert;
     const [selectedSize, setSelectedSize] = useState(null);
     const [selectedColor, setSelectedColor] = useState(null);
     const [product, setProduct] = useState(null);
@@ -61,18 +62,18 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
 
     async function handleAddToCart(path) {
         // Retrieve userId from sessionStorage
-        alert("Please wait...")
+        showAlert("Please wait...")
         const userData = sessionStorage.getItem('userData');
         if (!userData) {
             navigate('/login');  // Redirect to login if user data is not found
-            alert('User not logged in');
+            showAlert('User not logged in');
             return;
         }
 
         const { id: userId } = JSON.parse(userData);  // Extract userId from stored data
 
         if (!userId || !selectedColor || !selectedSize || !product) {
-            alert('Please select a color, size, and ensure the product details are loaded.');
+            showAlert('Please select a color, size, and ensure the product details are loaded.');
             return;
         }
 
@@ -95,11 +96,11 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
 
             // Update the cart state based on the API response
 
-            alert(response.data.message);  // Show success message
+            showAlert(response.data.message);  // Show success message
         } catch (error) {
             navigate('/login');  // Redirect to login if unauthorized
             console.error("Error adding to cart:", error);
-            alert('There was an issue adding the item to your cart. Please try again.');
+            showAlert('There was an issue adding the item to your cart. Please try again.');
         }
     };
 

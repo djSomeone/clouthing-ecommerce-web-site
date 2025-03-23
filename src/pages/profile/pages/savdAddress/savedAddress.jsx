@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import AddressList from '../savdAddress/component/AddressList/AddressList';
 import './savedAddress.css';
 import { domain } from '../../../../api.service';
+import { useAlert } from '../../../../component/alert_popup/AlertContext';
 
 const SavedAddressPage = () => {
   const [addresses, setAddresses] = useState([]);
   const [isAddressFormVisible, setAddressFormVisibility] = useState(false);
+  const showAlert= useAlert().showAlert;
   const [addressData, setAddressData] = useState({
     firstName: "",
     lastName: "",
@@ -32,7 +34,7 @@ const SavedAddressPage = () => {
     const userId = userData ? userData.id : "";
 console.log("user data:",userData);
     if (!userId) {
-      alert("User not logged in.");
+      showAlert("User not logged in.");
       return;
     }
 
@@ -53,7 +55,7 @@ console.log("user data:",userData);
         console.log("after set address:",addresses);
       } else {
         setAddresses([]);
-        alert(data.message || "No addresses found.");
+        showAlert(data.message || "No addresses found.");
       }
     } catch (error) {
       console.error("Error fetching addresses:", error);
@@ -76,7 +78,7 @@ console.log("user data:",userData);
     const userId = userData ? userData.id : "";
 
     if (!userId) {
-      alert("User ID not found. Please log in.");
+      showAlert("User ID not found. Please log in.");
       return;
     }
 
@@ -108,12 +110,12 @@ console.log("user data:",userData);
       const data = await response.json();
 
       if (data.success) {
-        alert(editingAddressId ? "Address updated successfully!" : "Address added successfully!");
+        showAlert(editingAddressId ? "Address updated successfully!" : "Address added successfully!");
         fetchUserAddresses(); // Refresh the address list
         setAddressFormVisibility(false);
         setEditingAddressId(null);
       } else {
-        alert(data.message || "Failed to add/update address.");
+        showAlert(data.message || "Failed to add/update address.");
       }
     } catch (error) {
       console.error("Error adding/updating address:", error);

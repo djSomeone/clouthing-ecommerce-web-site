@@ -3,8 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './exchangeForm.css'; // Import your CSS file
 import { domain } from '../../../../../../api.service';
-
+import { useAlert } from '../../../../../../component/alert_popup/AlertContext';
 const ExchangeForm = ({ onClose, product, orderDetail,fetchOrders }) => {
+  const showAlert=useAlert().showAlert;
   const navigate = useNavigate();
   // const [reason, setReason] = useState('');
   const [problem, setProblem] = useState('');
@@ -101,7 +102,7 @@ const ExchangeForm = ({ onClose, product, orderDetail,fetchOrders }) => {
         }
       });
       console.log(response.data);
-      alert('Exchange request submitted successfully!');
+      showAlert('Exchange request submitted successfully!');
       // fetchOrders();
       navigate('/sucess-return');
       // onClose();

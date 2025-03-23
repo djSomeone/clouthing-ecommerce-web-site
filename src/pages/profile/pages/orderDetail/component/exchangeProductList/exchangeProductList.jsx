@@ -3,8 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import ProductItem from '../productItem/productItem';
 import "../prooductList/productList.css";
 import { domain } from '../../../../../../api.service';
+import { useAlert } from '../../../../../../component/alert_popup/AlertContext';
 
 function ExchangeProductList({ orderDetail, handleExchange }) {
+    const showAlert=useAlert().showAlert;
     const navigate = useNavigate();
     const statusImages = {
         ordered: 'https://res.cloudinary.com/dmaoweleq/image/upload/v1736853691/placed_onpma9.png',
@@ -56,7 +58,7 @@ function ExchangeProductList({ orderDetail, handleExchange }) {
 
             const data = await response.json();
             if (response.ok) {
-                alert(data.message); // Show success message
+                showAlert(data.message); // Show success message
             } else {
                 setError(data.message || 'Something went wrong.'); // Show error message if the API call fails
             }

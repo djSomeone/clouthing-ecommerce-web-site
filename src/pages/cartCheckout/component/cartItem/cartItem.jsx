@@ -2,14 +2,17 @@ import React, { useState, useRef } from 'react';
 import '../../pages/cartDetails/cartDetails.css';
 import { deleteCartItem } from '../../../../component/navigationBar/component/cartProducts/cartPrduct';
 import { domain } from '../../../../api.service';
+import { useAlert } from '../../../../component/alert_popup/AlertContext';
 
 const CartItem = ({ product, fetchCart }) => {
   const [quantity, setQuantity] = useState(product.quantity);
   const debounceTimer = useRef(null);
+  const alertContext=useAlert()
+
 
   const updateQuantity = (newQuantity) => {
     if (newQuantity < 1) {
-      alert('Quantity cannot be less than 1');
+      alertContext.showAlert('Quantity cannot be less than 1');
       return;
     }
 

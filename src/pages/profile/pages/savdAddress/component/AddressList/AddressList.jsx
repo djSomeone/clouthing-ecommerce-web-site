@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { domain } from '../../../../../../api.service';
 import '../../../../../cartCheckout/pages/savedAddressList/addressList.css';
-
+import { useAlert } from '../../../../../../component/alert_popup/AlertContext';
 const AddressList = ({ addresses, onAddressSelect, onAddAddress, onSetDefault }) => {
+  const showAlert=useAlert().showAlert;
   const [selectedAddress, setSelectedAddress] = useState(null);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const AddressList = ({ addresses, onAddressSelect, onAddAddress, onSetDefault })
       const userId = userData ? userData.id : "";
   
       if (!userId) {
-        alert("User not logged in.");
+        showAlert("User not logged in.");
         return;
       }
   
@@ -51,9 +52,9 @@ const AddressList = ({ addresses, onAddressSelect, onAddAddress, onSetDefault })
       if (data.success) {
         // setAddresses(updatedAddresses);
         setSelectedAddress(selectedAddress);
-        alert("Default address updated successfully!");
+        showAlert("Default address updated successfully!");
       } else {
-        alert(data.message || "Failed to update default address.");
+        showAlert(data.message || "Failed to update default address.");
       }
     } catch (error) {
       console.error("Error updating default address:", error);

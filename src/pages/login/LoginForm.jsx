@@ -3,9 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import './LoginForm.css';
 import { domain } from '../../api.service';
 import axios from 'axios'; // Ensure Axios is installed: npm install axios
-
+import { useAlert } from '../../component/alert_popup/AlertContext';
 const LoginForm = () => {
   const navigate = useNavigate();
+    const alertContext=useAlert()
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -17,12 +18,12 @@ const LoginForm = () => {
       const response = await axios.post(`${domain}/user/login`, { email });
 
       // Display API response to the user
-      alert(`OTP sent successfully to ${response.data.data.email}`);
+      alertContext.showAlert(`OTP sent successfully to ${response.data.data.email}`);
       navigate('/verify', { state: { email: email } });
       console.log('Response:', response.data);
     } catch (error) {
       console.error('Error during login:', error);
-      alert('Failed to send OTP. Please try again.');
+      alertContext.showAlert('Failed to send OTP. Please try again.');
     } finally {
       setLoading(false);
       setEmail('');
