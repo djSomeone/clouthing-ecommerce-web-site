@@ -5,6 +5,7 @@ import { domain } from '../../api.service';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom'; // Assuming you are using React Router
 import { useAlert } from '../../component/alert_popup/AlertContext';
+import ProductDisReview from './component/ProductDisReview';
 const ProductDetails = ({ match }) => {
     const showAlert=useAlert().showAlert;
     const [selectedSize, setSelectedSize] = useState(null);
@@ -121,6 +122,9 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
     };
 
     return (
+        <div className='root-product-container'>
+
+       
         <div className="product-details-container">
             <div className="product-details-left">
                 <div className="product-details-images">
@@ -132,12 +136,12 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
                         ></div>
                     ))}
                 </div>
-                <div className="product-details-description">
+                {/* <div className="product-details-description">
                     <div className="product-details-dis">Product Description</div>
                     <p style={{ textAlign: "justify", color: "#212529d5", marginTop: "10px" }}>
                         {product.description}
                     </p>
-                </div>
+                </div> */}
             </div>
 
             <div className="product-details-right">
@@ -150,9 +154,9 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
                     </div>
 
                     <div className="product-details-details">
-                        <div><strong>Pattern</strong> - {product.pattern}</div>
+                        {/* <div><strong>Pattern</strong> - {product.pattern}</div>
                         <div><strong>Fabric</strong> - {product.fabric}</div>
-                        <div><strong>Fit</strong> - {product.fit}</div>
+                        <div><strong>Fit</strong> - {product.fit}</div> */}
                         <div className="product-details-color-selection">
                             <label><strong>Colour</strong></label>
                             <select onChange={handleColorChange} value={selectedColor || ''} className="product-details-color-select">
@@ -192,6 +196,8 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
                     </div>
                 </div>
             </div>
+        </div>
+        <ProductDisReview discription={product.description} productId={product._id} />
         </div>
     );
 };

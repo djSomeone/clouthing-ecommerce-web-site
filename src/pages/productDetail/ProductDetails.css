@@ -1,12 +1,20 @@
 /* ProductDetails.css */
+.root-product-container{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
 .product-details-container {
     display: flex;
     padding: 20px;
     gap: 40px;
+    justify-content: flex-start;
     height: 100%;
-    max-width: 1200px;
-    padding-top: 50px;
-    margin: 0 auto;
+    max-width: 100%;
+    padding-top: 30px;
+    /* margin: 0 auto; */
 }
 
 .product-details-left {
@@ -54,6 +62,7 @@
     font-size: 1.7rem;
     font-weight: 500;
     padding-bottom: 5px;
+    font-family: 'Prompt';
     margin: 0px;
     text-align: justify;
     color: #4b4a4a;

@@ -1,0 +1,177 @@
+/* Base Container */
+.container {
+    width: 100%;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  /* Tab Buttons Container */
+  .tabButtons {
+    display: flex;
+    gap: 10px;
+   
+    
+  }
+  
+  /* Base style for both tab buttons */
+  .tabButton {
+    padding: 10px 15px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Highlighted button for active tab */
+  .activeTabButton {
+    padding: 10px 15px;
+    background-color: transparent;
+    color: #DA231D;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+  
+  /* Description Section */
+  .descriptionSection {
+    background-color: #fafafa;
+    padding: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    border-radius: 4px;
+  }
+  
+  .descriptionSection h2 {
+    margin-top: 0;
+  }
+  .rootReview{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px; /* Space between cards */
+  }
+
+  /* Overall Review Data */
+.overallReview {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .avgRating {
+    /* Additional styling if needed */
+  }
+  
+  .totalReviews {
+    color: #666;
+  }
+  /* Reviews Section */
+  .reviewsSection {
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 4px;
+  }
+  
+  .reviewsSection h2 {
+    margin-top: 0;
+  }
+  
+  /* Individual Review Card */
+  .reviewCard {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+  }
+  
+  .reviewHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-direction: column-reverse;
+    align-items: start;
+  }
+  
+  .userName {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .rating {
+    color: #f39c12; /* star color */
+  }
+  
+  .comment {
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+  
+  .date {
+    color: #999;
+    font-size: 0.8rem;
+  }
+  
+  /* ===================== */
+  /*       MEDIA QUERY     */
+  /* ===================== */
+  @media (max-width: 768px) {
+    /* Make container full width on smaller screens */
+    .container {
+      width: 100%;
+      padding: 0px 10px;
+    }
+  
+    /* Stack tab buttons vertically on smaller screens */
+    .tabButtons {
+      flex-direction: row;
+    }
+    .rootReview{
+        display: flex; /* Space between cards */
+        flex-direction: column;
+        align-items: start;
+      }
+    .tabButton,
+    .activeTabButton {
+      /* width: 100%; */
+      padding: 4px;
+      margin-bottom: 10px;
+    }
+  
+    .descriptionSection,
+    .reviewsSection {
+      padding: 15px;
+      display: flex; /* Space between cards */
+        flex-direction: column;
+        align-items: start;
+    }
+  
+    .reviewHeader {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+  
+    .userName {
+      font-size: 1rem;
+    }
+  
+    .rating {
+      font-size: 0.9rem;
+    }
+  }
+  

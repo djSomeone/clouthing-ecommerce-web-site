@@ -29,6 +29,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 
 
 import './App.css'
+import AddProductReview from './pages/addReview/AddProductReview.js';
 
 function App() {
     const [activeIndex, setActiveIndex] = useState(0);
