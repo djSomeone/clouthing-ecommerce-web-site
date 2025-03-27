@@ -81,6 +81,7 @@
     flex-direction: column;
     align-items: start;
     border-radius: 4px;
+    margin-bottom: 10px;
   }
   
   .reviewsSection h2 {
@@ -113,6 +114,7 @@
   }
   
   .rating {
+    margin: 0px;
     color: #f39c12; /* star color */
   }
   
@@ -174,4 +176,109 @@
       font-size: 0.9rem;
     }
   }
-  
+  /* Popup Overlay & Container */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popupContent {
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 450px;
+  text-align: start;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Popup Title */
+.popupContent h3 {
+  margin: 0;
+  text-align: center;
+  color: #DA231D; /* Red title */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Form Layout */
+.popupContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input & Textarea Styling */
+.popupContent form input,
+.popupContent form textarea,
+.popupContent form select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+.popupContent form input:focus,
+.popupContent form textarea:focus,
+.popupContent form select:focus {
+  border-color: #DA231D;
+  outline: none;
+}
+
+/* Form Labels */
+.popupContent form label {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Buttons Container */
+.popupButtons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Popup Buttons */
+.popupButtons button {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Primary Button for Submit/Update */
+.popupButtons .primaryButton {
+  background-color: #DA231D;
+  color: #fff;
+}
+
+.popupButtons .primaryButton:hover {
+  background-color: #b81f1a;
+}
+
+/* Cancel Button with a different color */
+.popupButtons .cancelButton {
+  background-color: #666;
+  color: #fff;
+}
+
+.popupButtons .cancelButton:hover {
+  background-color: #555;
+}
