@@ -113,6 +113,9 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
         return <div>Loading...</div>;
     }
 
+    const handleImageClick = (imageSrc) => {
+        window.open(imageSrc, '_blank');
+    };
     const handleSizeClick = (size) => {
         setSelectedSize(size);
     };
@@ -130,6 +133,7 @@ setSelectedSize(availableSizes.length > 0 ? availableSizes[0].size : null);// Se
                 <div className="product-details-images">
                     {product.images.map((image, index) => (
                         <div
+                        onClick={()=>handleImageClick(image)}
                             key={index}
                             className="product-details-image"
                             style={{ backgroundImage: `url(${image})` }}
